@@ -16,24 +16,26 @@
   <meta name="author" content="Zhenghong Yu">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="Life is hard, and I have no choice">
-<meta property="og:url" content="http://example.com/2023/09/11/life_experience_3/index.html">
+    <meta name="description" content="Week 1Universal Compute  Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EE252">
+<meta property="og:url" content="http://example.com/2023/09/19/EE252/index.html">
 <meta property="og:site_name" content="Zhenghong Yu&#39;s Blog">
+<meta property="og:description" content="Week 1Universal Compute  Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/bluescreen.jpg">
-<meta property="article:published_time" content="2023-09-11T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-11T05:55:36.113Z">
+<meta property="og:image" content="http://example.com/img/hello_world.jpg">
+<meta property="article:published_time" content="2023-09-19T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-20T06:33:11.567Z">
 <meta property="article:author" content="Zhenghong Yu">
-<meta property="article:tag" content="emo">
+<meta property="article:tag" content="EE252">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/bluescreen.jpg">
+<meta name="twitter:image" content="http://example.com/img/hello_world.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Life is hard, and I have no choice - Zhenghong Yu&#39;s Blog</title>
+  <title>EE252 - Zhenghong Yu&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -228,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">Life is hard, and I have no choice</span>
+            <span id="subtitle">EE252</span>
           
         </div>
 
@@ -239,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-11 00:00" pubdate>
-          2023年9月11日 凌晨
+        <time datetime="2023-09-19 00:00" pubdate>
+          2023年9月19日 凌晨
         </time>
       </span>
     
@@ -251,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2.3k 字
         
       </span>
     
@@ -262,7 +264,7 @@
         
         
         
-          1 分钟
+          19 分钟
         
       </span>
     
@@ -307,12 +309,66 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Life is hard, and I have no choice</h1>
+            <h1 id="seo-header">EE252</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <p><strong><em><em>Week 1</em></em></strong><br><strong>Universal Compute</strong></p>
+<ol>
+<li>Turing Machine: any computable computation can be implemented by some machine</li>
+<li>Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus infinite memory).</li>
+<li>A computer can compute anything that’s possible to compute given enough memory and time.</li>
+<li>Design trade-off: Time, Cost, Power&#x2F;Energy.</li>
+</ol>
+<p><strong>Complexity</strong></p>
+<ol>
+<li>1st transistor -&gt; Bell Labs, 1st IC -&gt; Jack Kilby(MSEE’50), 1st microprocessor -&gt; Intel</li>
+<li>Moore’s Law: number of transistors on a microchip doubles approximately every two years(24 month). -&gt; Cost halves every two years.</li>
+</ol>
+<p><strong>Abstraction</strong></p>
+<ol>
+<li>Use abstraction to manage complexity.</li>
+<li>The ISA lies at the software&#x2F;hardware boundary.</li>
+<li>Problem Statement –Software Design–&gt; Algorithm –Programming–&gt; Program –Compilation–&gt; ISA –Processor Design–&gt; Microarchitecture –Logic&#x2F;Circuit Design–&gt; Logic Circuits –Implement&amp;Fabricate–&gt; Devices</li>
+</ol>
+<p><strong>Electral Infomation</strong></p>
+<ol>
+<li>Analog: continuous range of values</li>
+<li>Digital: discrete set of values (almost all eletronic device)</li>
+<li>In reality, the voltage levels are actually ranges of voltages.</li>
+<li>Voltage &#x3D; Current * Resistance</li>
+<li>Any data processed by a digital computer is represented by sequences of 1s and 0s</li>
+</ol>
+<p><strong><em>Week 2</em></strong><br><strong>Number representation</strong></p>
+<ol>
+<li>demical-10, Binary-2, Octal-8, Hexademical-16</li>
+<li>least-significant, right most; most-significant, left-most</li>
+<li>$D_{N-1}\cdots D_{1}D_{0}&#x3D;D_{N-1}*r^{N-1} + \cdots + D_{1}<em>r^1 + D_0</em>r^0$</li>
+<li>Each position represents a power of base; Digital value says how many of that power of base.</li>
+<li>A value is a particular quantity, a number is a way to represent a value. Same “number”, different value.</li>
+</ol>
+<p><strong>Base conversion</strong></p>
+<ol>
+<li>Binary &lt;-&gt; Hex: directly substitute a hex digit for a 4-bit binary number.</li>
+<li>Binary &lt;-&gt; Octal: directly substitute a octual digit for a 3-bit binary number.</li>
+<li>Octal &lt;-&gt; Hex: use binary as an intermediate form.</li>
+</ol>
+<p><strong>Arithmetic</strong></p>
+<ol>
+<li>Substraction using borrowing: If necessary, bowrrow the base’s value from one position higher</li>
+<li>Multiple by power of base, shifts number to the left. Divide by power of base, shifts numbers to the right.</li>
+</ol>
+<p><strong>Signed Numbers</strong></p>
+<ol>
+<li>Signed-Magnitude: The most significant bit is the sign, the remaining bits are the numbers magnitude.</li>
+<li>2’s Complement representation: positive numbers start with 0, negative numbers start with 1 ($-2^N$).</li>
+<li>Fast Negation: complement each bit and the add 1.</li>
+<li>Addition: works the way it does for unsigned binary number except the carry-out is not meaningful.</li>
+<li>Substraction: add the negation of the value we wish to subtract</li>
+<li>Operand&#x2F;Result bitwidths match: operands and results must have the same number of bits for the math to work correctly.</li>
+</ol>
+
                 
               </div>
             
@@ -330,7 +386,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Gossip/" class="category-chain-item">Gossip</a>
+  <a href="/categories/Courses/" class="category-chain-item">Courses</a>
   
   
 
@@ -345,7 +401,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/emo/" class="print-no-link">#emo</a>
+        <a href="/tags/EE252/" class="print-no-link">#EE252</a>
       
     </div>
   
@@ -357,8 +413,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Life is hard, and I have no choice</div>
-      <div>http://example.com/2023/09/11/life_experience_3/</div>
+      <div>EE252</div>
+      <div>http://example.com/2023/09/19/EE252/</div>
     </div>
     <div class="license-meta">
       
@@ -370,7 +426,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月11日</div>
+          <div>2023年9月19日</div>
         </div>
       
       
@@ -402,18 +458,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/19/EE252/" title="EE252">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">EE252</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/01/life_experience_2/" title="美东游记-波士顿">
-                        <span class="hidden-mobile">美东游记-波士顿</span>
+                      <a href="/2023/09/11/life_experience_3/" title="Life is hard, and I have no choice">
+                        <span class="hidden-mobile">Life is hard, and I have no choice</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
