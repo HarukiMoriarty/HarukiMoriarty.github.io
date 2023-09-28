@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>COMP 320</title>
+    <link href="/2023/09/28/COMP320/"/>
+    <url>/2023/09/28/COMP320/</url>
+    
+    <content type="html"><![CDATA[<p>（我也不知道为什么要做 COMP 320 的 Notes，这感觉就像在我这个年纪学习如何上厕所）</p><h2 id="Repoducibility"><a href="#Repoducibility" class="headerlink" title="Repoducibility"></a>Repoducibility</h2><ol><li>Each process owns address space. (one huge list)</li><li>Multiple lists start at different address in address space; normally, append is faster than pop, since pop need to move all next items forward 4 bytes. (? Really)</li><li>Use ASCII to store strings, use specific ISA to store codes.</li><li>A CPU can only run programs that use instructions it understands, interpreters&#x2F;compiler make it sense to run the same code on different machines.</li><li>OS: allocate and abstract resources</li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>Courses</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>course notes</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>ECE 252</title>
     <link href="/2023/09/19/EE252/"/>
     <url>/2023/09/19/EE252/</url>
