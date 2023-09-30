@@ -16,16 +16,16 @@
   <meta name="author" content="Zhenghong Yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Week 1Universal Compute  Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minu">
+    <meta name="description" content="Week 1Universal Compute Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ECE 252">
 <meta property="og:url" content="https://harukimoriarty.github.io/2023/09/19/EE252/index.html">
 <meta property="og:site_name" content="Zhenghong Yu&#39;s Blog">
-<meta property="og:description" content="Week 1Universal Compute  Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minu">
+<meta property="og:description" content="Week 1Universal Compute Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/IMG_1104.JPG">
 <meta property="article:published_time" content="2023-09-19T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-20T06:42:40.546Z">
+<meta property="article:modified_time" content="2023-09-30T07:24:49.011Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          3.2k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          24 分钟
+          27 分钟
         
       </span>
     
@@ -314,53 +314,45 @@
             
               <div class="markdown-body">
                 
-                <p><strong><em><em>Week 1</em></em></strong><br><strong>Universal Compute</strong></p>
-<ol>
+                <h2 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a><strong><em><em>Week 1</em></em></strong></h2><h3 id="Universal-Compute"><a href="#Universal-Compute" class="headerlink" title="Universal Compute"></a><strong>Universal Compute</strong></h3><ol>
 <li>Turing Machine: any computable computation can be implemented by some machine</li>
 <li>Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus infinite memory).</li>
 <li>A computer can compute anything that’s possible to compute given enough memory and time.</li>
 <li>Design trade-off: Time, Cost, Power&#x2F;Energy.</li>
 </ol>
-<p><strong>Complexity</strong></p>
-<ol>
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a><strong>Complexity</strong></h3><ol>
 <li>1st transistor -&gt; Bell Labs, 1st IC -&gt; Jack Kilby(MSEE’50), 1st microprocessor -&gt; Intel</li>
 <li>Moore’s Law: number of transistors on a microchip doubles approximately every two years(24 month). -&gt; Cost halves every two years.</li>
 </ol>
-<p><strong>Abstraction</strong></p>
-<ol>
+<h3 id="Abstraction"><a href="#Abstraction" class="headerlink" title="Abstraction"></a><strong>Abstraction</strong></h3><ol>
 <li>Use abstraction to manage complexity.</li>
 <li>The ISA lies at the software&#x2F;hardware boundary.</li>
 <li>Problem Statement –Software Design–&gt; Algorithm –Programming–&gt; Program –Compilation–&gt; ISA –Processor Design–&gt; Microarchitecture –Logic&#x2F;Circuit Design–&gt; Logic Circuits –Implement&amp;Fabricate–&gt; Devices</li>
 </ol>
-<p><strong>Electral Infomation</strong></p>
-<ol>
+<h3 id="Electral-Infomation"><a href="#Electral-Infomation" class="headerlink" title="Electral Infomation"></a><strong>Electral Infomation</strong></h3><ol>
 <li>Analog: continuous range of values</li>
 <li>Digital: discrete set of values (almost all eletronic device)</li>
 <li>In reality, the voltage levels are actually ranges of voltages.</li>
 <li>Voltage &#x3D; Current * Resistance</li>
 <li>Any data processed by a digital computer is represented by sequences of 1s and 0s</li>
 </ol>
-<p><strong><em>Week 2</em></strong><br><strong>Number representation</strong></p>
-<ol>
+<h2 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a><strong><em>Week 2</em></strong></h2><h3 id="Number-representation"><a href="#Number-representation" class="headerlink" title="Number representation"></a><strong>Number representation</strong></h3><ol>
 <li>demical-10, Binary-2, Octal-8, Hexademical-16</li>
 <li>least-significant, right most; most-significant, left-most</li>
 <li>$D_{N-1}\cdots D_{1}D_{0}&#x3D;D_{N-1}*r^{N-1} + \cdots + D_{1}<em>r^1 + D_0</em>r^0$</li>
 <li>Each position represents a power of base; Digital value says how many of that power of base.</li>
 <li>A value is a particular quantity, a number is a way to represent a value. Same “number”, different value.</li>
 </ol>
-<p><strong>Base conversion</strong></p>
-<ol>
+<h3 id="Base-conversion"><a href="#Base-conversion" class="headerlink" title="Base conversion"></a><strong>Base conversion</strong></h3><ol>
 <li>Binary &lt;-&gt; Hex: directly substitute a hex digit for a 4-bit binary number.</li>
 <li>Binary &lt;-&gt; Octal: directly substitute a octual digit for a 3-bit binary number.</li>
 <li>Octal &lt;-&gt; Hex: use binary as an intermediate form.</li>
 </ol>
-<p><strong>Arithmetic</strong></p>
-<ol>
+<h3 id="Arithmetic"><a href="#Arithmetic" class="headerlink" title="Arithmetic"></a><strong>Arithmetic</strong></h3><ol>
 <li>Substraction using borrowing: If necessary, bowrrow the base’s value from one position higher</li>
 <li>Multiple by power of base, shifts number to the left. Divide by power of base, shifts numbers to the right.</li>
 </ol>
-<p><strong>Signed Numbers</strong></p>
-<ol>
+<h3 id="Signed-Numbers"><a href="#Signed-Numbers" class="headerlink" title="Signed Numbers"></a><strong>Signed Numbers</strong></h3><ol>
 <li>Signed-Magnitude: The most significant bit is the sign, the remaining bits are the numbers magnitude.</li>
 <li>2’s Complement representation: positive numbers start with 0, negative numbers start with 1 ($-2^N$).</li>
 <li>Fast Negation: complement each bit and the add 1.</li>
@@ -368,8 +360,7 @@
 <li>Substraction: add the negation of the value we wish to subtract</li>
 <li>Operand&#x2F;Result bitwidths match: operands and results must have the same number of bits for the math to work correctly.</li>
 </ol>
-<p><strong>Sign Extention</strong></p>
-<ol>
+<h3 id="Sign-Extention"><a href="#Sign-Extention" class="headerlink" title="Sign Extention"></a><strong>Sign Extention</strong></h3><ol>
 <li>Extend 2’s complement number: for positive: zero-extension; for negative: one-extension</li>
 <li>Negative 1 in 2’s complement: $-1\cdots1$</li>
 <li>Unsigned number: $[0, 2^n -1]$, signed number: $[-(2^{n-1}-1), 2^{n-1}-1]$, 2’s-complement number: $[-2^{n-1}, 2^{n-1}-1]$</li>
@@ -377,6 +368,16 @@
 <li>lf adding two negative 2’s-complement numbers overflows, the sign of the result will appear to be non-negative.</li>
 <li>lf the result of adding two positive 2’s-complement numbers appears to be positive, then the operation did not overflow.</li>
 <li>lf adding two unsigned numbers overflows , the result will appear to be<br>smaller than it should be.</li>
+</ol>
+<h2 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a><strong><em>Week 3</em></strong></h2><h3 id="Fixed-Float"><a href="#Fixed-Float" class="headerlink" title="Fixed Float"></a><strong>Fixed Float</strong></h3><ol>
+<li>Radix point: separates the integer portion from the fractional portion of the numebr</li>
+<li>when the format defines a “fixed” position for the radix point within the number’s digits</li>
+<li><img src="/../img/EE252/EE252%201.jpg" srcset="/img/loading.gif" lazyload></li>
+<li>Shifting right by $N$ bits is equivalent to dividing by $2^N$</li>
+<li>location of radix is not visible, not encoded in the number, must told. We never know the meaning of a binary number just by looking at it.</li>
+</ol>
+<h3 id="Floating-Float"><a href="#Floating-Float" class="headerlink" title="Floating Float"></a><strong>Floating Float</strong></h3><ol>
+<li><img src="/../img/EE252/EE252%202.jpg" srcset="/img/loading.gif" lazyload alt="IEEE 32-bit"></li>
 </ol>
 
                 
@@ -478,8 +479,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/01/life_experience_2/" title="美东游记-波士顿">
-                        <span class="hidden-mobile">美东游记-波士顿</span>
+                      <a href="/2023/09/11/life_experience_3/" title="Life is hard, and I have no choice">
+                        <span class="hidden-mobile">Life is hard, and I have no choice</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
