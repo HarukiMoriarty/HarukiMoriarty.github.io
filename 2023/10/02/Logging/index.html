@@ -16,16 +16,16 @@
   <meta name="author" content="Zhenghong Yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DurabilityLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next transaction That’s easy. Bu">
+    <meta name="description" content="Durability–Why we need LoggingLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next transac">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Logging">
 <meta property="og:url" content="https://harukimoriarty.github.io/2023/10/02/Logging/index.html">
 <meta property="og:site_name" content="Zhenghong Yu&#39;s Blog">
-<meta property="og:description" content="DurabilityLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next transaction That’s easy. Bu">
+<meta property="og:description" content="Durability–Why we need LoggingLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next transac">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
 <meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T14:10:35.012Z">
+<meta property="article:modified_time" content="2023-10-02T14:11:11.984Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -314,7 +314,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="Durability"><a href="#Durability" class="headerlink" title="Durability"></a>Durability</h2><p>Let’s first consider a NaiveDB,<br>-step 1: Admit one transaction T<br>-step 2: Execute T to completion<br>-step 3: <strong>Atomically</strong> flush T’s writes to disk<br>-step 4: Admit the next transaction</p>
+                <h2 id="Durability–Why-we-need-Logging"><a href="#Durability–Why-we-need-Logging" class="headerlink" title="Durability–Why we need Logging"></a>Durability–Why we need Logging</h2><p>Let’s first consider a NaiveDB,<br>-step 1: Admit one transaction T<br>-step 2: Execute T to completion<br>-step 3: <strong>Atomically</strong> flush T’s writes to disk<br>-step 4: Admit the next transaction</p>
 <p>That’s easy. But what if, at some point, the disk&#x2F;memory&#x2F;CPU&#x2F;server crashed down, or I cut down the power? To avoid bad things happening, we need to make database <strong>Durability</strong>: Once a transaction commits, its effects must be persistent; the DBMS can tolerate systems failures.</p>
 <p><strong>Durability</strong>: The database must recover to a valid state no matter when a crash occurs.</p>
 <ol>
