@@ -4,11 +4,61 @@
   
   
   <entry>
+    <title>Logging</title>
+    <link href="/2023/10/02/Logging/"/>
+    <url>/2023/10/02/Logging/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Durability"><a href="#Durability" class="headerlink" title="Durability"></a>Durability</h2><p>Let’s first consider a NaiveDB,<br>-step 1: Admit one transaction T<br>-step 2: Execute T to completion<br>-step 3: <strong>Atomically</strong> flush T’s writes to disk<br>-step 4: Admit the next transaction</p><p>That’s easy. But what if, at some point, the disk&#x2F;memory&#x2F;CPU&#x2F;server crashed down, or I cut down the power? To avoid bad things happening, we need to make database <strong>Durability</strong>: Once a transaction commits, its effects must be persistent; the DBMS can tolerate systems failures.</p><p><strong>Durability</strong>: The database must recover to a valid state no matter when a crash occurs.</p><ol><li>Committed transactions should persist.</li><li>Uncommitted transactions should roll back.</li></ol><p><img src="/../img/Logging/Logging%201.jpg" alt="example"></p><h2 id="WAL"><a href="#WAL" class="headerlink" title="WAL"></a>WAL</h2><p>To reach durability, we introduce a protocol, <strong>Write-Ahead Logging(WAL)</strong>: Flush the log record for an update before the corresponding data page gets to disk; Write all log records for a transaction before commits.</p><p>Before making any changes to the actual data or its structures(like a B+ tree), the system first writes those changes to a log. This log is sequentially written, making it fast to append data.</p><p>Why we use it?</p><ol><li><p><strong>Data Integrity and Durability</strong>: In case of a system crash or power failure, any transactions not permanently written to the data files can be recovered and completed using the log. This ensures that the database remains in a consistent state.</p></li><li><p><strong>Backup and Point-in-time Recovery</strong>: If you have a backup of a database and a subsequent WAL, you can restore the database to any point in time covered by the log. This can be useful for recovering from both catastrophic failures and human errors, like unintended data deletions.</p></li></ol><h2 id="Buffer-managerment-policies"><a href="#Buffer-managerment-policies" class="headerlink" title="Buffer managerment policies"></a>Buffer managerment policies</h2><h3 id="Steal"><a href="#Steal" class="headerlink" title="Steal?"></a>Steal?</h3><p><strong>No Steal</strong>: Dirty pages stay in DRAM until the transaction commits.<br><strong>Steal</strong>: Dirty pages can be flushed to disk before the transaction commits.</p><ol><li>Ad: other transactions can use the buffer slot in DRAM</li><li>Challenge: systems crashed after flushing dirty pages but before the transaction commits. &#x3D;&gt; <strong>Dirty data on disk!</strong></li><li>Solution: <strong>UNDO</strong> logging before each update</li></ol><h3 id="Force"><a href="#Force" class="headerlink" title="Force?"></a>Force?</h3><p><strong>Force</strong>: All dirty pages must be flushed when the transaction commits.<br><strong>No force</strong>: Dirty pages may stay in memory after the transaction commits.</p><ol><li>Ad: reduce #random IO(high!)</li><li>Challenge: system crashes after the transaction commits but before the dirty pages are flushed &#x3D;&gt; <strong>missing updates from committed transactions!</strong></li><li>Solution: <strong>REDO</strong> logging before each update.</li></ol><p>Notice: the reason choose logging, is that flushing logs can be much cheaper than flushing data pages. Log record can be much smaller than a data page; Logging incurs sequential IO; data page updates incur random IO.</p><h3 id="Policy-How-to-choose"><a href="#Policy-How-to-choose" class="headerlink" title="Policy: How to choose?"></a>Policy: How to choose?</h3><p>Let’s make a table,<br><img src="/../img/Logging/Logging%202.jpg"></p><h4 id="Force-amp-amp-No-Steal"><a href="#Force-amp-amp-No-Steal" class="headerlink" title="Force &amp;&amp; No Steal"></a>Force &amp;&amp; No Steal</h4><p>We start with the easiest one.</p><p>It is the most strict policy. We do not write logs before the transaction is committed and force flushing logs to disk when the transaction is committed.</p><p>When the system crashes, every committed transactions must persist to disk and every uncommitted transactions must not persist on disk. So we do nothing, <strong>NO REDO nor NO UNDO</strong>. (Philip Bernstein, Vassos Hadzilacos, Nathan Goodman, Concurrency Control and Recovery in Database Systems, 1987)</p><h4 id="Force-amp-amp-Steal"><a href="#Force-amp-amp-Steal" class="headerlink" title="Force &amp;&amp; Steal"></a>Force &amp;&amp; Steal</h4><p>We allow system write logs before the transaction is committed, but force flushing logs to disk when the transaction is committed.</p><p>Log <strong>UNDO</strong> record before each update to database; Log <strong>COMMIT</strong> record when a transaction finishes execution. Modified data pages can be written to disk <strong>after the corresponding UNDO record but before the COMMIT record</strong>.</p><p>So we do <strong>UNDO</strong> only (NVM-based database), <strong>UNDO</strong> uncommitted transactions.</p><h4 id="No-Force-amp-amp-No-Steal"><a href="#No-Force-amp-amp-No-Steal" class="headerlink" title="No Force &amp;&amp; No Steal"></a>No Force &amp;&amp; No Steal</h4><p>We do not allow system write logs to disk before the transaction is committed, but do not force flushing logs to disk when the transaction is committed.</p><p>Log <strong>REDO</strong> record before each update to database. Log <strong>COMMIT</strong> record when a transaction finishes execution. Modified data pages can be written to disk <strong>after COMMIT record is logged</strong>.</p><p>So, we <strong>replay REDO logs</strong> for comitted transactions.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Techniques</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>database</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Mid-Autumn</title>
+    <link href="/2023/10/01/life_experience_3/"/>
+    <url>/2023/10/01/life_experience_3/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    <categories>
+      
+      <category>Gossip</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>emo</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>COMP 571</title>
     <link href="/2023/09/30/COMP571/"/>
     <url>/2023/09/30/COMP571/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h2 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h2><h3 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a><strong>Programming</strong></h3><h4 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h4><ol><li>hyper-text markup language, defines the structure of the web, make up of a series of “elements” defined by “tags”. Each element can have a unique <code>id</code> attribute, used for CSS and JS</li><li>Document Object Model(DOM)</li><li><code>html</code>: encapsulate entire html document<br><code>head</code>: include metadata, such as CSS and JS scripts<br><code>body</code>: main HTML content<br><code>h1</code>: headers<br><code>p</code>: paragraph text<br><code>strong</code>, <code>em</code>: connotation<br><code>a</code>: anchor text(links)<br><code>img</code>: images (with <code>alt</code> attribute)<br><code>br</code>: linebreak<br><code>ul</code>, <code>ol</code>, <code>li</code>: lists<br><code>tanle</code>, <code>threads</code>, <code>tbody</code>, <code>tr</code>, <code>th</code>, <code>td</code>: tables<br><code>div</code>: divisions(sections)<br><code>form</code>: encapsulates many inputs<br><code>label</code>: label an input (include <code>for</code> attribute)<br><code>input</code>: user input<br><code>button</code>: buttons</li></ol><h4 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h4><ol><li>Cascading Sytle Sheets, defines the styles to be used, uses a cascading hierachy of selectors and decoration boxes consisting of key-value pairs</li></ol>]]></content>
     
     
     <categories>
@@ -71,31 +121,6 @@
     <tags>
       
       <tag>course notes</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Life is hard, and I have no choice</title>
-    <link href="/2023/09/11/life_experience_3/"/>
-    <url>/2023/09/11/life_experience_3/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>Gossip</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>emo</tag>
       
     </tags>
     

@@ -16,26 +16,26 @@
   <meta name="author" content="Zhenghong Yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="正如之前的安排，8 月中旬去了美国东海岸旅游了一趟。路线是芝加哥-&gt;波士顿-&gt;纽约-&gt;华盛顿（主要是去 UMD）。一路风尘，回来安顿下来之后写一些随感。 在开始之前，我突然想起了余秋雨的《文化苦旅》，是初中的时候班主任推荐的。说实在我并不觉得《文化苦旅》的文笔有多好，指类似于《生活在树上》给人眼花缭乱的感觉，也不觉得其有多朴实，指类似于《骆驼祥子》给人过于“地道”的感觉。《文化苦">
+    <meta name="description" content="DurabilityLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next transaction That’s easy. Bu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="美东游记-波士顿">
-<meta property="og:url" content="https://harukimoriarty.github.io/2023/09/01/life_experience_2/index.html">
+<meta property="og:title" content="Logging">
+<meta property="og:url" content="https://harukimoriarty.github.io/2023/10/02/Logging/index.html">
 <meta property="og:site_name" content="Zhenghong Yu&#39;s Blog">
-<meta property="og:description" content="正如之前的安排，8 月中旬去了美国东海岸旅游了一趟。路线是芝加哥-&gt;波士顿-&gt;纽约-&gt;华盛顿（主要是去 UMD）。一路风尘，回来安顿下来之后写一些随感。 在开始之前，我突然想起了余秋雨的《文化苦旅》，是初中的时候班主任推荐的。说实在我并不觉得《文化苦旅》的文笔有多好，指类似于《生活在树上》给人眼花缭乱的感觉，也不觉得其有多朴实，指类似于《骆驼祥子》给人过于“地道”的感觉。《文化苦">
+<meta property="og:description" content="DurabilityLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next transaction That’s easy. Bu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://harukimoriarty.github.io/img/IMG_1147.JPG">
-<meta property="article:published_time" content="2023-09-01T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T02:46:07.401Z">
+<meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
+<meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
+<meta property="article:modified_time" content="2023-10-02T14:04:31.302Z">
 <meta property="article:author" content="Zhenghong Yu">
-<meta property="article:tag" content="traveling">
+<meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://harukimoriarty.github.io/img/IMG_1147.JPG">
+<meta name="twitter:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>美东游记-波士顿 - Zhenghong Yu&#39;s Blog</title>
+  <title>Logging - Zhenghong Yu&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">美东游记-波士顿</span>
+            <span id="subtitle">Logging</span>
           
         </div>
 
@@ -241,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-01 00:00" pubdate>
-          2023年9月1日 凌晨
+        <time datetime="2023-10-02 00:00" pubdate>
+          2023年10月2日 凌晨
         </time>
       </span>
     
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          3.3k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          10 分钟
+          28 分钟
         
       </span>
     
@@ -309,20 +309,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">美东游记-波士顿</h1>
+            <h1 id="seo-header">Logging</h1>
             
             
               <div class="markdown-body">
                 
-                <p>正如之前的安排，8 月中旬去了美国东海岸旅游了一趟。路线是芝加哥-&gt;波士顿-&gt;纽约-&gt;华盛顿（主要是去 UMD）。一路风尘，回来安顿下来之后写一些随感。</p>
-<p>在开始之前，我突然想起了余秋雨的《文化苦旅》，是初中的时候班主任推荐的。说实在我并不觉得《文化苦旅》的文笔有多好，指类似于《生活在树上》给人眼花缭乱的感觉，也不觉得其有多朴实，指类似于《骆驼祥子》给人过于“地道”的感觉。《文化苦旅》就像是普通人写的一本普通游记，平淡的记录一路上发生所有的事情，辅以一些历史资料和个人感悟。唯一令人印象深刻的是余秋雨（似乎？）一路跨国欧亚大陆的长途旅行。假使我有这份财富和运气，将来我也要这么走一趟（笑）。</p>
-<p>那，就万物起始，从 7 天呆在波士顿的旅行开始。</p>
-<p>抵达波士顿的第一天，借宿在 Y 同学的家里。不远就是 MIT 的校区。MIT 给我的第一印象就是和 Skd 很像，校园不大，各楼之间都有走廊相连接，专业设置也大体是理工科。当然 MIT 的学术成就和影响是 Skd 万万望尘莫及的。（人，要有理想，万一一百年后 Skd 也能成为东方 MIT 呢）</p>
-<p>7 天的空闲时间我基本呆在 MIT 的 Hayden Library。是一个坐落在 Charies River 旁的小型图书馆，其四周都是落地窗，24H 开放（工作时间对公众开放）。借了 Y 同学的校园卡，得以在里面搬砖敲代码。我着实喜欢这样的图书馆，从窗口望出去，草坪，河水，和远处的 CBD 构成绝妙的图像平衡。<br><img src="/../img/life_experience_2/IMG_library.JPG" srcset="/img/loading.gif" lazyload alt="Hayden Library"></p>
-<p>来波士顿的首要目标就是炫意大利小镇的龙虾意面，这家店叫 The Daily Catch。店不大，开在拥挤的街道上，有点苍蝇馆子的味道。来之前有所听闻其名声和巨长的排队人数，我便早上 10 点就从 Hayden Library 出发，但到那儿依然排了半个小时的队伍。</p>
-<p>我没有具体看菜单，毕竟是奔着龙虾来的（大体还是一些经典的意大利菜，龙虾意面标注在菜单的正中央，大写加粗）。原本是打算和 Y 同学一起吃，但是 Y 同学沉迷 research，只好点了一人份的龙虾意面。<br><img src="/../img/life_experience_2/IMG_1146.JPG" srcset="/img/loading.gif" lazyload alt="The Daily Catch"><br><img src="/../img/life_experience_2/IMG_1147.JPG" srcset="/img/loading.gif" lazyload alt="Lobster Noodles"><br>说实话，分量确实很大（将近 70 刀！），也满足了我关在 Madison 半年对于美食的极高期待。店里面都是三三两两的游客，邻桌是带父母来波士顿旅游的华侨。我独自一人在店中狂炫龙虾，倒也是一种奇特的经历。</p>
-<p>来波士顿之前有所听闻 MFA 的莫奈藏品。对于我这种毫无艺术细胞的人来说，印象派画家，尤其是莫奈，通过其更加通俗易懂的表达形式，相比于抽象派更能吸引我。说起来我和莫奈的渊源也有些奇妙，小学的时候在某本杂志上看到过对于莫奈画的赏析，讲的是《日出·印象》；那个时候惊叹于真的有人可以画出早晨港口那种烟雾朦胧的感觉。</p>
-<p>不过可惜的是 MFA 只收藏了莫奈的《睡莲》等练习画，没能看到《日出》，也没能看到《草地上的午餐》，着实有点可惜。后来去纽约的时候，大都会博物馆的整个欧洲艺术展区都在维护，此躺美东旅行没有看到对于我来说的莫奈的代表作，实在是可惜。<br><img src="/../img/life_experience_2/IMG_1161.JPG" srcset="/img/loading.gif" lazyload alt="Les Meules"><br><img src="/../img/life_experience_2/IMG_1155.JPG" srcset="/img/loading.gif" lazyload alt="La Japonaise"></p>
+                <h2 id="Durability"><a href="#Durability" class="headerlink" title="Durability"></a>Durability</h2><p>Let’s first consider a NaiveDB,<br>-step 1: Admit one transaction T<br>-step 2: Execute T to completion<br>-step 3: <strong>Atomically</strong> flush T’s writes to disk<br>-step 4: Admit the next transaction</p>
+<p>That’s easy. But what if, at some point, the disk&#x2F;memory&#x2F;CPU&#x2F;server crashed down, or I cut down the power? To avoid bad things happening, we need to make database <strong>Durability</strong>: Once a transaction commits, its effects must be persistent; the DBMS can tolerate systems failures.</p>
+<p><strong>Durability</strong>: The database must recover to a valid state no matter when a crash occurs.</p>
+<ol>
+<li>Committed transactions should persist.</li>
+<li>Uncommitted transactions should roll back.</li>
+</ol>
+<p><img src="/../img/Logging/Logging%201.jpg" srcset="/img/loading.gif" lazyload alt="example"></p>
+<h2 id="WAL"><a href="#WAL" class="headerlink" title="WAL"></a>WAL</h2><p>To reach durability, we introduce a protocol, <strong>Write-Ahead Logging(WAL)</strong>: Flush the log record for an update before the corresponding data page gets to disk; Write all log records for a transaction before commits.</p>
+<p>Before making any changes to the actual data or its structures(like a B+ tree), the system first writes those changes to a log. This log is sequentially written, making it fast to append data.</p>
+<p>Why we use it?</p>
+<ol>
+<li><p><strong>Data Integrity and Durability</strong>: In case of a system crash or power failure, any transactions not permanently written to the data files can be recovered and completed using the log. This ensures that the database remains in a consistent state.</p>
+</li>
+<li><p><strong>Backup and Point-in-time Recovery</strong>: If you have a backup of a database and a subsequent WAL, you can restore the database to any point in time covered by the log. This can be useful for recovering from both catastrophic failures and human errors, like unintended data deletions.</p>
+</li>
+</ol>
+<h2 id="Buffer-managerment-policies"><a href="#Buffer-managerment-policies" class="headerlink" title="Buffer managerment policies"></a>Buffer managerment policies</h2><h3 id="Steal"><a href="#Steal" class="headerlink" title="Steal?"></a>Steal?</h3><p><strong>No Steal</strong>: Dirty pages stay in DRAM until the transaction commits.<br><strong>Steal</strong>: Dirty pages can be flushed to disk before the transaction commits.</p>
+<ol>
+<li>Ad: other transactions can use the buffer slot in DRAM</li>
+<li>Challenge: systems crashed after flushing dirty pages but before the transaction commits. &#x3D;&gt; <strong>Dirty data on disk!</strong></li>
+<li>Solution: <strong>UNDO</strong> logging before each update</li>
+</ol>
+<h3 id="Force"><a href="#Force" class="headerlink" title="Force?"></a>Force?</h3><p><strong>Force</strong>: All dirty pages must be flushed when the transaction commits.<br><strong>No force</strong>: Dirty pages may stay in memory after the transaction commits.</p>
+<ol>
+<li>Ad: reduce #random IO(high!)</li>
+<li>Challenge: system crashes after the transaction commits but before the dirty pages are flushed &#x3D;&gt; <strong>missing updates from committed transactions!</strong></li>
+<li>Solution: <strong>REDO</strong> logging before each update.</li>
+</ol>
+<p>Notice: the reason choose logging, is that flushing logs can be much cheaper than flushing data pages. Log record can be much smaller than a data page; Logging incurs sequential IO; data page updates incur random IO.</p>
+<h3 id="Policy-How-to-choose"><a href="#Policy-How-to-choose" class="headerlink" title="Policy: How to choose?"></a>Policy: How to choose?</h3><p>Let’s make a table,<br><img src="/../img/Logging/Logging%202.jpg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="Force-amp-amp-No-Steal"><a href="#Force-amp-amp-No-Steal" class="headerlink" title="Force &amp;&amp; No Steal"></a>Force &amp;&amp; No Steal</h4><p>We start with the easiest one.</p>
+<p>It is the most strict policy. We do not write logs before the transaction is committed and force flushing logs to disk when the transaction is committed.</p>
+<p>When the system crashes, every committed transactions must persist to disk and every uncommitted transactions must not persist on disk. So we do nothing, <strong>NO REDO nor NO UNDO</strong>. (Philip Bernstein, Vassos Hadzilacos, Nathan Goodman, Concurrency Control and Recovery in Database Systems, 1987)</p>
+<h4 id="Force-amp-amp-Steal"><a href="#Force-amp-amp-Steal" class="headerlink" title="Force &amp;&amp; Steal"></a>Force &amp;&amp; Steal</h4><p>We allow system write logs before the transaction is committed, but force flushing logs to disk when the transaction is committed.</p>
+<p>Log <strong>UNDO</strong> record before each update to database; Log <strong>COMMIT</strong> record when a transaction finishes execution. Modified data pages can be written to disk <strong>after the corresponding UNDO record but before the COMMIT record</strong>.</p>
+<p>So we do <strong>UNDO</strong> only (NVM-based database), <strong>UNDO</strong> uncommitted transactions.</p>
+<h4 id="No-Force-amp-amp-No-Steal"><a href="#No-Force-amp-amp-No-Steal" class="headerlink" title="No Force &amp;&amp; No Steal"></a>No Force &amp;&amp; No Steal</h4><p>We do not allow system write logs to disk before the transaction is committed, but do not force flushing logs to disk when the transaction is committed.</p>
+<p>Log <strong>REDO</strong> record before each update to database. Log <strong>COMMIT</strong> record when a transaction finishes execution. Modified data pages can be written to disk <strong>after COMMIT record is logged</strong>.</p>
+<p>So, we <strong>replay REDO logs</strong> for comitted transactions.</p>
 
                 
               </div>
@@ -341,7 +372,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Gossip/" class="category-chain-item">Gossip</a>
+  <a href="/categories/Techniques/" class="category-chain-item">Techniques</a>
   
   
 
@@ -356,7 +387,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/traveling/" class="print-no-link">#traveling</a>
+        <a href="/tags/database/" class="print-no-link">#database</a>
       
     </div>
   
@@ -368,8 +399,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>美东游记-波士顿</div>
-      <div>https://harukimoriarty.github.io/2023/09/01/life_experience_2/</div>
+      <div>Logging</div>
+      <div>https://harukimoriarty.github.io/2023/10/02/Logging/</div>
     </div>
     <div class="license-meta">
       
@@ -381,7 +412,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年9月1日</div>
+          <div>2023年10月2日</div>
         </div>
       
       
@@ -413,18 +444,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/19/EE252/" title="ECE 252">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">ECE 252</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/07/09/life_experience_1/" title="近期随感">
-                        <span class="hidden-mobile">近期随感</span>
+                      <a href="/2023/10/01/life_experience_3/" title="Mid-Autumn">
+                        <span class="hidden-mobile">Mid-Autumn</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
