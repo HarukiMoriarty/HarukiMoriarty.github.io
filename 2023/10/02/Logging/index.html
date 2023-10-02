@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
 <meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T14:56:24.429Z">
+<meta property="article:modified_time" content="2023-10-02T15:11:35.616Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.5k 字
+          7k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          55 分钟
+          59 分钟
         
       </span>
     
@@ -406,11 +406,14 @@
 <h4 id="3-4-6-ARIES-Big-Picture"><a href="#3-4-6-ARIES-Big-Picture" class="headerlink" title="3.4.6 ARIES-Big Picture"></a>3.4.6 ARIES-Big Picture</h4><p>Start from the last complete checkpoint.</p>
 <ol>
 <li><strong>Analysis phase</strong>:<br>1.1 rebuild transaction table (for undo phase): for each log record, if <code>update</code> or <code>CLR</code>, insert to transaction table if not exists; if <code>end</code>, delete from transaction table<br>1.2 rebuild dirty page table (for redo phase): if <code>update</code> or <code>CLR</code>, insert to dirty page table if not exists</li>
-<li><strong>REDO phase</strong>: redo transactions whose effects may not be persistent before the crash</li>
+<li><strong>REDO phase</strong>:<br>redo transactions whose effects may not be persistent before the crash<br>2.1 From log record containing <strong>smallest <code>RecLSN</code></strong> in the dirty page table. Before this LSN, all redo records have been reflected in data pages on disk.<br>2.2 Can <strong>skip</strong> a redo record for the following cases where the corresponding page has already been flushed before the crash. The page is not in DPT; The page is in DPT but <code>redo_record.LSN</code> &lt; <code>DPT[page].recLSN</code>; After fetching the data page, <code>redo_record.LSN</code> &lt;&#x3D; <code>page.page_LSN</code>.</li>
 <li><strong>UNDO phase</strong>: undo transactions that did not commit before the crash</li>
 </ol>
 <p><img src="/../img/Logging/Logging%208.jpg" srcset="/img/loading.gif" lazyload></p>
-<h4 id="3-4-7-Example"><a href="#3-4-7-Example" class="headerlink" title="3.4.7 Example"></a>3.4.7 Example</h4>
+<h4 id="3-4-7-Example"><a href="#3-4-7-Example" class="headerlink" title="3.4.7 Example"></a>3.4.7 Example</h4><p>Let’s consider a situation<br><img src="/../img/Logging/Logging%209.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>Analysis phase</strong> start at checkpoint<br>step 1:<br><img src="/../img/Logging/Logging%2010.jpg" srcset="/img/loading.gif" lazyload><br>step 2:<br><img src="/../img/Logging/Logging%2011.jpg" srcset="/img/loading.gif" lazyload><br>Step 3:<br><img src="/../img/Logging/Logging%2012.jpg" srcset="/img/loading.gif" lazyload><br>Step 4:<br><img src="/../img/Logging/Logging%2013.jpg" srcset="/img/loading.gif" lazyload><br>Step 5:<br><img src="/../img/Logging/Logging%2014.jpg" srcset="/img/loading.gif" lazyload></p>
+<p><strong>REDO phase</strong></p>
+
                 
               </div>
             
