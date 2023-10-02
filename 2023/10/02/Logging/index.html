@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
 <meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T14:04:31.302Z">
+<meta property="article:modified_time" content="2023-10-02T14:10:35.012Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k 字
+          3.8k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          28 分钟
+          32 分钟
         
       </span>
     
@@ -354,7 +354,10 @@
 <h4 id="No-Force-amp-amp-No-Steal"><a href="#No-Force-amp-amp-No-Steal" class="headerlink" title="No Force &amp;&amp; No Steal"></a>No Force &amp;&amp; No Steal</h4><p>We do not allow system write logs to disk before the transaction is committed, but do not force flushing logs to disk when the transaction is committed.</p>
 <p>Log <strong>REDO</strong> record before each update to database. Log <strong>COMMIT</strong> record when a transaction finishes execution. Modified data pages can be written to disk <strong>after COMMIT record is logged</strong>.</p>
 <p>So, we <strong>replay REDO logs</strong> for comitted transactions.</p>
-
+<h4 id="No-force-amp-amp-Steal"><a href="#No-force-amp-amp-Steal" class="headerlink" title="No force &amp;&amp; Steal"></a>No force &amp;&amp; Steal</h4><p>We not only allow system write logs to dish before the transaction is committed, but also do not force flushing logs to dish when the transaction is committed. The most flexible!</p>
+<p>Log combined <strong>REDO&#x2F;UNDO</strong> record before each update to database; Log <strong>COMMIT</strong> record when a transaction finishes execution; Modified data pages can be written to disk <strong>any time after the corresponding REDO&#x2F;UNDO records</strong>.</p>
+<p>So, we <strong>UNDO uncommitted</strong> transactions and <strong>REDO</strong> committed transactions.</p>
+<h3 id="ARIES–A-No-force-amp-amp-Steal-Procotol"><a href="#ARIES–A-No-force-amp-amp-Steal-Procotol" class="headerlink" title="ARIES–A No force &amp;&amp; Steal Procotol"></a>ARIES–A No force &amp;&amp; Steal Procotol</h3>
                 
               </div>
             
