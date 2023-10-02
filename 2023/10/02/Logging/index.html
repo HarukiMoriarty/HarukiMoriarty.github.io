@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
 <meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T14:20:10.639Z">
+<meta property="article:modified_time" content="2023-10-02T14:38:44.595Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.5k 字
+          5.3k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          38 分钟
+          45 分钟
         
       </span>
     
@@ -371,7 +371,27 @@
 </li>
 </ol>
 <p>Let’s optimized one by one.</p>
-<h4 id="Optimize-REDO-process"><a href="#Optimize-REDO-process" class="headerlink" title="Optimize REDO process"></a>Optimize REDO process</h4>
+<h4 id="Optimize-REDO-process"><a href="#Optimize-REDO-process" class="headerlink" title="Optimize REDO process"></a>Optimize REDO process</h4><ol>
+<li><strong>pageLSN</strong>: LSN of the log record that describes the latest update to the pate.</li>
+<li>in <strong>REDO</strong> scan: Apply REDO only if <code>record.LSN &gt; page.page.LSN</code>.</li>
+<li><strong>Write</strong>: update <code>pageLSN</code> (for the buffered page) for each write.</li>
+</ol>
+<p>The new data structure is like below:<br><img src="/../img/Logging/Logging%204.jpg" srcset="/img/loading.gif" lazyload alt="Data Structure"></p>
+<h4 id="Optimize-UNDO-process"><a href="#Optimize-UNDO-process" class="headerlink" title="Optimize UNDO process"></a>Optimize UNDO process</h4><ol>
+<li><strong><code>prevLSN</code></strong>: preceding log record written by the same transaction.</li>
+<li><strong><code>lastLSN</code></strong>: LSN of the last log record written by the transaction.</li>
+<li><strong>UNDO</strong> scan: Follow <code>lastLSN</code> and <code>prevLSN</code> to undo records.</li>
+<li><strong>REDO</strong> scan: update <code>lastLSN</code> in <code>Transaction Table</code> based on the last update of the transaction.</li>
+</ol>
+<p>The new data structure is like below:<br><img src="/../img/Logging/Logging%205.jpg" srcset="/img/loading.gif" lazyload alt="Data Structure"></p>
+<h4 id="Add-Checkpoint"><a href="#Add-Checkpoint" class="headerlink" title="Add Checkpoint"></a>Add Checkpoint</h4><ol>
+<li><strong><code>pageID</code></strong>: ID of a dirty page</li>
+<li><strong><code>recLSN</code></strong>: LSN of the first log record since when the page is dirty</li>
+<li><strong>Fuzzy Checkpoing</strong>: log DPT and TT async.</li>
+<li><strong>REDO</strong> scan: start from the smallest LSN in DP.</li>
+</ol>
+<h4 id="Compensation-Log-Record-CLR"><a href="#Compensation-Log-Record-CLR" class="headerlink" title="Compensation Log Record(CLR)"></a>Compensation Log Record(CLR)</h4><p>The action of applying <strong>UNDO</strong> leads to a CLR.<br>-In undo scan, do not reapply <strong>UNDO</strong> if CLR exists. -<code>UndoNxtLSN</code>: LSN of the next record to be processed during the undo scan.<br><img src="/../img/Logging/Logging%206.jpg" srcset="/img/loading.gif" lazyload alt="CLR"></p>
+
                 
               </div>
             
