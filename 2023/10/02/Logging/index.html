@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
 <meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T14:11:11.984Z">
+<meta property="article:modified_time" content="2023-10-02T14:20:10.639Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.8k 字
+          4.5k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          32 分钟
+          38 分钟
         
       </span>
     
@@ -357,7 +357,21 @@
 <h4 id="No-force-amp-amp-Steal"><a href="#No-force-amp-amp-Steal" class="headerlink" title="No force &amp;&amp; Steal"></a>No force &amp;&amp; Steal</h4><p>We not only allow system write logs to dish before the transaction is committed, but also do not force flushing logs to dish when the transaction is committed. The most flexible!</p>
 <p>Log combined <strong>REDO&#x2F;UNDO</strong> record before each update to database; Log <strong>COMMIT</strong> record when a transaction finishes execution; Modified data pages can be written to disk <strong>any time after the corresponding REDO&#x2F;UNDO records</strong>.</p>
 <p>So, we <strong>UNDO uncommitted</strong> transactions and <strong>REDO</strong> committed transactions.</p>
-<h3 id="ARIES–A-No-force-amp-amp-Steal-Procotol"><a href="#ARIES–A-No-force-amp-amp-Steal-Procotol" class="headerlink" title="ARIES–A No force &amp;&amp; Steal Procotol"></a>ARIES–A No force &amp;&amp; Steal Procotol</h3>
+<h3 id="ARIES–A-No-force-amp-amp-Steal-Procotol"><a href="#ARIES–A-No-force-amp-amp-Steal-Procotol" class="headerlink" title="ARIES–A No force &amp;&amp; Steal Procotol"></a>ARIES–A No force &amp;&amp; Steal Procotol</h3><p>ACM Trans. Database Syst. 1992</p>
+<h4 id="Baseline-Design"><a href="#Baseline-Design" class="headerlink" title="Baseline Design"></a>Baseline Design</h4><p>Let’s start with an easiest thinking.</p>
+<p>We want to forward scan of entire log: redo all records; keep a table for active transactions. We backward scan of entire log: undo uncommitted transactions. So we introduce data structures like this:</p>
+<p><img src="/../img/Logging/Logging%203.jpg" srcset="/img/loading.gif" lazyload alt="Data Structure"></p>
+<p>LSN here refers to Log Sequence Number, which can consider as a kind of unique ID.</p>
+<ol>
+<li><p>But it is inefficiency in the <strong>REDO</strong> process. Unnecessary to redo all records; Need to redo only records that are not reflected in data pages.</p>
+</li>
+<li><p>It is also inefficiency in the <strong>UNDO</strong> process. Unnecessary to scan the entire log; Need to undo only records of uncommitted transactions.</p>
+</li>
+<li><p>It also lack of checkpointing. Unnecessary to start from the beginning of log; Start with the first log record that is not reflected in data pages.</p>
+</li>
+</ol>
+<p>Let’s optimized one by one.</p>
+<h4 id="Optimize-REDO-process"><a href="#Optimize-REDO-process" class="headerlink" title="Optimize REDO process"></a>Optimize REDO process</h4>
                 
               </div>
             
