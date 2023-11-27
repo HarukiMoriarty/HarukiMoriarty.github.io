@@ -18,14 +18,14 @@
   
     <meta name="description" content="1 Durability–Why we need LoggingLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next trans">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logging">
+<meta property="og:title" content="Logging (Aries)">
 <meta property="og:url" content="https://harukimoriarty.github.io/2023/10/02/Logging/index.html">
 <meta property="og:site_name" content="Zhenghong Yu">
 <meta property="og:description" content="1 Durability–Why we need LoggingLet’s first consider a NaiveDB,-step 1: Admit one transaction T-step 2: Execute T to completion-step 3: Atomically flush T’s writes to disk-step 4: Admit the next trans">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Logging.JPG">
 <meta property="article:published_time" content="2023-10-02T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-02T15:26:32.691Z">
+<meta property="article:modified_time" content="2023-11-27T12:01:10.030Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="database">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Logging - Zhenghong Yu</title>
+  <title>Logging (Aries) - Zhenghong Yu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +218,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">Logging</span>
+            <span id="subtitle">Logging (Aries)</span>
           
         </div>
 
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          7.3k words
+          7.5k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          62 mins
+          63 mins
         
       </span>
     
@@ -297,7 +297,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Logging</h1>
+            <h1 id="seo-header">Logging (Aries)</h1>
             
             
               <div class="markdown-body">
@@ -345,7 +345,7 @@
 <h4 id="3-3-4-No-force-amp-amp-Steal"><a href="#3-3-4-No-force-amp-amp-Steal" class="headerlink" title="3.3.4 No force &amp;&amp; Steal"></a>3.3.4 No force &amp;&amp; Steal</h4><p>We not only allow system write logs to dish before the transaction is committed, but also do not force flushing logs to dish when the transaction is committed. The most flexible!</p>
 <p>Log combined <strong>REDO&#x2F;UNDO</strong> record before each update to database; Log <strong>COMMIT</strong> record when a transaction finishes execution; Modified data pages can be written to disk <strong>any time after the corresponding REDO&#x2F;UNDO records</strong>.</p>
 <p>So, we <strong>UNDO uncommitted</strong> transactions and <strong>REDO</strong> committed transactions.</p>
-<h3 id="3-4-ARIES–A-No-force-amp-amp-Steal-Procotol"><a href="#3-4-ARIES–A-No-force-amp-amp-Steal-Procotol" class="headerlink" title="3.4 ARIES–A No force &amp;&amp; Steal Procotol"></a>3.4 ARIES–A No force &amp;&amp; Steal Procotol</h3><p>ACM Trans. Database Syst. 1992</p>
+<h3 id="3-4-ARIES–A-No-force-amp-amp-Steal-Procotol"><a href="#3-4-ARIES–A-No-force-amp-amp-Steal-Procotol" class="headerlink" title="3.4 ARIES–A No force &amp;&amp; Steal Procotol"></a>3.4 ARIES–A No force &amp;&amp; Steal Procotol</h3><p>Mohan, C., Haderle, D., Lindsay, B., Pirahesh, H., &amp; Schwarz, P. (1992). ARIES: A transaction recovery method supporting fine-granularity locking and partial rollbacks using write-ahead logging. ACM Transactions on Database Systems (TODS), 17(1), 94-162.</p>
 <h4 id="3-4-1-Baseline-Design"><a href="#3-4-1-Baseline-Design" class="headerlink" title="3.4.1 Baseline Design"></a>3.4.1 Baseline Design</h4><p>Let’s start with an easiest thinking.</p>
 <p>We want to forward scan of entire log: redo all records; keep a table for active transactions. We backward scan of entire log: undo uncommitted transactions. So we introduce data structures like this:</p>
 <p><img src="/../img/Logging/Logging%203.jpg" srcset="/img/loading.gif" lazyload alt="Data Structure"></p>
@@ -448,7 +448,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Logging</div>
+      <div>Logging (Aries)</div>
       <div>https://harukimoriarty.github.io/2023/10/02/Logging/</div>
     </div>
     <div class="license-meta">
