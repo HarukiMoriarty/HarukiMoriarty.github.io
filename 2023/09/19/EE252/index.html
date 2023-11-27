@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/IMG_1104.JPG">
 <meta property="article:published_time" content="2023-09-19T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-10T05:25:02.623Z">
+<meta property="article:modified_time" content="2023-10-29T00:47:49.542Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -146,6 +146,18 @@
           
           
             <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
@@ -253,7 +265,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          6.9k 字
         
       </span>
     
@@ -264,7 +276,7 @@
         
         
         
-          48 分钟
+          58 分钟
         
       </span>
     
@@ -441,6 +453,23 @@
 <li>Capacity &#x3D; (# locations) * (data size)</li>
 <li>Address selects which register supplies data out using Mut.</li>
 <li>Address selects which register may be written to using decoder. Selected register will only be written if WE&#x3D;1</li>
+</ol>
+<h2 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a><strong><em>Week 6</em></strong></h2><ol>
+<li>ALU(arithmetic logic unit), a set of logic structures that perform a set of different possible computations on the inputs.</li>
+<li>A set of multiplexers that choose which result to send to the ALU output.</li>
+<li>The register file: a small memory located near the ALU<br>write port: used to write operation’s result to register file: DR(DA), DD(DD), write<br>read port: used to get operands from register file: SR(SA), SD, BMUX, output</li>
+<li>Conceptual Compute Model: Memory, Control Unit, Processing Unit</li>
+<li>Control Unit: fetches instructions one by one from memory, two special unit PC(program counter), IR(instruction register). Memory read using address in PC, put the returned value into IR, then increment the PC.</li>
+<li>von Neumann Compute Model, holds both the program and any data needed by the program(memory)</li>
+<li>Instruction: small step of a program is encoded into a binary word called an instruction. (ISA)</li>
+<li>FETCH: Read an instruction from mem, put into IR and increase PC<br>-&gt; DECODE: determine what the instruction meaning (opcode, field)<br>-&gt; EVALUATE ADDRESS<br>-&gt; FECTCH OPERANDS: get the operands<br>-&gt; EXECUTE: ALU<br>-&gt; STORE RESULT: write back to register<br>repeat forever, not all phases are required for all instruction(后四个)</li>
+<li>Some processors group different stage together</li>
+</ol>
+<h2 id="Week-7"><a href="#Week-7" class="headerlink" title="Week 7"></a><strong><em>Week 7</em></strong></h2><ol>
+<li>LC-3: 8 general-purpose registers, 16 bit</li>
+<li>N, Z, P: three branch bit reg</li>
+<li>address calculation method depends on the memory addressing mode.</li>
+<li>Mem both holds ins and data</li>
 </ol>
 
                 

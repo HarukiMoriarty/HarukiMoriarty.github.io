@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP320.JPG">
 <meta property="article:published_time" content="2023-09-28T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-07T06:39:49.740Z">
+<meta property="article:modified_time" content="2023-11-10T04:05:45.301Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -146,6 +146,18 @@
           
           
             <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
@@ -253,7 +265,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          22k 字
         
       </span>
     
@@ -264,7 +276,7 @@
         
         
         
-          21 分钟
+          184 分钟
         
       </span>
     
@@ -339,6 +351,552 @@
 <li>Special Methods: (implicity)<br>2.1 Not all <code>__some__</code> is special methods<br>2.2 <code>__str__</code>, <code>__repr__</code>, control how an object looks when we print it or see it in <code>Out[N]</code>.<br>2.3 <code>__repr_html__</code>, generate HTML to create more visual representaitons of objects in Jupyter.<br>2.5 <code>__eq__</code>, <code>__lt__</code>, define how &#x3D;&#x3D; behaves for two different objects, sorting(<code>__lt__</code>)<br>2.6 <code>__len__</code>, <code>__getitem__</code>, build our own sequences that we <code>index</code>, <code>slice</code>, and <code>loop</code> over.<br>2.7 <code>__enter__</code>, <code>__exit__</code>, context managers, (like automatically close file)</li>
 <li>Inheritance: method inheritance, method resolution order, overriding methods, constructor, calling overidden methods, abstrace base classes</li>
 <li>Every class in python implicitly inherits from the build-in <code>object</code> class if no other explicitly specified.</li>
+</ol>
+<h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><ol>
+<li><p><code>WebDriver.get(u)</code> loads the web page with URL. <code>WebDriver.find_element(a, b)</code> returns the first WebElement which has attribute <code>a</code> being <code>b</code>. <code>WebDriver.find_elements(a, b)</code> returns a list of WebElements. <code>a</code> can be <code>id</code>: unique, <code>name</code>: mulitple elements can have the same name, <code>tag name</code>: by its tag. Get all the links element: <code>driver.find_elements(&quot;tag name&quot;, &quot;a&quot;)</code>, <code>tanle</code> 是 table 不是 td, 获取 link 以后获得内部的 attibute, <code>.get_attribute(&quot;attribute_name&quot;)</code></p>
+</li>
+<li><p>Send value to a variable <code>text</code> as input, <code>text.send_keys(&quot;2023)</code></p>
+</li>
+<li><p><code>ol</code>, <code>ul</code>, ordered or unordered list, <code>select</code>, drop-down list</p>
+</li>
+<li><p>Tables can be scraped by <code>find_element(&quot;tag name&quot;, &quot;table&quot;)</code> and iterate over <code>find_elements(&quot;tag name&quot;, &quot;tr&quot;)</code> and <code>find_elements(&quot;tag name&quot;, &quot;td&quot;)</code><br><code>i</code>th cell of <code>j</code> th row? <code>element.find_elements(&quot;tag name&quot;, &quot;tr&quot;)[i - 1].find_elements(&quot;tag name&quot;, &quot;td&quot;)[j - 1].text</code>. 第一个元素可以忽略 index</p>
+</li>
+<li><p>对于已经获得的<code>element</code>, 通过<code>.attribute</code>访问内部元素，对于<code>text</code>内容, <code>element.text</code>,比如 <code>&lt;a href=&quot;page.html&quot; target=&quot;_blank&quot;&gt;link&lt;\a&gt;</code> 获取<code>link</code>, <code>elememt.clear</code>清空</p>
+</li>
+<li><p>for <code>static</code> pages (without JavaScript modifications), <code>pandas.read_html</code> can return a list of DataFrames, one for each table, on the web page.</p>
+</li>
+<li><p><code>WebDriver.save_screenshot(&quot;file.png)</code> saves a screenshot of the web page to a file with name <code>file.png</code>. Firefox has the option to take screenshot of the full page using <code>WebDriver.save_full_screenshot(&quot;file.png&quot;)</code>. a screenshot of a specific element can be save using <code>WebElement.screenshot(&quot;file.png&quot;)</code>.</p>
+</li>
+<li><p>Polling:</p>
+<ol>
+<li>Use <code>time.sleep(s)</code> to wait s seconds, and use it inside a while loop to wait for an event to happen, before accessing or interacting with the updated elements.</li>
+<li>Avoid infinite loop.</li>
+<li><code>selenium.webdriver.support</code> has implicit and explicit waits, so that the driver keeps polling until a certain condition is met or a certain time has passed.</li>
+</ol>
+</li>
+<li><p>Robots Exclusion:</p>
+<ol>
+<li>Some websites disallow web crawling. The rules are specified in a <code>robots.txt</code>.</li>
+<li><code>urllib.robotparser</code> can be used to check whether a website allows scraping</li>
+<li><code>RobotFileParser.can_fetch(useragent, url)</code> returns True if the useragent (for example, “*“) is allowed to fetch url</li>
+</ol>
+</li>
+<li><p>Access Links:</p>
+<ol>
+<li><code>WebDriver.find_elements(&quot;tag_name&quot;, &quot;a&quot;)</code> finds all the hyperlinks on the page.</li>
+<li>Use <code>url = WebElement.get_attribute(&quot;href&quot;)</code> to get the URL of the hyperlink, then use <code>WebDriver.get(url)</code> to load that page.</li>
+</ol>
+</li>
+<li><p>Infinite Graph Search:</p>
+<ol>
+<li>If the pages are nodes, and links on one page to another page are edges, the digraph formed by pages will possibly have infinite depth and may contain cycles.</li>
+<li>To find a specific (goal) page, or to discover reachable pages from the initial page, breadth first search should be used (since depth first search may not terminate on trees with infinite depth).</li>
+<li>Since there are cycles, a list of visited pages should be kept.</li>
+</ol>
+</li>
+<li><p>Search Heuristics:</p>
+<ol>
+<li>Searching the nodes in the order according to the heuristic is called best first greedy search. (GBS) 取 h 最小</li>
+<li>A search, estimate of how close the current node is to the goal in the search tree. the current distance from the initial node plus the heuristic</li>
+<li>A heuristic that always underestimates the true distance is called an admissible heuristic. A*</li>
+</ol>
+</li>
+<li><p>Priority Queue:</p>
+<ol>
+<li>For GBS search, use a Priority Queue with the priority based on the heuristic.</li>
+<li>For A search, use a Priority Queue with the priority based on current distance plus the heuristic.</li>
+</ol>
+</li>
+<li><p>Give an example of a goal node that is reachable (finite edges away) from the initial node, but the following method cannot find the goal node. Assume the nodes are ${G, 0, 1, 2, …}$ where 0 is the initial node and is the goal node, and each node has finite number of children.<br>BFS, A: impossible, 必定可以找到<br>DFS，GBS：优先度高的那各分支无穷远</p>
+</li>
+<li><p>Flask:</p>
+<ol>
+<li>Flask is a simpler web framework of Django. Django is a more popular package.</li>
+<li>Flask will be used to create or modify web pages. It can be useful for collecting visitor data when interacting with the web pages and displaying them on the web pages.</li>
+<li><code>app = flask.Flask(...)</code>, root url: <code>@app.route(&quot;/&quot;)</code>, other: <code>@app.route(&quot;/abc&quot;)</code>, run: <code>app.run(host=&quot;0.0.0.0&quot;, debug=False, threaded=False)</code></li>
+<li>Binding functions:<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&quot;/index&quot;</span></span>)</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">index</span>()<br>   <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Hello World!&quot;</span><br></code></pre></td></tr></table></figure>
+binds the index function to the page IP address&#x2F;index, meaning it will display a web page that says “Hello World”. “Hello World” can be replaced by any text or HTML string. HTML string can be read from existing HTML files then modified. It can also be generated by packages such as pandas. <code>pandas.read_csv(&quot;data.csv&quot;).to_html()</code></li>
+</ol>
+</li>
+<li><p>Process query string inside a flask application: <code>flask.request.args</code></p>
+</li>
+<li><p>Binding Multiple Path:</p>
+<ol>
+<li>To bind multiple paths, variable rules can be added, <code>@app.route(&quot;/index/&lt;x&gt;&quot;) def index(x) return f&quot;Hello &#123;x&#125;&quot;</code> will display a web page that says “Hello World” when the path IP address&#x2F;index&#x2F;World is used.</li>
+<li><code>&lt;int:x&gt;</code> for int, <code>&lt;float:x&gt;</code> for float, <code>&lt;path:x&gt;</code> for string but allows <code>/</code></li>
+</ol>
+</li>
+<li><p>Redirectling Pages:</p>
+<ol>
+<li><code>return flask.redirect(url)</code> redirects the current path to another with URL url</li>
+<li><code>return flask.redirect(flask.url_for(&quot;index&quot;))</code> redirects the current path to another which binds to the function <code>index()</code></li>
+<li><code>return flask.redirect(flask.url_for(&quot;index&quot;, x = &quot;World&quot;))</code> redirects the current path to another which binds to the <code>function index(&quot;World&quot;)</code></li>
+</ol>
+</li>
+<li><p>Collecting Vistor Information:</p>
+<ol>
+<li><code>flask.request.remote_addr</code> can be used to find the remote IP address of the visitor -&gt; sercive provider, location</li>
+<li><code>flask.request.user_agent.string</code> can be used to find the user agent of the visitor. -&gt; browser, os, device information</li>
+</ol>
+</li>
+<li><p>Rate Limiting:</p>
+<ol>
+<li>Prevent web scraping, 429, Too Many Requests</li>
+<li>In this case, the visitor’s IP address and visit time can be stored in a list: in case the next visit time is too close to the previous one, the visitor can be redirected to another page, or more commonly, responded with a error message, for example, <code>return flask.Response(&quot;...&quot;, status = 429, headers = &#123;&quot;Retry-After&quot;: &quot;60&quot;&#125;)</code> tells the visitor to retry after 60 seconds.</li>
+<li>100s: Informational, 200s: Successful, 300s: Redirection, 400s: Client Error, 500s: Server Error 200: OK, 304: Not Modified, 400: Bad Request, 401: Unauthorized, 404: Not Found, 409: Conflict, 413: Request Entity Too Large, 500: Internal Server Error， 405：Method not allowed(比如尝试 get 只允许 Put 的), 501: Not implemented(没有这个函数)</li>
+</ol>
+</li>
+<li><p>AB Testing:</p>
+<ol>
+<li>Two or more versions of the same page can be displayed to the visitor randomly to compare which one is better. The two versions are called control (version A) and treatment (version B) in statistics.</li>
+<li>The comparison is often based on click-through rates (CTR), <strong>metric</strong>, which is computed as the number of clicks on a specific link on the page divided by the number of times the page is displayed to the visitor.</li>
+<li>CTR is also used for advertisement, computed as the number of clicks on the ad divided by the number of times the ad is shown to the visitor.</li>
+<li>Having a large sample size will have small p-value.</li>
+<li>When introduce a new version “B”, might be terrible but still want to evaluate it, start with “0” of B, then slowly increase</li>
+<li><code>fisher_exact()</code> 算出来的，大于 thresold 就两者没有显著差异</li>
+</ol>
+</li>
+<li><p>Displaying Pages:</p>
+<ol>
+<li>The choice of which page to display can be random, for example, <code>if random.random() &lt; 0.5: return &quot;Version A&quot; else return &quot;Version B&quot;</code></li>
+<li>It can also be displayed in a fixed ordering, for example, suppose count is a global variable to keep track of the number of visitors, then <code>if count % 2 == 0: return &quot;Version A&quot; else return &quot;Version B&quot; count = count + 1</code> would alternate between the two versions.</li>
+</ol>
+</li>
+<li><p>Tracking Visitors:</p>
+<ol>
+<li>IP address or user agent information can be used to figure out which version of the page is displayed to which visitors</li>
+<li>Cookies can be used too, use <code>flask.request.cookies.get(key, default)</code> to get a cookie (and returns default if no such cookies exist), and <code>flask.Response.set_cookie(key, value)</code> to set a cookie. Cookies are stored on the visitors’ computer as text files.</li>
+<li>Query strings can be used to figure out which version of a page the visitor came from, it is the string after “?” at the end of a URL</li>
+</ol>
+</li>
+<li><p>Query Strings:</p>
+<ol>
+<li><code>&quot;index?x=1&amp;y=2&quot;</code> is a URL specifying the path “index” with the query string <code>x=1 and y=2</code>. Use <code>flask.request.args</code> to get a dictionary of key-value pairs of the query string.</li>
+<li>To perform AB testing of a page with two versions, both contain a link to index: on version A, the URL can be <code>&lt;a href=&quot;index?from=A&quot;&gt;Link&lt;\a&gt;</code>, and on version B, the same URL can be <code>&lt;a href=&quot;index?from=B&quot;&gt;Link&lt;\a&gt;</code>. If version A URL is used, <code>request.args[&quot;from&quot;]</code> would be “A” and if version B URL is used <code>request.args[&quot;from&quot;]</code> would be “B”</li>
+</ol>
+</li>
+<li><p>Two Armed Bandit Example: The pages represented by boxes have fixed but possibly different average values between 0 and 1. Click on one of them to view a random realization of the value from the box (i.e. a random number from a distribution with the fixed average). The goal is to maximize the total value (or minimize the regret) given a fixed number of clicks. Which box has the largest mean reward? 类似于大数定理，经验平均数在 N 无穷大的时候趋近于真实平均</p>
+</li>
+<li><p>Multi-Armed Bandit:</p>
+<ol>
+<li>This design can lead to a large “regret”, for example, if displaying bad version is costly. In other settings such as drug or vaccine trials and stock selection, experimenting with bad alternatives can be costly.</li>
+<li>The problem of optimal experimentation vs exploitation is studied in reinforcement learning as the multi-armed bandit problem</li>
+</ol>
+</li>
+<li><p>Upper Confidence Bound:</p>
+<ol>
+<li>a no-regret algorithm that minimizes the loss from experimentation</li>
+<li>After every version is displayed once, the algorithm keeps track of the average value (for example click-through rate) from each version, say $\hat{\mu}<em>{A}$, $\hat{\mu}</em>{B}$ and computes the UCBs $\hat{\mu}<em>{A} + c\sqrt{\frac{2log(n)}{n</em>{A}}}$ and $\hat{\mu}<em>{B} + c\sqrt{\frac{2log(n)}{n</em>{B}}}$, where $n$ is the total number of visitors, $n_{A}$ is the number of visitors of version A, $n_{B}$ is the number of visitors of version B, and $c$ is a constant, and always picks the version with a higher UCB.</li>
+</ol>
+</li>
+<li><p>Live Plots on Flask Sites:</p>
+<ol>
+<li>A function that returns an image response can be used for <code>@app.route(&quot;/plot.png&quot;)</code> or <code>@app.route(&quot;/plot.svg&quot;)</code>. SVG: Scalable Vector Graphics, represented by a list of geometric shapes such as points, lines, curves</li>
+<li>An image response can be created using <code>flask.Response(image, headers=&#123;&quot;Content-Type&quot;: &quot;image/png&quot;&#125;)</code> or <code>flask.Response(image, headers=&#123;&quot;Content-Type&quot;: &quot;image/svg+xml&quot;&#125;)</code>, where the image is a bytes object and can be obtained using <code>io.BytesIO.getvalue()</code> where <code>io.BytesIO</code> creates a “fake” file to store the image.</li>
+<li>On the web page, display the image as <code>&lt;img src=&quot;plot.png&quot;&gt;</code> or <code>&lt;img src=&quot;plot.svg&quot;&gt;</code></li>
+</ol>
+</li>
+<li><p>Plotting Low Dimensional Data Sets:</p>
+<ol>
+<li>One to three dimensional data items can be directly plotted as points (positions) in a 2D or 3D plot.</li>
+<li>For data items with more than three dimensions (“dimensions” will be called “features” in machine learning), visualizing them effectively could help with exploring patterns in the dataset. Summary statistics such as mean, variance, covariance etc might not be sufficient to find patterns in the dataset.</li>
+<li>For item dimensions that are discrete (categorical), plotting them as positions may not be ideal since positions imply ordering, and the categories may not have an ordering.</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Encoding</th>
+<th>Continuous</th>
+<th>Ordinal 顺序？</th>
+<th>Discrete (Categorical)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Position</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Shape</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Color</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Orientation</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Texture</td>
+<td>No</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+<ol start="27">
+<li>Seaborn plots:<ol>
+<li>one of the data visualization libraries that can make plots for exploring the datasets with a few dimension.</li>
+<li>Suppose the columns are indexed by $c1, c2, …$, then <code>seaborn.relplot(data = ..., x = &quot;c1&quot;, y = &quot;c2&quot;, hue = &quot;c3&quot;, size = &quot;c4&quot;, style = &quot;c5&quot;</code>visualizes the relationship between the columns by encoding c1 by x-position, c2 by y-position, c3 by color hue if the feature is discrete, and by color value if it is continuous, c4 by size, c5 by shape (for example, o’s and x’s for points, solid and dotted for lines) if the feature is discrete.</li>
+</ol>
+</li>
+<li>Multiple Plots of Seaborn:<ol>
+<li>For discrete dimensions with a small numbers of categories, multiple plots can be made, one for each category.</li>
+<li><code>seaborn.relplot(data = ..., ..., col = &quot;c6&quot;, row = &quot;c7&quot;)</code> produces multiple columns of plots one for each category of c6, and multiple rows of plots one for each category of c7.</li>
+<li><code>seaborn.pairplot</code> produces a scatter plot for each pair of columns (features) which could be useful for exploring relationships between pairs of continuous features too. 查找两个 feature 之间的关系</li>
+<li>Chernoff Face: used to display small low dimensional datasets. The shape, size, placement and orientation of eyeys, ears, mouth and nose are visual encodings.</li>
+</ol>
+</li>
+<li>Plotting High Dimensional Data Sets<ol>
+<li>To figure out the most important dimensions, which are not necessarily one of the original dimensions, unsupervised machine learning techniques can be used. 降维 PCA</li>
+</ol>
+</li>
+</ol>
+<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><ol>
+<li>Layouts:<ol>
+<li><strong>Circular layout</strong> and <strong>arc (chord) layout</strong> are simple for the computer, but difficult for humans to understand the shape of the graph.</li>
+<li><strong>Force-Directed Placement (FDP)</strong> treats nodes as points and edges as springs and tries to minimize energy. It is also called spring model layout.</li>
+</ol>
+</li>
+<li>Tree Diagrams:<ol>
+<li>Trees are special graphs for which each node has one parent, and there are more ways to visualize a tree</li>
+<li>Can be plotted “manully” using <code>matplotlib</code></li>
+</ol>
+</li>
+<li>Plotting Primitives: 基本图形<ol>
+<li><code>matplotlib.patches</code> contain primitive geometries such as <code>Circle</code>, <code>Ellipse</code>, <code>Polygon</code>, <code>Rectangle</code>, <code>RegularPolygon</code> and <code>ConnectionPatch</code>, <code>PathPatch</code>, <code>FancyArrowPatch</code></li>
+<li><code>matplotlib.text</code> can be used to draw text; it can render math equations using TeX too</li>
+</ol>
+</li>
+<li>Plotting Graphs:<ol>
+<li>画点: A node (indexed i) at $(x,y)$ can be represented by a closed shape such as a circle with radius $r$, for example, <code>matplotlib.patches.Circle((x, y), r)</code>, and <code>matplotlib.text(x, y, &quot;i&quot;)</code>.</li>
+<li>画边: An edge from a node at $(x_1, y_1)$ to a node at $(x_2, y_2)$ can be represented by a path (line or curve, with or without arrow), for example, <code>matplotlib.patches.FancyArrowPatch((x1, y1), (x2, y2))</code>, or if the nodes are on different subplots with axes <code>ax[0]</code>, <code>ax[1]</code>, <code>matplotlib.patches.ConnectionPath((x1, y1), (x2, y2), &quot;data&quot;, axesA = ax[0], axesB = ax[1])</code></li>
+<li>To specify the layout of a graph, a list of positions of the nodes are required (sometimes parameters for the curve of the edges need to be specified too).</li>
+</ol>
+</li>
+<li>Ways to Specify Curves:<ol>
+<li>A curve (with arrow) from $(x_1, y_1)$ to $(x_2, y_2)$ can be specified by the (1) out-angle and in-angle, (2) curvature of the curve, (3) Bezier control points</li>
+<li><code>FancyArrowPatch((x1, y1), (x2, y2), connectionstyle=ConnectionStyle.Angle3(angleA = a, angleB = b))</code> plots a quadratic Bezier curve starting from $(x_1, y_1)$ going out at an angle $a$ and going in at an angle $b$ to $(x_2, y_2)$.</li>
+<li><code>FancyArrowPatch((x1, y1), (x2, y2), connectionstyle=ConnectionStyle.Arc3(rad = r))</code> plots a quadratic Bezier curve from $(x_1, y_1)$ to $(x_2, y_2)$ that arcs towards a point at distance r times the length of the line from the line connecting $(x_1, y_1)$ and $(x_2, y_2)$.</li>
+</ol>
+</li>
+<li>Bezier Curves:<ol>
+<li>Beizer curves are smooth curves specified by control points that may or may not be on the curves themselves. The curve connects the first control point and the last control point. The vectors from the first control point to the second control point, and from the last control point to the second-to-last control point, are <strong>tangent vectors</strong> to the curve.</li>
+<li>The curves can be constructed by recursively interpolating the line segments between the control points.</li>
+<li><code>PathPatch(Path([(x1, y1), (x2, y2), (x3, y3)], [Path.MOVETO, Path.CURVE3, Path.CURVE3]))</code> draws a Bezier curve from $(x_1, y_1)$ to $(x_3, y_3)$ with a control point $(x_2, y_2)$.</li>
+</ol>
+</li>
+<li>Coordinate Systems:<ol>
+<li>There are four main coordinate systems: <strong>data</strong>, <strong>axes</strong>, <strong>figure</strong>, and <strong>display</strong></li>
+<li>The primitive geometries can be specified using any of them by specifying the <code>transform</code> argument, for example for a figure <code>fig</code> and axis <code>ax</code>, <code>Circle((x, y), r, transform = ax.transData)</code>, <code>Circle((x, y), r, transform = ax.transAxes)</code>, <code>Circle((x, y), r, transform = fig.transFigure)</code>, or <code>Circle((x, y), r, transform = fig.dpi_scale_trans)</code>.</li>
+<li>How to draw a quadratic Bezier curve with control points (0, 0), (1, 0), (1, 1)?<br>This curve has the same shape as the curve drawn in the “Curve Example”: in particular, the start angle is 0 degrees (measured from the positive x-axis direction) and the end angle is 270 degrees or -90 degrees, and the distance of the line segment connecting the midpoint between (0, 0) and (1, 1) (which is (1&#x2F;2, 1&#x2F;2)) and the middle control point (which is (1, 0)) is half of the length of the line segment connecting (0, 0) and (1, 1), or $\sqrt{(1-\frac{1}{1})^2 + (0-\frac{1}{2})^2} &#x3D; \frac{1}{2}\sqrt{(1-0)^2+(1-0)^2}$<br>Therefore, use any path patch with connectionstyle <code>ConnectionStyle.Angle3(0, -90)</code> or <code>ConnectionStyle.Arc3(1/2)</code> to plot the curve.</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Coordinate System</th>
+<th>Bottom Left</th>
+<th>Top Right</th>
+<th>Transform</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data</td>
+<td>based on data</td>
+<td>based on data</td>
+<td><code>ax.transData</code> (default)</td>
+</tr>
+<tr>
+<td>Axes</td>
+<td>(0, 0)</td>
+<td>(1, 1)</td>
+<td><code>ax.transAxes</code></td>
+</tr>
+<tr>
+<td>Figure</td>
+<td>(0, 0)</td>
+<td>(1, 1)</td>
+<td><code>fig.transFigure</code></td>
+</tr>
+<tr>
+<td>Display</td>
+<td>(0, 0)</td>
+<td>(w, h) in inches</td>
+<td><code>fig.dpi_scale_trans</code></td>
+</tr>
+</tbody></table>
+<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><ol>
+<li><p>Map Projections:</p>
+<ol>
+<li>Positions on a map are usually specified by a longitude and a latitude. It is often used in Geographic Coordinate Systems (GCS)</li>
+<li>They are angles in degrees specifying a position on a sphere</li>
+<li>It is difficult to compute areas and distances with angles, so when plotting positions on maps, it is easier to use meters, or Coordinate Reference Systems (CRS)</li>
+</ol>
+</li>
+<li><p>Regions on Maps and Polygons</p>
+<ol>
+<li>A region on a map can be represented by one or many polygons. A polygon is specified by a list of points connected by line segments.</li>
+<li>Information about the polygons are stored in <code>shp</code>, <code>shx</code> and <code>dbf</code> files</li>
+</ol>
+</li>
+<li><p>GeoPandas:</p>
+<ol>
+<li><code>GeoPandas</code> package can read shape files into <code>DataFrames</code> and matplotlib can be used to plot them. <code>GeoSeries</code> can do everything a <code>Series</code> can do, and more</li>
+<li><code>geopandas.read_file(...)</code> can be used to read a <code>zip</code> file containing <code>shp</code>, shx and dbf files, and output a <code>GeoDataFrame</code>, which a pandas DataFrame with a column specifying the geometry of the item.</li>
+<li><code>GeoDataFrame.plot()</code> can be used to plot the <code>polygons</code>.</li>
+</ol>
+</li>
+<li><p>Conversion from GCS to CRS</p>
+<ol>
+<li><code>GeoDataFrame.crs</code> checks the coordinate system used in the data frame.</li>
+<li><code>GeoDataFrame.to_crs(&quot;epsg:326??&quot;)</code> or GeoDataFrame.to_crs(“epsg:326??) can be used to convert from degree-based coordinate system to meter-based coordinate system.</li>
+</ol>
+</li>
+<li><p>Creating Polygons:</p>
+<ol>
+<li>Polygons can be created manually from the vertices using <code>shapely</code> too</li>
+<li><code>Point(x, y)</code> creates a point at $(x,y)$</li>
+<li><code>LineString([x1, y1], [x2, y2])</code> or <code>LineString(Point(x1, y1), Point(x2, y2))</code> creates a line from $(x_1, y_1)$ to $(x_2, y_2)$.</li>
+<li><code>Polygon([[x1, y1], [x2, y2], ...])</code> or <code>Polygon([Point(x1, y1), Point(x2, y2), ...])</code> creates a polygon connecting the vertices $(x_1, y_!), (x_2, y_2)$</li>
+<li><code>box(xmin, ymin, xmax, ymax)</code> is another way to create a rectangular Polygon</li>
+</ol>
+</li>
+<li><p>Polygon Properties:</p>
+<ol>
+<li><code>Polygon.area</code> or <code>MultiPolygon.area</code> computes the area of the polygon</li>
+<li><code>Polygon.centroid</code> computes the centroid (center) of the polygon (using meter)</li>
+<li><code>Polygon.buffer(r)</code> computes the geometry containing all points within a <code>r</code> distance from the polygon. If <code>Point.buffer(r)</code> is used, the resulting geometry is a circle with radius <code>r</code> around the point, and Point.buffer(r, cap_style &#x3D; 3) is a square with “radius” <code>r</code> around the point</li>
+</ol>
+</li>
+<li><p>Polygon Manipulation:</p>
+<ol>
+<li>Union and intersections of polygons are still polygons.</li>
+<li><code>geopandas.overlay(x, y, how = &quot;intersection&quot;)</code> computes the polygons that is the intersection of polygons x and y, if <code>GeoDataFrame</code> has geometry <code>x</code>, <code>GeoDataFrame.intersection(y)</code> computes the same intersection. <code>intersects</code> 返回是否相交(bool), <code>intersection</code> 返回一个相交集合(polygon). <code>y</code> 可以是一个 Window, 返回指定范围内的 polygon</li>
+<li><code>box()</code> 返回 polygon.Ploygon 类型</li>
+<li><code>geopandas.overlay(x, y, how = &quot;union&quot;)</code> computes the polygons that is the union of polygons x and y, Doc, if GeoDataFrame has geometry x, <code>GeoDataFrame.union(y)</code> computes the same union</li>
+<li><code>GeoDataFrame.unary_union</code> is the single combined <code>MultiPolygon</code> of all polygons in the data frame</li>
+<li><code>GeoDataFrame.convex_hull</code> computes the convex hull (smallest convex polygon that contains the original polygon)</li>
+</ol>
+</li>
+<li><p>Geocoding:</p>
+<ol>
+<li><code>geopy</code> provide <code>geocoding</code> services to convert a <strong>text</strong> address into a <code>Point</code> geometry that specifies the longitude and latitude of the location</li>
+<li><code>geopandas.tools.geocode(address)</code> returns a <code>Point</code> object with the <code>coordinate</code> for the address</li>
+</ol>
+</li>
+</ol>
+<h2 id="Regular-Expressions"><a href="#Regular-Expressions" class="headerlink" title="Regular Expressions"></a>Regular Expressions</h2><ol>
+<li>Regular Expressions (Regex) is a small language for describing patterns to search for and it is used in many different programming languages</li>
+<li>Python <code>re</code> package has <code>re.findall(regex, string)</code> and <code>re.sub(regex, replace, string)</code> to find and replace parts of string using the pattern regex</li>
+<li>parentheses <code>()</code> are used to create capture groups. 在最后显示出来的时候会变成 tuple, 有一个括号就有一个 element，包裹嵌套括号</li>
+<li>Raw Strings:<ol>
+<li>Python uses escape characters to represent special characters.</li>
+<li>Raw strings <code>r&quot;...&quot;</code> starts with r and do not convert escape characters into special characters.</li>
+</ol>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Character</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\&quot;</code></td>
+<td>double quote</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>\&#39;</code></td>
+<td>single quote</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>\\</code></td>
+<td>backslash</td>
+<td><code>&quot;\\\&quot;&quot;</code> displays <code>\&quot;</code></td>
+</tr>
+<tr>
+<td><code>\n</code></td>
+<td>new line</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>\r</code></td>
+<td>carriage return</td>
+<td>(not used often)</td>
+</tr>
+<tr>
+<td><code>\t</code></td>
+<td>tab</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>\b</code></td>
+<td>backspace</td>
+<td>(similar to left arrow key)</td>
+</tr>
+</tbody></table>
+<ol start="4">
+<li><p>Meta Characters<br><code>+？</code> exactly one</p>
+<table>
+<thead>
+<tr>
+<th>Meta character</th>
+<th>Meaning</th>
+<th>Example</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>.</code></td>
+<td>any character except for \n</td>
+<td><code>-</code></td>
+<td><code>-</code></td>
+</tr>
+<tr>
+<td><code>[]</code></td>
+<td>any character inside brackets</td>
+<td><code>[abc]</code></td>
+<td>a or b or c</td>
+</tr>
+<tr>
+<td><code>[^ ]</code></td>
+<td>any character not inside brackets</td>
+<td><code>[^abc]</code></td>
+<td>not one of a, b, c</td>
+</tr>
+<tr>
+<td><code>*</code></td>
+<td>zero or more of last symbol</td>
+<td><code>a*</code></td>
+<td>zero or more a</td>
+</tr>
+<tr>
+<td><code>+</code></td>
+<td>one or more of last symbol</td>
+<td><code>a+</code></td>
+<td>one or more a</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>zero or one of last symbol</td>
+<td><code>a?</code></td>
+<td>zero or one a</td>
+</tr>
+<tr>
+<td><code>&#123; &#125;</code></td>
+<td>exact number of last symbol</td>
+<td><code>a&#123;3&#125;</code></td>
+<td>exactly aaa</td>
+</tr>
+<tr>
+<td><code>&#123; , &#125;</code></td>
+<td>number of last symbol in range</td>
+<td><code>a&#123;1,3&#125;</code></td>
+<td>a or aa or aaa</td>
+</tr>
+<tr>
+<td><code>|</code></td>
+<td>either before or after bar</td>
+<td><code>ab|bc</code></td>
+<td>either ab or bc</td>
+</tr>
+<tr>
+<td><code>\</code></td>
+<td>escapes next metacharacter</td>
+<td><code>\?</code></td>
+<td>literal ?</td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>beginning of line</td>
+<td><code>^a</code></td>
+<td>begins with a</td>
+</tr>
+<tr>
+<td><code>$</code></td>
+<td>end of line</td>
+<td><code>a$</code></td>
+<td>ends with a</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Shorthand<br><code>\s</code>能都指代所有空格，包括 tab，回车</p>
+<table>
+<thead>
+<tr>
+<th>Shorthand</th>
+<th>Meaning</th>
+<th>Bracket Form</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>\d</code></td>
+<td>digit</td>
+<td><code>[0-9]</code></td>
+</tr>
+<tr>
+<td><code>\D</code></td>
+<td>not digit</td>
+<td><code>[^0-9]</code></td>
+</tr>
+<tr>
+<td><code>\w</code></td>
+<td>alphanumeric character</td>
+<td><code>[a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td><code>\W</code></td>
+<td>not alphanumeric character</td>
+<td><code>[^a-zA-Z0-9_]</code></td>
+</tr>
+<tr>
+<td><code>\s</code></td>
+<td>white space</td>
+<td><code>[\t\n\f\r\p&#123;Z&#125;]</code></td>
+</tr>
+<tr>
+<td><code>\S</code></td>
+<td>not white space</td>
+<td><code>[^\t\n\f\r\p&#123;Z&#125;]</code></td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Capture Group</p>
+<ol>
+<li><code>re.findall</code> can return a list of substrings or list of tuples of substrings using capturing groups inside <code>(...)</code>, for example, the regex <code>...(x)...(y)...(z)...</code> returns a list of tuples with three elements matching <code>x</code>, <code>y</code>, <code>z</code>.</li>
+<li><code>re.sub</code> can replaces the matches by another string, the captured groups can be used in the replacement string by <code>\g&lt;1&gt;</code>, <code>\g&lt;2&gt;</code>, <code>\g&lt;3&gt;</code>, …, for example, replace <code>...(x)...(y)...(z)...</code> by <code>\g&lt;2&gt;\g&lt;3&gt;\g&lt;1&gt;</code> will return yxz</li>
+</ol>
+</li>
+<li><p>Additional<br><img src="/../img/COMP320/COMP%20320%20Additional%201.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+</li>
 </ol>
 
                 
