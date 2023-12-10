@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP320.JPG">
 <meta property="article:published_time" content="2023-09-28T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-11-10T04:05:45.301Z">
+<meta property="article:modified_time" content="2023-12-06T09:40:12.205Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          22k words
+          28k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          184 mins
+          235 mins
         
       </span>
     
@@ -872,6 +872,161 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 </ol>
 </li>
 <li><p>Additional<br><img src="/../img/COMP320/COMP%20320%20Additional%201.png" srcset="/img/loading.gif" lazyload alt="Alt text"></p>
+</li>
+</ol>
+<h2 id="Words"><a href="#Words" class="headerlink" title="Words"></a>Words</h2><ol>
+<li><p>Supervised: use the data to figure out the relationship between the features and labels of the items, and apply the relationship to predict the label of a new item. (classification if discrete, regression if continuous)</p>
+</li>
+<li><p>Unsupervised: use the data to find patterns and put items into groups. (clustering if discrete, dimensionality reduction if continuous)</p>
+</li>
+<li><p>Feature representation: items need to be represented by vector of numbers, for categories(one-hot encoding), images and text require additional preprocessing.</p>
+</li>
+<li><p>Tokenization: A text document needs to be split into words. Split the string by space and punctuation, sometimes regular expression rules can be used. Remove stop words: “the”, “of”, “a”, “with”, … Stemming and lemmatization: “looks”, “looked”, “looking” to “look”. <code>nltk</code> has functions to do these, <code>nltk.corpus.stopwords.words(&quot;english&quot;)</code> to get a list of stop words in English, and <code>nltk.stem.WordNetLemmatizer().lemmatize(word)</code> to lemmatize the token word.</p>
+</li>
+<li><p>Vocabulary: A word token is an occurrence of a word. A word type is a unique word as a dictionary entry. A vocabulary is a list of word types, typically 10000 or more word types. Sometimes <code>&lt;s&gt;</code> (start of sentence), <code>&lt;/s&gt;</code> (end of sentence), and <code>&lt;unk&gt;</code> (out of vocabulary words) are included in the vocabulary. A corpus is a larger collection of text. A document is a unit of text item.</p>
+</li>
+<li><p>Bag of words features represent documents as an unordered collection of words. Each document is represented by a row containing the number of occurrences of each word type in the vocabulary. For word type $j$ and $i$ document, the feature is $c(i,j)$, the number of times word $j$ appears in document $i$.</p>
+</li>
+<li><p>TF-IDF features:</p>
+<ol>
+<li>adjust for the fact that some words appear more frequently in all documents.</li>
+<li>The term frequency of word type $j$ in document $i$ is defined as $tf(i,j)&#x3D;\frac{c(i,j)}{\sum_{j’}c(i,j’)}$ where $c(i,j)$ is the number of times word $j$ appears in the document $j$, and $\sum_{j’}c(i,j’)$ is the total number of words in document $i$.</li>
+<li>The inverse document frequency of word type $j$ in document $i$ is defined as $idf(i,j)&#x3D;log(\frac{n+1}{n(j)+1})$ where $n(j)$ is the number of documents containing word $j$, and $n$ is the total number of documents.</li>
+<li>For word type $j$ and document $i$, the feature is $tf(i,j)*idf(i,j)$.</li>
+<li><code>sklearn.feature_extraction.text.CountVectorizer</code> can be used to convert text documents to a bag of words matrix. <code>sklearn.feature_extraction.text.TfidfVectorizer</code> can be used to convert text documents to a bag of words matrix</li>
+</ol>
+</li>
+</ol>
+<h2 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h2><ol>
+<li>Image Pixel Intensity Features: Gray scale images have pixels valued from 0 to 255 (integers, 0 being black, 255 being white), or from 0 to 1 (real values, 0 being black, 1 being white). These pixel values are called pixel intensities. The pixel value matrices can be flattened into a vector (i.e. $k$ pixel by $k$ pixel image can be written as a list of $k^2$ numbers and used as input features.</li>
+<li>Image Preprocessing: <code>scikit-image</code> can be used for basic image processing tasks. <code>skimage.io.imread</code> (read image from file), <code>skimage.io.imshow</code> (show image). The images are stored as <code>numpy.array</code>, which can be flattened using <code>numpy.ndarray.flatten</code>.</li>
+<li>Color Images:<ol>
+<li>RGB color images have color pixels represented by three numbers Red, Green, Blue, each valued from 0 to 255 or 0 to 1.</li>
+<li>Intensity can be computed as $I &#x3D; \frac{1}{3}(R+G+B)$. Other perceptual luminance-preserving conversion can be done too, $I &#x3D; 0.2125R+0.7154G+0.0721B$.</li>
+<li><code>skimage.color.rgb2gray</code></li>
+</ol>
+</li>
+<li>Convolution:<ol>
+<li>Convolution between an image and a filter (sometimes called kernel) is the dot product of every region of an image and the filter (sometimes flipped).</li>
+<li><code>skimage.filters</code> has a list of special filters.<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Example</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Identity</td>
+<td><code>[0 0 0]</code><br><code>[0 1 0]</code><br><code>[0 0 0]</code></td>
+<td>nothing</td>
+</tr>
+<tr>
+<td>Gaussian</td>
+<td><code>[0.0625 0.125 0.0625]</code><br><code>[0.125 0.25 0.125]</code><br><code>[0.0625 0.125 0.0625]</code></td>
+<td>blur</td>
+</tr>
+<tr>
+<td>X gradient</td>
+<td><code>[0 0 0]</code><br><code>[1 0 -1]</code><br><code>[0 0 0]</code></td>
+<td>vertical edges</td>
+</tr>
+<tr>
+<td>Left (Right) Sobel</td>
+<td><code>[1 0 -1]</code><br><code>[2 0 -2]</code><br><code>[1 0 -1]</code></td>
+<td>vertical edges (blurred)</td>
+</tr>
+<tr>
+<td>Y gradient</td>
+<td><code>[0 1 0]</code><br><code>[0 0 0]</code><br><code>[0 -1 0]</code></td>
+<td>vertical edges</td>
+</tr>
+<tr>
+<td>Top (Bottom) Sobel</td>
+<td><code>[1 2 1]</code><br><code>[0 0 0]</code><br><code>[-1 -2 -1]</code></td>
+<td>vertical edges (blurred)</td>
+</tr>
+</tbody></table>
+</li>
+<li>Image Gradient Features: One popular face recognition algorithms uses HOG (Histogram of Gradients) features.<ol>
+<li>Compute the X and Y gradient for each pixel (either X or Y gradient filters or Sobel filters)</li>
+<li>Compute a histogram for pixel gradients in each of the 8 orientations for every 16 by 16 pixel regions (8 numbers for every 16 x 16 region)</li>
+<li>Concatenate the histograms to use as the feature vector</li>
+<li><code>skimage.feature.hog</code> computes the HOG features</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><ol>
+<li><p>Binary Classification: For binary classification, the labels are binary, either 0 or 1, but the output of the classifier $\hat{f}(x)$ can be a number between 0 and 1. $\hat{f}(x)$ usually represents the probability that the label is 1, and it is sometimes called the activation value. 通常来说，小于 0.5 就是 0， 大于 0.5 就是 1</p>
+</li>
+<li><p>Confusion Matrix: A confusion matrix contains the counts of items with every label-prediction combinations, in case of binary classifications, it is a 2 by 2 matrix with the following entries:<br>(1) number of item labeled 1 and predicted to be 1 (true positive: TP),<br>(2) number of item labeled 1 and predicted to be 0 (false negative: FN),<br>(3) number of item labeled 0 and predicted to be 1 (false positive: FP),<br>(4) number of item labeled 0 and predicted to be 0 (true negative: TN).</p>
+<table>
+<thead>
+<tr>
+<th>Count</th>
+<th>Predict 1</th>
+<th>Predict 0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Label 1</td>
+<td>TP</td>
+<td>FN</td>
+</tr>
+<tr>
+<td>Label 0</td>
+<td>FP</td>
+<td>TN</td>
+</tr>
+</tbody></table>
+<p>Precision is the positive value, or $p&#x3D;\frac{TP}{TP+FP}$<br>Recall is the true positive, $r&#x3D;\frac{TP}{TP+FN}$<br>F-measure is $\frac{2<em>p</em>r}{p+r}$</p>
+</li>
+<li><p>Multi-class Classification</p>
+<ol>
+<li>Class Probiities: If there are $k$ classes, the classifier could output $k$ numbers between 0 and 1, and sum up to 1, to represent the probability that the item belongs to each class, sometimes called activation values. If a deterministic prediction is required, the classifier can predict the label with the largest probability.</li>
+<li>One-vs-one Classifiers: If there are $k$ classes, then $\frac{1}{2}k(k-1)$ binary classifiers will be trained, 1 vs 2, 1 vs 3, 2 vs 3, … The prediction can be the label that receives the largest number of votes from the one-vs-one binary classifiers.</li>
+<li>One-vs-all Classifiers: If there are $k$ classes, then $k$ binary classifiers will be trained, 1 vs not 1, 2 vs not 2, 3 vs not 3, …</li>
+</ol>
+</li>
+<li><p>Multi-class Confusion Matrix</p>
+<table>
+<thead>
+<tr>
+<th>Count</th>
+<th>Predict 0</th>
+<th>Predict 1</th>
+<th>Predict 2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Class 0</td>
+<td>$c_{y&#x3D;0,j&#x3D;0}$</td>
+<td>$c_{y&#x3D;0,j&#x3D;1}$</td>
+<td>$c_{y&#x3D;0,j&#x3D;2}$</td>
+</tr>
+<tr>
+<td>Class 1</td>
+<td>$c_{y&#x3D;1,j&#x3D;0}$</td>
+<td>$c_{y&#x3D;1,j&#x3D;1}$</td>
+<td>$c_{y&#x3D;1,j&#x3D;2}$</td>
+</tr>
+<tr>
+<td>Class 2</td>
+<td>$c_{y&#x3D;2,j&#x3D;0}$</td>
+<td>$c_{y&#x3D;2,j&#x3D;1}$</td>
+<td>$c_{y&#x3D;2,j&#x3D;2}$</td>
+</tr>
+</tbody></table>
+<p>Precision of class $i$, is $\frac{c_{ii}}{\sum_{j}c_{ji}}$<br>Recall of class $i$, is $\frac{c_{ii}}{\sum_{j}c_{ij}}$</p>
+</li>
+<li><p>Conversation from Probabilities to Predictions</p>
+<ol>
+<li>Probability predictions are given in a matrix, where row $i$ is the probability prediction for item $i$, and column $j$ is the predicted probability that item $i$ has label $j$.</li>
+<li>Given an $n<em>m$ probability prediction matrix <code>p</code>, <code>p.max(axis = 1)</code> computes the $n</em>1$ vector of maximum probabilities, one for each row, and <code>p.argmax(axis = 1)</code> computes the column indices of those maximum probabilities, which also corresponds to the predicted labels of the items.</li>
+<li><code>p.max(axis = 0)</code> and <code>p.argmax(axis = 0)</code> would compute max and argmax along the columns.</li>
+</ol>
 </li>
 </ol>
 
