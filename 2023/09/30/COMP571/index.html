@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP571.JPG">
 <meta property="article:published_time" content="2023-09-30T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-26T00:34:10.477Z">
+<meta property="article:modified_time" content="2023-12-12T05:07:45.953Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          29k words
+          31k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          242 mins
+          258 mins
         
       </span>
     
@@ -505,6 +505,16 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Node is the runtime engine, NPM is the package manager</strong></li>
 <li><code>npm ls -all</code>, all vulnerabilities</li>
 </ol>
+<h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><ol>
+<li>True Native: building specifically for the divice (Android or iOS). <strong>Pros</strong>: organic user experience, optimized apps, fine-grained control. <strong>Cons</strong>: expensive, little code reuse, less sense of abstraction.</li>
+<li>We want to cross-platform so we use react native. is a framework that includes everthing need to build mobile applications, supports iOS and Android.</li>
+<li>No browser&#x2F;DOM, No CSS, no Bootstrap, no Storage<img src="../img/COMP571/React Native 1.png" srcset="/img/loading.gif" lazyload width="500" height="180"></li>
+<li><strong>Hermes</strong> is used to translate JS components to iOS&#x2F;Android components.</li>
+<li>Can declaratively program, can use JSX, can use React hooks, can do styling. Maybe truly cross-platform</li>
+<li>Styling: cannot use CSS styles, but create JavaScript stylesheets(can be also inline).</li>
+<li>Images: use <code>Image</code>(not <code>img</code>): must be imported. use <code>source</code>(not <code>src</code>): takes an object instead of string. must specify a width and height.</li>
+<li>Buttons: <code>title</code> is specified with a prop. <code>onPress</code> rather than <code>onClick</code></li>
+</ol>
 <h2 id="Design-Thinking"><a href="#Design-Thinking" class="headerlink" title="Design Thinking"></a>Design Thinking</h2><h3 id="Week-1-DT"><a href="#Week-1-DT" class="headerlink" title="Week 1 DT"></a>Week 1 DT</h3><h4 id="six-phases-DT"><a href="#six-phases-DT" class="headerlink" title="six phases DT"></a>six phases DT</h4><ol>
 <li>An <strong>approach</strong>: a hands-on, suer-centric approach to inovative problem solving<br>A <strong>process</strong>: six phases. Emphathiz, define, ideate, prototype, test, implement</li>
 <li><strong>Emphathize</strong>: conduct research to develop an understanding of your users.<br>method: <strong>Think-Aloud</strong><br>1.1 <strong>Identify</strong> representative users. 1.2 Ask users to <strong>perform representative tasks</strong>. 1.3 <strong>Observe and record</strong> what they say and do, noting obstacles, pain points, and failures<br><strong>performing a contextual inqury with a representative user</strong><br>Write down notes to board? <strong>Adobe XD</strong></li>
@@ -671,6 +681,23 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li><strong>UD Assistive Tech</strong>: specialized tools that close accessibility gaps<br>Screen readers, screen magnification, text readers, braille for the web, alternative input devices, head&#x2F;mouth wands&#x2F;pointers, motion&#x2F;eye tracking, single-switch, speech input, alternative &amp; Augmentative communication</li>
 <li>The expert-review-based type of usability evaluation is best described as testing with users who represent the target population of the design solution. FAAAAALSE</li>
+</ol>
+<h2 id="Week6-Prototyping"><a href="#Week6-Prototyping" class="headerlink" title="Week6 Prototyping"></a>Week6 Prototyping</h2><ol>
+<li>Building a draft or an early version of a product or system in order to explore, demonstrate, and test design ideas for a part or the entirety of the product or system.</li>
+<li>Methods<ol>
+<li><strong>Paper Prototyping</strong>: Mocking up design ideas by sketching pages&#x2F;screens with design elements using design supplies(paper, pencil..) and simulating how the system respond to user. 在纸上画草稿演示</li>
+<li><strong>Wireframes</strong>: Lo-fi prototypes of the makeup of a design in terms of its structural components. hand-drawn or digitally created. Most useful in the early-to-mid stages.</li>
+<li><strong>Annotations</strong>: labels, explanations, and notes that provide further information on the goals, content, and functioning of the design elements illustrated on wireframes. Key in addressing the problem of interpretability of simplified designs for all stakeholders. 在 wireframes 上面的批注</li>
+<li><strong>Interactive prototyping</strong>: creating realistic prototypes of the navigation or structural components. A series of screens linking each other. 就是做的作业，几个页面之间可以互相点击</li>
+<li><strong>Native prototyping</strong>: Implementing and testing design ideas on the target platform.在专业平台上测试</li>
+</ol>
+</li>
+<li>3D model of prototyping:<ol>
+<li>Each dimension can be represented at various levels of fidelity. Their integration makes a working prototype.</li>
+<li><strong>Role</strong>: represents the functions that system serves in the user’s life</li>
+<li><strong>Look and feel</strong>: Simulates the sensory experience of the user while using the system</li>
+</ol>
+</li>
 </ol>
 
                 
