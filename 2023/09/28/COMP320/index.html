@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP320.JPG">
 <meta property="article:published_time" content="2023-09-28T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-06T09:40:12.205Z">
+<meta property="article:modified_time" content="2023-12-12T01:24:12.342Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          28k words
+          30k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          235 mins
+          253 mins
         
       </span>
     
@@ -1029,7 +1029,35 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 </ol>
 </li>
 </ol>
-
+<h2 id="Linear-Classfiers"><a href="#Linear-Classfiers" class="headerlink" title="Linear Classfiers"></a>Linear Classfiers</h2><ol>
+<li>Points above the plane are predicted as 1, and points below the plane are predict as 0. A set of linear coefficients, usually estimated based on the training data, called weights, $w_1, w_2,…,w_m$, and a bias term $b$. So $\hat{y}&#x3D;1$ if $w_1x’_1+w_2x’_2+…+w_mx’_n+b\geq0$ and $\hat{y}&#x3D;0$ if $w_1x’_1+w_2x’_2+…+w_mx’_n+b&lt;0$.</li>
+<li>Activation Function: if aprobabilistic prediction is needed, $\hat{f}(x’)&#x3D;g(w_1x’_1+w_2x’_2+…+w_mx’_n+b)$ outputs a number between 0 and 1, and the classifier can be written in the form $\hat{y}&#x3D;1$ if $\hat{f}(x’)\geq0.5$ and $\hat{y}&#x3D;0$ if $\hat{f}(x’)&lt;0.5$.</li>
+<li>Example of Linear Classifiers:<ol>
+<li>Linear threshold unit (LTU) perceptron: $g(z)&#x3D;1$ if $z&gt;0$ and $g(z)&#x3D;0$ otherwise.</li>
+<li>Logistic regression: $g(z)&#x3D;\frac{1}{1+e^{-z}}$</li>
+<li>Support Vector Machine(SVM): $g(z)&#x3D;1$ if $z&gt;0$ and $g(z)&#x3D;0$, maximizes the separation between the two classes.</li>
+<li>Nearest neighbors and decision trees have piecewise linear decision boudaries and is usually not considered linear classifiers.</li>
+<li>Naive Bayes classifiers are not always linear under general distribution assumptions.</li>
+</ol>
+</li>
+<li>Logistic Regression: used for classification<ol>
+<li>The function $g(z)&#x3D;\frac{1}{1+e^{-z}}$ is called the logistic activation function.</li>
+<li>Loss(cost) function: how well the weights fit the training data, $C(w)&#x3D;C_1(w)+C_2(w)+…+C_n(w)$. For logistic regression, called cross-entropy loss, $C_{i}(w)&#x3D;-y_{i}logg(z_i)-(1-y_i)log(1-g(z_i))$, where $z_i&#x3D;w_1x_{i1} + w_2x_{i2}+…+w_mx_{im}+b$</li>
+<li>Given the weight and bias, the probabilistic prediction that a new item $x’&#x3D;(x’_1,x’_2,…,x’_m)$ belongs to class 1 can be computed as $\frac{1}{1+e^{-(w_1x’_1+w_2x’_2+…+w_mx’_m+b)}}$ or <code>1 / (1 + exp(- (x&#39; @ w + b)))</code></li>
+</ol>
+</li>
+<li>Matrix Multiplication<ol>
+<li>In numpy, <code>v @ w</code> computes the dot product between <code>v</code> and <code>w</code>, for example, <code>numpy.array([a, b, c]) @ numpy.array([A, B, C])</code> means <code>a * A + b * B + c * C</code> 即矩阵乘法</li>
+<li>Matrix multiplications can be performed more efficiently (faster) than dot products looping over the columns and rows.</li>
+</ol>
+</li>
+<li>Interpertation of Coefficients<ol>
+<li>The weight $w_j$ in font of feature $j$ can be interpreted as the increase in the log-odds of the label $y$ being 1, associated with the increase of 1 unit in $x_j$, holding all other variables constant. This means, if the feature $x’_j$ increases by 1, then the odds of $y$ being 1 is increased by $e^{w_j}$</li>
+<li>The bias $b$ is the log-odds of $y$ being 1, when $x’_1&#x3D;x’_2&#x3D;…&#x3D;x’_m&#x3D;0$</li>
+</ol>
+</li>
+</ol>
+<h2 id="Nonlinear-Classifiers"><a href="#Nonlinear-Classifiers" class="headerlink" title="Nonlinear Classifiers"></a>Nonlinear Classifiers</h2>
                 
               </div>
             
