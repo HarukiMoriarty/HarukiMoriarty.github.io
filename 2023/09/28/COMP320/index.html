@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP320.JPG">
 <meta property="article:published_time" content="2023-09-28T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-12T19:48:31.664Z">
+<meta property="article:modified_time" content="2023-12-13T18:00:43.319Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          41k words
+          47k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          345 mins
+          393 mins
         
       </span>
     
@@ -1262,7 +1262,75 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 <li><p>Another two-point symmetric difference approximation is $C’(w)\approx\frac{C(w+h)-C(w-h)}{2h}$</p>
 </li>
 </ol>
-<h2 id="Linear-Programming"><a href="#Linear-Programming" class="headerlink" title="Linear Programming"></a>Linear Programming</h2>
+<h2 id="Linear-Programming"><a href="#Linear-Programming" class="headerlink" title="Linear Programming"></a>Linear Programming</h2><ol>
+<li>A linear program is an optimization problem in which the objective is linear and the constraints are linear. The set of feasible solutions are the ones that satisfy the constraints, but may or may not be optimal. The feasible solutions of linear programs form a convex polytope (line segment in 1D, convex polygon in 2D).</li>
+<li>Standard form: $max_xc^{T}x$ subject to $Ax\leq b$ and $x\geq0$</li>
+<li>Dual Form: $minb^{T}y$ subject to $A^{T}y\geq c$ and $y\geq 0$, duality theorem says they solutions lead to the same objective value</li>
+<li>Simplex method: <code>scipy.optimize.linprog</code> provides two methods of solving a linear program<ol>
+<li>Simplex method <code>simplex</code> (deprecated, replaced by <code>highs</code>): since at least one of the optimal solutions is a vertex of the feasible solutions polytope, moving between vertices will lead to an optimal solution.</li>
+<li>Interior point method <code>interior-point</code> (deprecated, replaced by <code>highs-ipm</code>): the constraints can be included as a cost in the optimization (when it is satisfied, the objective is also optimized), then the problem becomes an unconstrained optimization and can be solved using gradient type algorithms.</li>
+</ol>
+</li>
+<li>Application in Regression: (Least Absolute Deviation LAD)<ol>
+<li>The problem of regression by minimizing the sum of absolute value of the error, that is, $C(w)&#x3D;min_w\sum_{i&#x3D;1}^n|y_i-(w_1x_{i1}+w_2x_{i2}+…+w_mx_{im}+b)|$, can be written as a linear program.</li>
+<li>This can be done by noting $|a|&#x3D;max{a,-a}$, so the problem ca nbe written as $min_{a,w,b}\sum_{i&#x3D;1}^na_i$ subject to $a_i\geq y_i-(w_1x_{i1}+w_2x_{i2}+…+w_mx_{im}+b)$ and $a_i \geq -((w_1x_{i1}+w_2x_{i2}+…+w_mx_{im}+b))$</li>
+</ol>
+</li>
+<li>Application to Classification<ol>
+<li>The problem of inding the optimal weights for a SVM can be written as minimizing the hinge loss $C_w&#x3D;\sum_{i&#x3D;1}^nmax{1-(2y_i-1)*(w_1x_{i1}+w_2x_{i2}+…+w_mx_{im}+b),0}$, whic hca nbe converted into a linear program.</li>
+<li>$min_{a,w,b}\sum_{i&#x3D;1}^na_i$ subject to $a_i \geq 1-(w_1x_{i1}+w_2x_{i2}+…+w_mx_{im}+b)$ if $y_i&#x3D;1$, and $a_i\geq 1+(w_1x_{i1}+w_2x_{i2}+…+w_mx_{im}+b)$ if $y_i&#x3D;0$, and $a_i\geq 0$</li>
+</ol>
+</li>
+</ol>
+<h2 id="Hierachical-Clustering"><a href="#Hierachical-Clustering" class="headerlink" title="Hierachical Clustering"></a>Hierachical Clustering</h2><ol>
+<li>Unsupervised Learning: discrete-&gt;clustering, continuous-&gt;dimensionality reduction, the output of unsupervised learning can be used as input for supervised learning too.</li>
+<li>Hierachical Clustering (agglomerative clustering): starts with $n$ clusters and iteratively merge the closet clusters. Can be performed using <code>sklearn.cluster.AgglomerativeClustering</code>. Different ways of defining the <strong>distance</strong> between two clusters are called different linkages: <code>scipy.cluster.hierarchy.linkage</code>.</li>
+<li>Distance Measure:<ol>
+<li>Manhattan distance(<code>metric = &quot;manhattan&quot;</code>): $|x_{11}-x_{21}|+|x_{12}-x_{22}|+…+|x_{1m}-x_{2m}|$</li>
+<li>Euclidean distance(<code>metric = &quot;euclidean&quot;</code>): $\sqrt{(x_{11}-x_{21})^2+(x_{12}-x_{22})^2+…+(x_{1m}-x_{2m})^2}$</li>
+<li>Consine similarity distance(<code>metric = &quot;cosine&quot;</code>): $1-\frac{x_1^Tx_2}{\sqrt{x_1^Tx_1}\sqrt{x_2^Tx_2}}$</li>
+</ol>
+</li>
+<li>Average Linkage Distance: If average linkage distance (<code>linkage = &quot;average&quot;</code>) is used, then the distance between two clusters is defined as the distance between two center points of the clusters. This requires recomputing the centers and their pairwise distances in every iteration and can be very slow.</li>
+<li>Single and Complete Linkage Distance:<ol>
+<li>If single linkage distance (<code>linkage = &quot;single&quot;</code>) is used, then the distance between two clusters is defined as the smallest distance between any pairs of points one from each cluster. Since single linkage distance finds the nearest neighbors, it is more likely to have clusters that look like chains in which pairs of points are close to each other.</li>
+<li>If complete linkage distance (<code>linkage = &quot;complete&quot;</code>) is used, then the distance between two clusters is defined as the largest distance between any pairs of points one from each cluster. Since complete linkage distance finds the farthest neighbors, it is more likely to have clusters that look like blobs (for example circles) in which all points are closest to a center.</li>
+<li>With single or complete linkage distances, pairwise distances between points only have to be computed once at the beginning, so clustering is typically faster.</li>
+</ol>
+</li>
+<li>Number of Clusters: The number of clusters are usually chosen based on application requirements, since there is no optimal number of clusters. If the number of clusters is not specified, the algorithm can output a clustering tree, called dendrogram. <code>scipy.cluster.hierarchy.dendrogram</code></li>
+<li>Comparison:<ol>
+<li>Since the labeling of clusters are arbitrary, two clusterings with labels that are permutations of each other should be considered as the same clustering.</li>
+<li>Rand index is one measure of similarity between clusterings. <code>sklearn.metrics.rand_score(y1, y2)</code> computes the similarity between clustering <code>y1</code> and clustering <code>y2</code>, given by two lists of labels. To compute the Rand index, loop through all pairs of items and count the number of pairs the clusterings agree on, then divide it by the total number of pairs.</li>
+</ol>
+</li>
+<li>Adjusted Rand Index:<ol>
+<li>Rand index is a similarity score between 0 and 1, where 1 represents perfect match: the clustering labels are permutations of each other. The meaning of 0 is not clear.</li>
+<li>Adjusted Rand index is used so that 0 represents random labeling. <code>sklearn.metrics.adjusted_rand_score(y1, y2)</code> computes the similarity between clustering <code>y1</code> and clustering <code>y2</code>, given by two lists of labels.</li>
+</ol>
+</li>
+</ol>
+<h2 id="K-means-Clustering"><a href="#K-means-Clustering" class="headerlink" title="K-means Clustering"></a>K-means Clustering</h2><ol>
+<li>K Means:<ol>
+<li>Start with $K$ random centers (also called centroids) $\mu_1, \mu_2,…,\mu_K$</li>
+<li>Assign step: find points (items) that are the closest to each center $k$, label these points as $k$.</li>
+<li>Center step: update center $\mu_k$ to be the center of the points labeled $k$.</li>
+<li>Repeat until cluster centers do not change.</li>
+</ol>
+</li>
+<li>Totel Distortion:<ol>
+<li>The objective of K means clustering is minimizing the total distortion, also called inertia, the sum of distances (usually squared Euclidean distances) from the points to their centers, or $\sum_{i&#x3D;1}^n||x_i-\mu_k(x_i)||^2&#x3D;\sum_{i&#x3D;1}^n\sum_{j&#x3D;1}^m(x_{ij}-\mu_{k(x_i)j}^2)$. $k_(x_i)$ is the cluster index of the cluster closest to $x_i$, or $k(x_i)&#x3D;argmin_k||x_i-\mu_k||$</li>
+<li>K means initialized at a random clustering and each assign-center step is a gradient descent step for minimizing total distortion by choosing the cluster centers.</li>
+</ol>
+</li>
+<li>Number of Clusters<ol>
+<li>The number of clusters are usually chosen based on application requirements, since there is no optimal number of clusters.</li>
+<li>If the number of cluster is $n$ (each point is in a different cluster), then the total distortion is 0. This means minimizing the total distortion is not a good way to select the number of clusters.</li>
+<li>Elbow method is sometimes use to determine the number of clusters based on the total distortion, but it is a not a clearly defined algorithm</li>
+</ol>
+</li>
+</ol>
+<h2 id="Dimensionality-Reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a>Dimensionality Reduction</h2>
                 
               </div>
             
