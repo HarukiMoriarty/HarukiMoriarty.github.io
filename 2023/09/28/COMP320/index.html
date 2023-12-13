@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP320.JPG">
 <meta property="article:published_time" content="2023-09-28T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-13T18:16:02.244Z">
+<meta property="article:modified_time" content="2023-12-13T18:18:06.156Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          49k words
+          50k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          408 mins
+          414 mins
         
       </span>
     
@@ -1379,6 +1379,13 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 </tr>
 </tbody></table>
 </li>
+<li>Number of Reduced Dimensions:<ol>
+<li>Similar to other clustering methods, the number of dimensions $K$ are usually chosen based on application requirements (for example, 2 or 3 for visualization)</li>
+<li><code>sklearn.decomposition.PCA(k)</code> can take in <code>k</code> values between 0 and 1 too, and in that case, <code>k</code> represents the target amount of variance that needs to be explained.</li>
+</ol>
+</li>
+<li>Non-linear PCA: If the kernel trick is used to create new features for PCA, then PCA features are non-linear in the original features, and it’s called kernel PCA. <code>sklearn.decomposition.KernelPCA</code> computes the kernel PCA</li>
+<li>Auto-Encoder: If a neural network is trained with $y&#x3D;x$, then the hidden layer unit values can be viewed as “encoding” of $x$. Auto-encoder is a non-linear dimensionality reduction method if the neural network has nonlinear activations.</li>
 </ol>
 
                 
