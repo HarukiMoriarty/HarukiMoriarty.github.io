@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP571.JPG">
 <meta property="article:published_time" content="2023-09-30T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-13T07:06:13.056Z">
+<meta property="article:modified_time" content="2023-12-13T18:45:24.362Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -252,7 +252,7 @@
         
         
         
-          275 mins
+          278 mins
         
       </span>
     
@@ -514,6 +514,15 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li>Styling: cannot use CSS styles, but create JavaScript stylesheets(can be also inline).</li>
 <li>Images: use <code>Image</code>(not <code>img</code>): must be imported. use <code>source</code>(not <code>src</code>): takes an object instead of string. must specify a width and height.</li>
 <li>Buttons: <code>title</code> is specified with a prop. <code>onPress</code> rather than <code>onClick</code></li>
+</ol>
+<h2 id="React-Native-2"><a href="#React-Native-2" class="headerlink" title="React Native 2"></a>React Native 2</h2><ol>
+<li>Cross-Platform:<ol>
+<li>By platform: provides a number of specific components, need to utilize multiple platform-specific components. <code>TouchableNativeFeedback</code> for Android, <code>TouchableHighlight</code> on iOS.</li>
+<li>By size: obtain screen dimensions of the device using the <code>Dimensions</code> class in <code>react-native</code>. (<code>get(&#39;window&#39;)</code>)</li>
+</ol>
+</li>
+<li>Switch: a <code>Switch</code> is on or off, <code>value</code> boolean value of on&#x2F;off, <code>onValueChange</code> callback function.</li>
+<li>ScrollView: like a <code>View</code> but scrollable, but it is in a view that is flexible. (一定要放在 View 里面)</li>
 </ol>
 <h2 id="Design-Thinking"><a href="#Design-Thinking" class="headerlink" title="Design Thinking"></a>Design Thinking</h2><h3 id="Week-1-DT"><a href="#Week-1-DT" class="headerlink" title="Week 1 DT"></a>Week 1 DT</h3><h4 id="six-phases-DT"><a href="#six-phases-DT" class="headerlink" title="six phases DT"></a>six phases DT</h4><ol>
 <li>An <strong>approach</strong>: a hands-on, suer-centric approach to inovative problem solving<br>A <strong>process</strong>: six phases. Emphathiz, define, ideate, prototype, test, implement</li>
