@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP320.JPG">
 <meta property="article:published_time" content="2023-09-28T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-14T16:44:26.035Z">
+<meta property="article:modified_time" content="2023-12-15T19:40:34.371Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          52k words
+          53k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          431 mins
+          445 mins
         
       </span>
     
@@ -1065,10 +1065,11 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 </li>
 <li>Sklearn Pipline:<ol>
 <li>new features can be constructed manually, or through using transformers provided by <code>sklearn</code> in a <code>sklearn.Pipeline</code></li>
-<li>A categorical column can be converted to multiple columns using <code>sklearn.preprocessing.OneHotEncoder</code></li>
-<li>A numerical column can normalized to center at 0 with variance 1 using <code>sklearn.preprocessing.StandardScaler</code></li>
-<li>Additional columns including powers of one column can be added using <code>sklearn.preprocessing.PolynomialFeatures</code></li>
+<li>A categorical column can be converted to multiple columns using <code>sklearn.preprocessing.OneHotEncoder</code>, especially <strong>categorical features</strong></li>
+<li>A <strong>numerical column</strong> can normalized to center at 0 with variance 1 using <code>sklearn.preprocessing.StandardScalar</code><br><strong>use for when fitting LogisticRegression</strong> when total number of iterations reach limit, <strong>must given “correct” categories</strong><br>对于 different units, group together in same row</li>
+<li>Additional columns including powers of one column can be added using <code>sklearn.preprocessing.PolynomialFeatures</code>, <code>degree</code>多少,最后 feature 就是多少<br>默认 degree 为 2，如果 Enable <code>include_bias=True</code>, 就继续+1</li>
 <li>Bag of words features can TF-IDF features can be added using <code>feature_extraction.text.CountVectorizer</code> and <code>feature_extraction.text.TfidfVectorizer</code></li>
+<li>如果 call predict 不会在所有 Stage predict</li>
 </ol>
 </li>
 <li>Kernel Trick<ol>
@@ -1097,7 +1098,7 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 <h2 id="Linear-Algebra"><a href="#Linear-Algebra" class="headerlink" title="Linear Algebra"></a>Linear Algebra</h2><ol>
 <li><p>Least Squares Regression:</p>
 <ol>
-<li><code>scipy.linalg.lstsq(x, y)</code> can be used to find the weights $w$ and the bias $b$. <code>sklearn.linear_model.LinearRegression</code> performs the same linear regression.</li>
+<li><code>scipy.linalg.lstsq(x, y)</code> can be used to find the weights $w$ and the bias $b$. <code>sklearn.linear_model.LinearRegression</code> performs the same linear regression.<br><code>LinearRegression(fit_interccept=False)</code> 等于 <code>X @ lr.coef_.reshape(-1,1)</code></li>
 <li>It computes the least-squares solution to $Xw&#x3D;y$, the $w$ such that $||y-Xw||&#x3D;\sum_{i&#x3D;1}^{n}(y_i-w_1x_{i1}w_2x_{i2}-…-w_mx_{im}-b)^2$ is minimized.</li>
 </ol>
 </li>
@@ -1164,7 +1165,7 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 <li>Loss Function and R Squared:<ol>
 <li>Coefficient of determination($R^2$), is the fraction of the variation of $y$ that ca nbe explained by the variation of $x$. $R^2&#x3D;\frac{\sum_{i&#x3D;1}^{n}(\hat{y}<em>i-\overline{y})^2}{\sum</em>{i&#x3D;1}^n(y_i-\overline{y})^2}$. $y_i$ is the true label, $\hat{y}_i$ is the predicted label, $\overline{y}$ is the average label.</li>
 <li>Since $R^2$ increase as the number of features increase, it is not a good measure of fitness, we adjusted it as $\overline{R}^2&#x3D;1-(1-R^2)\frac{n-1}{n-m-1}$</li>
-<li>If model is a <code>sklearn.linear_model.LinearRegression</code>, then <code>model.score(x, y)</code> will compute the $R^2$ on the training set</li>
+<li>If model is a <code>sklearn.linear_model.LinearRegression</code>, then <code>model.score(x, y)</code> will compute the $R^2$ on the training set<br>(0, 1)</li>
 </ol>
 </li>
 <li>Statistical Inference<ol>
@@ -1329,22 +1330,30 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 <li>Elbow method is sometimes use to determine the number of clusters based on the total distortion, but it is a not a clearly defined algorithm</li>
 </ol>
 </li>
+<li>low inertia, few clusters</li>
 </ol>
+<p>只有 kmeans 和 agglomerativeclustering 代码中是<code>obj.fit()</code>, 只有 kmeans 能继续<code>obj.predict()</code></p>
 <h2 id="Dimensionality-Reduction"><a href="#Dimensionality-Reduction" class="headerlink" title="Dimensionality Reduction"></a>Dimensionality Reduction</h2><ol>
-<li>Dimensionality reduction finds a low dimensional representation of a high dimensional point (item) in a way that points that close to each other in the original space are close to each other in the low dimensional space. Text and image data have a large number of features (dimensions), dimensionality reduction techniques can be used for visualization and efficient storage of these data types.</li>
-<li>Principle Component Analysis (PCA): Principal component analysis finds the orthogonal directions that capture the highest variation, called principal components, and project the feature vectors onto the subspace generated by the principal components.</li>
-<li>Projection:<ol>
+<li><p>Dimensionality reduction finds a low dimensional representation of a high dimensional point (item) in a way that points that close to each other in the original space are close to each other in the low dimensional space. Text and image data have a large number of features (dimensions), dimensionality reduction techniques can be used for visualization and efficient storage of these data types.</p>
+</li>
+<li><p>Principle Component Analysis (PCA): Principal component analysis finds the orthogonal directions that capture the highest variation, called principal components, and project the feature vectors onto the subspace generated by the principal components.<br><code>p=PCA()</code> is <code>[0.8, 0.1, 0.07, 0.03]</code>, 我们只要<code>p.components_[:2, :]</code></p>
+</li>
+<li><p>Projection:</p>
+<ol>
 <li>A unit vector $\mu$ in the direction of a vector $v$ is $\mu&#x3D;\frac{v}{||v||}$, where $||v||&#x3D;\sqrt{v_1^2+v_2^2+…+v_m^2}$.</li>
 <li>The projection of a feature bector $x$ onto the direction of a unit vector $\mu$ is $\mu^Tx$.</li>
 </ol>
 </li>
-<li>Projected Variances:<ol>
+<li><p>Projected Variances:</p>
+<ol>
 <li>Projected variance along a direction $\mu$ is can be computed by ,$\mu^T\sum\mu$ so the PCA problem is given by the constrained optimization problem $max_{\mu}\mu^T\sum\mu$ subject to $\mu^T\mu&#x3D;1$</li>
 <li>A closed-form solution is $\sum\mu&#x3D;\lambda\mu$, which means $\lambda$ is an eigenvalue of $\sum$ and $\mu$ is an eigenvector of $\sum$.</li>
 <li>A faster way to find the eigenvalue-eigenvector pair is through singular value decomposition (SVD), and it is used in <code>sklearn.decomposition.PCA</code></li>
+<li>if <code>df=(15,200)</code>, and <code>p=PCA(6)</code>, <code>p.fit(df)</code> is <code>(6,15)</code></li>
 </ol>
 </li>
-<li>Reconstruction: If there are $m$ original features, and $m$ principal components are computed, then the original item can be perfectly reconstructed, if only $k&lt;m$ principal components are used, then the original item can be approximated.<table>
+<li><p>Reconstruction: If there are $m$ original features, and $m$ principal components are computed, then the original item can be perfectly reconstructed, if only $k&lt;m$ principal components are used, then the original item can be approximated.</p>
+<table>
 <thead>
 <tr>
 <th>Feature</th>
@@ -1378,14 +1387,18 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 <td>Length ( m ), not ( k )</td>
 </tr>
 </tbody></table>
+<p>How to reconstruct using first n elements? <code>pd.DataFrame(W[:, :n] @ C[:n, :] + p.mean_)</code></p>
 </li>
-<li>Number of Reduced Dimensions:<ol>
+<li><p>Number of Reduced Dimensions:</p>
+<ol>
 <li>Similar to other clustering methods, the number of dimensions $K$ are usually chosen based on application requirements (for example, 2 or 3 for visualization)</li>
 <li><code>sklearn.decomposition.PCA(k)</code> can take in <code>k</code> values between 0 and 1 too, and in that case, <code>k</code> represents the target amount of variance that needs to be explained.</li>
 </ol>
 </li>
-<li>Non-linear PCA: If the kernel trick is used to create new features for PCA, then PCA features are non-linear in the original features, and it’s called kernel PCA. <code>sklearn.decomposition.KernelPCA</code> computes the kernel PCA</li>
-<li>Auto-Encoder: If a neural network is trained with $y&#x3D;x$, then the hidden layer unit values can be viewed as “encoding” of $x$. Auto-encoder is a non-linear dimensionality reduction method if the neural network has nonlinear activations.</li>
+<li><p>Non-linear PCA: If the kernel trick is used to create new features for PCA, then PCA features are non-linear in the original features, and it’s called kernel PCA. <code>sklearn.decomposition.KernelPCA</code> computes the kernel PCA</p>
+</li>
+<li><p>Auto-Encoder: If a neural network is trained with $y&#x3D;x$, then the hidden layer unit values can be viewed as “encoding” of $x$. Auto-encoder is a non-linear dimensionality reduction method if the neural network has nonlinear activations.</p>
+</li>
 </ol>
 <h2 id="Stochastic-Processes"><a href="#Stochastic-Processes" class="headerlink" title="Stochastic Processes"></a>Stochastic Processes</h2><ol>
 <li>Pseudorandom Numbers: A random sequence can be generated by a recurrence relation, for example, $x_{t+1}&#x3D;(\alpha x_t+x)\ mod\ m$. $x_0$ is called the seed, and if $a,c,m$ are large and unknown, then the sequence looks random. <code>numpy.random</code> uses a more complicated PCG generator, but with a similar deterministic sequence that looks random.</li>
@@ -1395,8 +1408,20 @@ binds the index function to the page IP address&#x2F;index, meaning it will disp
 </ol>
 <h2 id="Simulation-and-Parallenlism"><a href="#Simulation-and-Parallenlism" class="headerlink" title="Simulation and Parallenlism"></a>Simulation and Parallenlism</h2><ol>
 <li>Stochastic Processes: A stochastic process is a sequence of random variables. If the sequence is finite or countably infinite, it is called a discrete-time stochastic process, and the index represent the time step, usually, $0,1,…$ If the sequence is uncountably infinite, it is a continuous-time stochastic process.</li>
-<li>Markov Chains: One special class of stochastic processes is called Markov processes, where $X_t$ only depends on $X_{t-1}$, but not $X_{t-2}, X_{t-3}…$.</li>
+<li>Markov Chains: One special class of stochastic processes is called Markov processes, where $X_t$ only depends on $X_{t-1}$, but not $X_{t-2}, X_{t-3}…$. Formally, the sequence $X_t$ is a (discrete-time) Markov chian, $P{X_t&#x3D;x|X_1&#x3D;x_1,X_2&#x3D;x_2,…,X_{t-1}&#x3D;x_{t-1}}&#x3D;P{X_t&#x3D;x|X_{t-1}&#x3D;x_{t-1}}$</li>
+<li>Transaition Matrices:<ol>
+<li>If the time $t$ and the state distribution $X_t$ are both discrete, a Markov chain can be represented by a transition matrix. where row $i$ column $j$ represents the probability that $P{X_t&#x3D;l|X_{t-1}&#x3D;i}$</li>
+<li>The rows of transition matrices should sum up to 1. The columns does not have to sum up to 1.</li>
+<li>One simple language model is the bigram model, which estimates and simulates the distribution of the next word given the current word.</li>
 </ol>
+</li>
+<li>Simulation and Estimation:<ol>
+<li>To simulate a Markov chain with transition matrix $m$ starting from state $x0$ from 0, 1, 2, …: use <code>x1 = numpy.random.choice(len(m), p = m[x0, :])</code>, and <code>x2 = numpy.random.choice(len(m), p = m[x1, :])</code>, and so on</li>
+<li>To estimate a Markov chain transition matrix given a sequence, one way is to use the maximum likelihood estimate $\hat{P}{X_t&#x3D;j|X_{t-1}&#x3D;i}&#x3D;\frac{c_{ij}}{c_i}$, where $c_{ij}$ is the number of times $i$ is followed by the $j$ in the sequence, and $c_i$ is the number if times $i$ appears in the sequence.</li>
+</ol>
+</li>
+</ol>
+<p>color image get corner: M[100:,100:,:]</p>
 
                 
               </div>

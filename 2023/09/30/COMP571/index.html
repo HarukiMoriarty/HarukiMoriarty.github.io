@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP571.JPG">
 <meta property="article:published_time" content="2023-09-30T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-13T18:45:24.362Z">
+<meta property="article:modified_time" content="2023-12-16T23:46:54.689Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          33k words
+          38k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          278 mins
+          319 mins
         
       </span>
     
@@ -515,7 +515,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li>Images: use <code>Image</code>(not <code>img</code>): must be imported. use <code>source</code>(not <code>src</code>): takes an object instead of string. must specify a width and height.</li>
 <li>Buttons: <code>title</code> is specified with a prop. <code>onPress</code> rather than <code>onClick</code></li>
 </ol>
-<h2 id="React-Native-2"><a href="#React-Native-2" class="headerlink" title="React Native 2"></a>React Native 2</h2><ol>
+<h3 id="React-Native-2"><a href="#React-Native-2" class="headerlink" title="React Native 2"></a>React Native 2</h3><ol>
 <li>Cross-Platform:<ol>
 <li>By platform: provides a number of specific components, need to utilize multiple platform-specific components. <code>TouchableNativeFeedback</code> for Android, <code>TouchableHighlight</code> on iOS.</li>
 <li>By size: obtain screen dimensions of the device using the <code>Dimensions</code> class in <code>react-native</code>. (<code>get(&#39;window&#39;)</code>)</li>
@@ -523,6 +523,54 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li>Switch: a <code>Switch</code> is on or off, <code>value</code> boolean value of on&#x2F;off, <code>onValueChange</code> callback function.</li>
 <li>ScrollView: like a <code>View</code> but scrollable, but it is in a view that is flexible. (一定要放在 View 里面)</li>
+<li>Card: RN do not have the concept of a “card”, use third-party <code>react-native-paper</code>, create manually like <code>styles.card</code>, can add gestures</li>
+<li>Animations: providing feedback in a visually asethetic way, third-party-library <code>react-native-reanimated</code>, <code>Animated</code><ol>
+<li>provides animations for <code>View</code>, <code>Text</code>, <code>Image</code>, <code>ScrollView</code>,<code>FlatList</code>,<code>SectionList</code>, can using <code>Animated.</code> <code>timing</code>, <code>spring</code>,<code>decay</code>, which manipulated an <code>Animated.Value</code>.</li>
+<li>Can control many animations using <code>parallel</code>, <code>sequence</code>, <code>loop</code>, <code>start()</code> and <code>stop()</code> apply to the set of animations.</li>
+<li>cannot directly add&#x2F;substract&#x2F;multiply&#x2F;divide <code>Animated.value</code>, instead must use <code>Animated.add(v1,v2)</code>, <code>.substract(v1,v2)</code>, <code>.multiply(v1,v2)</code>, <code>divide(v1,v2)</code></li>
+</ol>
+</li>
+<li>Navigation: RN is a framework but still lacks support, <code>React Navigation</code><ol>
+<li>Tab navigation: <code>@react-navigation/bottom-tabs</code>, Drawer Navigation: <code>@react-navigation/drawer</code>, Stack Navigation: <code>@react-navigation/native-stack</code></li>
+<li>must be nested inside of a <code>NavigationContainer</code>, create navigators via a function <code>createNAVIGATOR()</code>, consist of a navigator(can be styled, nested) and a set of screens. <code>useNavigation</code> is a custom React hook that can be used to help us navigate. Infomation can be passed from screen to screen via route params.<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">NavigationContainer</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">SomeNav.Navigator</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">SomeNav.Screen</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Bookstore&quot;</span> <span class="hljs-attr">component</span>=<span class="hljs-string">&#123;BookstoreScreen&#125;/</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SomeNav.Navigator</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">NavigationContainer</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li>Stack Navigation: push a screen onto the history stack via <code>navigation.push(screenName, params)</code>, <code>screenName</code> is the screen navigate to, <code>params</code> is optional, is recived as <code>props.route.params</code></li>
+</ol>
+</li>
+</ol>
+<h3 id="React-Native-3"><a href="#React-Native-3" class="headerlink" title="React Native 3"></a>React Native 3</h3><ol>
+<li>How to pass data down using navigation: not hardcoding tool names, not passing tools data</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs javascript">tools.<span class="hljs-title function_">map</span>(<span class="hljs-function"><span class="hljs-params">tool</span> =&gt;</span> &#123;<span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">ToolDrawer.Screen</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;tool.name&#125;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&#123;tool.name&#125;</span>&gt;</span> &#123;(props) =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">ToolScreen</span> &#123;<span class="hljs-attr">...props</span>&#125; &#123;<span class="hljs-attr">...tool</span>&#125;/&gt;</span>&#125; <span class="hljs-tag">&lt;/<span class="hljs-name">ToolDrawer.Screen</span>&gt;</span></span>&#125;)<br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>Switch Navigation: perform a conditional render, if the user is signed in, show them their needs.</li>
+<li><code>Modal</code>: a secondary window, using a state variable to control modal is open or closed, need to style it. <code>animationType</code>: <code>slide</code>, <code>fade</code>, <code>none</code>; <code>onShow</code>,<code>onRequestClose</code>: callback func; <code>transparent</code>: T&#x2F;F;<code>visible</code>: T&#x2F;F handled by state bariable</li>
+<li>Accessibility: whether a component is an accessibility element, if so, groups its children in a single selectable element. <code>accessibilityLabel</code> attribute defines the screen reader description of the component whereas the <code>accecssibilityHint</code> attribute helps the user understand what will happen.</li>
+<li>Secure Storage:<ol>
+<li>JSON Web Token(stateless authentication): a signed access token for a period of time, base64 encoded(not encryption), “header”, “claims”, “signature”(using <code>alg</code>)</li>
+<li>Session UUIDs: stateful, a database maps this UUID to the corresponding claims</li>
+<li>Authentication: Web development: Interface with the user’s browser, prefer <code>HTTP-Only</code> cookies, <code>include； &#39;credentials&#39;</code>; Mobile development: interface with the user’s operating system, prefer OS-level secure encrypted storage, header <code>Authorization</code>, value <code>Bear &lt;JWT&gt;</code></li>
+<li><code>expo-secure-store</code> works on Android and iOS, stores JWT to persistent storage, up to 2KB</li>
+<li>Asynchronous in nature, <code>getItemAsync(key)</code>, <code>setItemAsync(key, val)</code>, <code>deleteItemAsync(key)</code>, key refers to a storage key not an encryption key</li>
+</ol>
+</li>
+<li>Advanced Gesture: RN provides methods to detect when and where, <code>react-native</code>‘s Button <code>onPress</code>, <code>react-native-paper</code> Card <code>onPress</code> and <code>onLongPress</code>, <code>react-native-elements</code> Slider <code>onSliding</code>, <code>react-native-maps</code> Marker <code>onDrag</code>, <code>react-navigation</code> Drawer gesture.</li>
+<li>Sensors: use <code>expo-sensors</code> instead of <code>react-native-sensors</code></li>
+<li>Deployment: use expo application services, <code>eas build -p android/ios</code>, <code>.apk</code> deployed to Google Play Store, <code>.ipa</code> deplyed to iOS app store. <strong>No web server for deployment</strong></li>
+</ol>
+<h3 id="DialogFlow"><a href="#DialogFlow" class="headerlink" title="DialogFlow"></a>DialogFlow</h3><ol>
+<li>Voice User Interfaces: a common form of agent-based design as opposed to direct manipulation. speech recognition, spoken language understanding, dialog management, response generation, text-to-speech synthesis</li>
+<li>Agents: high level containers for blocks (agent settings, intents, entities, integrations, fulfillments)</li>
+<li>Intents: <strong>training phrases</strong>: things the user may say to express an intent <strong>parameters</strong> things that may vary in an expression ()time, quantity, location <strong>Responses</strong> How the system responds to the expression</li>
+<li>Fallback Intent: special type, dictates how the agent responds if an expression connot match an intent</li>
+<li>e.x. What is the weather like today in Seattle? <strong>Intent</strong>: weather inquiry, <strong>Parameter</strong> a variable to ex ecpressed by the user: city name, <strong>Entity Type</strong>the type of the variable expressed: geolocation, <strong>Entity</strong>a specific value that can eb expressed: Seattle</li>
+<li>Entities: can have synonyms, fuzzy-mateched, automatically expanded</li>
+<li>Webhook Fulfillment:<ol>
+<li>end user-&gt;dialogflow-&gt;fulfillment, can be code inline or UI setting. DialogFlow makes a POST request to <code>/</code>, expects a response of a certain format.</li>
+<li><code>ngrok</code> to reverse-proxy, using Intent Mapping<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">const</span> <span class="hljs-variable">intentMap</span> <span class="hljs-operator">=</span> &#123;<span class="hljs-string">&quot;GetNumUsers&quot;</span>: getNumberUsers&#125;<br>app.post(<span class="hljs-string">&#x27;/&#x27;</span>, (req, res)=&gt; &#123;<br>   <span class="hljs-keyword">if</span> (intent in intentMap) &#123;<br>   intentMap[intent](req,res)&#125;&#125;)<br>function <span class="hljs-title function_">getNumUsers</span><span class="hljs-params">(req,res)</span> &#123; res.status(<span class="hljs-number">200</span>).send(&#123;fulfillmentText: <span class="hljs-string">&quot;...&quot;</span>&#125;)&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><code>async/await</code>: handle asynchronous behavior, <code>await</code> must be inside of an <code>async</code>, <code>await</code> waits for right-hand-side to complete, every <code>async</code> function returns a <code>Promise</code>, a async function may spawn <code>async</code> behavior, an <code>async</code> function always happens asynchronously. equal with <code>.then</code> <code>.catch</code></li>
 </ol>
 <h2 id="Design-Thinking"><a href="#Design-Thinking" class="headerlink" title="Design Thinking"></a>Design Thinking</h2><h3 id="Week-1-DT"><a href="#Week-1-DT" class="headerlink" title="Week 1 DT"></a>Week 1 DT</h3><h4 id="six-phases-DT"><a href="#six-phases-DT" class="headerlink" title="six phases DT"></a>six phases DT</h4><ol>
 <li>An <strong>approach</strong>: a hands-on, suer-centric approach to inovative problem solving<br>A <strong>process</strong>: six phases. Emphathiz, define, ideate, prototype, test, implement</li>
