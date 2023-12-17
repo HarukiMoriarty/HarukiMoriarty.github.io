@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP571.JPG">
 <meta property="article:published_time" content="2023-09-30T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-16T23:46:54.689Z">
+<meta property="article:modified_time" content="2023-12-17T21:27:05.452Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          38k words
+          52k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          319 mins
+          437 mins
         
       </span>
     
@@ -571,6 +571,21 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </ol>
 </li>
 <li><code>async/await</code>: handle asynchronous behavior, <code>await</code> must be inside of an <code>async</code>, <code>await</code> waits for right-hand-side to complete, every <code>async</code> function returns a <code>Promise</code>, a async function may spawn <code>async</code> behavior, an <code>async</code> function always happens asynchronously. equal with <code>.then</code> <code>.catch</code></li>
+<li>Context: control the order of intent matching and define different behaviors for intents with the same training phase. intents have input and output contexts, a context has lifespan, time&#x2F;turns, can be added or removed by an intent.</li>
+<li>Events: are triggered by actions users take on platforms that dialogflow interacts with.</li>
+<li>Integrations: can be integrated with other platforms, can also be embedded as an <code>iframe</code>, or <code>smalltalk</code></li>
+</ol>
+<h3 id="Fullstack-Development"><a href="#Fullstack-Development" class="headerlink" title="Fullstack Development"></a>Fullstack Development</h3><ol>
+<li>Software stack: javascript and react for frontend development, js &amp; express for backend development.</li>
+<li>Persist data by building a backend, using SQLite, creates a <code>.db</code> file</li>
+</ol>
+<h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><ol>
+<li>SQL Injection : insertion of a SQL query, read sensitive data from the database, modify database data. sanitize inputs on teh backend, use parameterized queries instead.</li>
+<li>Cross-Site Scripting(XSS): type of injection, malicious scripts are injected into otherwise benign and trustes websites. Generally in teh form of a browser side script, to a different end user. DOM-based(url 里面)， Persistent(文本框输入). sanitize displays, use react sanitization</li>
+<li>use outdated version, but a vulnerable dependency does not necessarily mean the application is vulnerable, an application without vulnerable dependencies could still be vulnerable. (dependencies are flags to look into)</li>
+<li>Tools: NIST, Github, Snyk, keep update</li>
+<li>Software and Data Integrity Failures: do not validation at frontend</li>
+<li>Mitigation: obfuscation, web application firewall, containerization(docker), defense in depth</li>
 </ol>
 <h2 id="Design-Thinking"><a href="#Design-Thinking" class="headerlink" title="Design Thinking"></a>Design Thinking</h2><h3 id="Week-1-DT"><a href="#Week-1-DT" class="headerlink" title="Week 1 DT"></a>Week 1 DT</h3><h4 id="six-phases-DT"><a href="#six-phases-DT" class="headerlink" title="six phases DT"></a>six phases DT</h4><ol>
 <li>An <strong>approach</strong>: a hands-on, suer-centric approach to inovative problem solving<br>A <strong>process</strong>: six phases. Emphathiz, define, ideate, prototype, test, implement</li>
@@ -773,6 +788,143 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li>why? the more done the prototype, the narrower the feedback. as a principle, use no higher resolution than is necessary</li>
 <li>lower development cost, prevents designers from prematurely wedding to specific design ideas, enables exploring communicating and testing, helps designers indentify structural navigation and organizational issues.</li>
 <li>Limitation of Lo-fi: requires a facilitaor to drive prototype, offers limited ability to identify breakdowns in design, lacks sufficiently low-level specifications for development, provides limited sence of feasibility</li>
+</ol>
+</li>
+</ol>
+<h3 id="Mobile-Design"><a href="#Mobile-Design" class="headerlink" title="Mobile Design"></a>Mobile Design</h3><ol>
+<li>mobile device capabilities: mobile divices have unique capabilities, mobile inpot primarily centers around the use of touch-sensitive screens:<ol>
+<li>direct manipulation input: involves mouse or trackpad input that is mapped to the screen using a relative mapping, absolute, user directly interactes with screen elements</li>
+<li>multi-touch gestures: number of idiomatic gestures, dedicated to specific functions.</li>
+</ol>
+</li>
+<li>Gestures:<ol>
+<li>Tap: maps to a “click” on the desktop computer to select objects or to activate&#x2F;toggle the state of a control</li>
+<li>Double-tap: zooming in&#x2F;out content, selecting items in accessibility mode, or selecting text</li>
+<li>Long-press: opening contextual menus, previews of content, or enabling editing modes</li>
+<li>Drag&#x2F;Swipe: used to scroll through content, move objects, or adjust controls. most commonly, drag involves a swipe and hold at the same time. can also move objects, or operate controls, switches, sliders and virtual control pads..</li>
+<li>Triple-swipe: mapped to specific OS-level activities, undo, redo</li>
+<li>Two-finger Pinch and Spread: used to shrink or expand visual elements, changing the scale of a map</li>
+<li>Three-finger Pinch and Spread: mapped to OS-level actions, such as copy, cut, paste</li>
+</ol>
+</li>
+<li>Motion gestures: involve moving the mobile device in specific ways, shaking to enable silent mode, usually application specific or customizable at OS level.</li>
+<li>Microinteraction: contain product moments that revolve around a single use case.<ol>
+<li>Trigger: events that initiate the microinteractions, can be manual&#x2F;user-initiated(intential and explicit interaction, flipping a switch, pressing a button, speaking to the system) or automatic&#x2F;system-initiated(certain condition are met, chime when a new text message arrives).</li>
+<li>Rules: determine what happens in the system when a microinteraction is triggered.</li>
+<li>Feedback: information that the user sees, hears, feels.(visual, aural, haptic)</li>
+<li>Loops &amp; Modes: meta-rules that, depending on context, change microinteraction rules and feedback, loops determin the length of the micro interaction and whether it repeats, modes switch the functioning or operation(do not disturb)</li>
+</ol>
+</li>
+<li>Mobile design patterns: used to vertically organize design elements, maximally utilize the vertical space in mobile devices<ol>
+<li>Screen carousels: full-screen content panes that can be placed on a horizontal array to display different instances of the same kind of information</li>
+<li>Drawers: provide links for navigation or controls for the various settings of the application (类似于左上角点开)</li>
+<li>Lists &amp; Grids: involve vertically stacking a large number of items, including text, controls, and thumbnails, and supporting navigation through vertical scrolling. Grids(more common): invlove a large continuous grid or multiple panes of grids that users can scroll through verically or horizontally.</li>
+<li>Carousels: content carousels provide a row of content items, including images or textual cards that users can navigate through by <strong>swiping left and right</strong>.</li>
+<li>Swimlanes: stacked content carousels that each show a row of items, enabling visual browsing through several different lists with minimal navigation.</li>
+<li>Card: little rectangles full of images and text that serve as entry points to more detailed information. Organized by lists and grids, but can be put together.</li>
+<li>Bars: are vertical or horizontal strips containing buttons or tabs dedicated to different components or tools. (Tab bars, tool bars, help navigation)</li>
+<li>Search, sorting, filtering</li>
+<li>Landing pages, guided tours</li>
+<li>Panes and panels: multi-pane structures and pop-up panels and tools are commonly use in tablets to provide secondary application windows</li>
+<li>AR&#x2F;VR: overlay objects or inforamtion on images or video of the user real environment</li>
+</ol>
+</li>
+</ol>
+<h3 id="VUI-Experience-Prototyping"><a href="#VUI-Experience-Prototyping" class="headerlink" title="VUI Experience Prototyping"></a>VUI Experience Prototyping</h3><ol>
+<li>Conversational Interface Technologies: conversational interaction with VPAs by speech and other modalities<ol>
+<li>(Components) Speech recognition, Spoken laguange understanding, dialog management, response generation, text-to-speech synthesis</li>
+<li>using Dialogflow by google</li>
+</ol>
+</li>
+<li>Design principles for conversational interfaces:<ol>
+<li><strong>Gricean maxims</strong>: maxim of quality(truthful and accurate), maxim of quantity(just the right amount), maxim of relevance(appropriate and relevant information), maxim of manner(clear, cooperative communication)</li>
+<li><strong>Multimodality</strong>: utilize multiple modalities, including visual inforamtion, speech, touch, and so on, in user experiences they afford. (most CI are this). take advantage of other modalities, a.g. visual information, vibrations.</li>
+<li>Interaction Paradigm: CI can follow different paradigms depending on the context of use the design of the application<ol>
+<li><strong>Command-and-control interfaces</strong>(always-on voice assistants): speech input is mapped to specific system functions called immediately</li>
+<li><strong>Conversational interfaces</strong>(chatbots, task assistant, social robots): interaction with the system has the characteristics of human conversations, including <strong>turn taking</strong>, <strong>theoretically infinite depth</strong>, <strong>conversational markers</strong>.</li>
+</ol>
+</li>
+<li>turn-taking: speaking turns are the core, cooperative structure of conversations that involves one speaker at a time and an explicit exchange of tokens<ol>
+<li>(Principles) one speaker at a time–transparency in who is speaking</li>
+<li>Turn exchanges–explicit signaling of who will speaking</li>
+<li>Interruption handling–very difficult with CIs</li>
+</ol>
+</li>
+<li>Conversational Markers: speech cues that indicate the state or the direction of the conversation. Timelines, Acknowledgements, Positive feedback</li>
+<li>Confirmations: CIs are designed with explicit forms of confirmation to improve system usability and transparency. explicit v.s. implicit speech-based v.s. non-speech based</li>
+<li>Error handling: deviations from expected converstional flow due to technical mistakes, unexpected user behavior, environmental influences. Errors: no speech detected; speech detected, but nothing recognized; sth correctly, but system wrong; sth recognized incorrectly</li>
+</ol>
+</li>
+<li>Heuristics for CI: general; conversational style; guiding, teacing, offering help; feedback and prompts; errors</li>
+<li>Experience Prototyping<ol>
+<li>Why? hard to prototype, social interactions are driven by tacit knowledge</li>
+<li><strong>Key</strong>: understanding existing user experiences and context; exploring and evaluating design ideas; communicating ideas to an audience</li>
+<li><strong>What we prototype</strong>: system behavior, user behavior, interactions with context</li>
+<li>How: Define context; develop scenatios; Identify Design goals; set up environment; act out interaction(Body storming: creativity method that involves physically experincing); Develop Insight;</li>
+</ol>
+</li>
+</ol>
+<h3 id="Usability-Evaluation"><a href="#Usability-Evaluation" class="headerlink" title="Usability Evaluation"></a>Usability Evaluation</h3><ol>
+<li>Why? the assessment of the usability of design solutions</li>
+<li>(Types) <strong>Testing-based methods</strong>: empirical, based on data, with users…</li>
+<li><strong>Five-E</strong> model of usability:(different requirement need different weight of this five-E)<ol>
+<li>Effective: create senarios with various levels of difficulty or ambiguity in study cases, how tasks accurately they are completed and how often they produce undetected errors</li>
+<li>Efficient: construct the test with enough repetitions of typical tasks to create a realistic work rhythm, use working software, collect timing data</li>
+<li>Engaging: use satisfaction interview questions or surveys as part of the evaluation</li>
+<li>Error tolerant: construct scearios to create sitations in which errors or other problems are likely, how user easily recover from this error</li>
+<li>Easy to learn: how many instructions, or recruit participants with different levels of experience or knowledge</li>
+</ol>
+</li>
+<li>usability testing: observing users performing tasks with a design solution and asking them questions about their experience with the solution(user actions, behavior, verbal description)</li>
+<li>depending on when usability testing is used, can take two forms:<ol>
+<li><strong>Formative</strong> testing: done throughput the design process to diagnose and address design problems, small users, uses repeatedly, informs design improvements. $NumberOfProblemsFound&#x3D;N(1-(1-L)^n)$, $N$: total number of usability problem, $n$: number of users</li>
+<li><strong>Summative</strong> testing: done at the end of the design process to establish the baseline usability of the design solution. larger number of users, comparative testing, utilizes large number of metrics and statistics methods.</li>
+</ol>
+</li>
+<li>usability testing contexts:<ol>
+<li><strong>Laboratory testing</strong>: in the lab set up to capture user behavior through screen recoding, software logging, eye tracking…allow the design team to observe and analyze the test session.</li>
+<li><strong>Field testing</strong>: testing in the target setting of use for the design solution with the target profile of users. <strong>Guerilla testing</strong>: low-cost usability testing set up in a public space using passby. <strong>Remote testing</strong>: hi-fi prototype on early version of a deployed product over the internet(Moderated&#x2F;Unmoderated)</li>
+</ol>
+</li>
+<li>Designing Usability Test (key demensions)<ol>
+<li><strong>why</strong>: goals, specify desired outcomes capture how the design is expected to achieve; basis for comparison specifies whether the outcome is with respect to a baseline</li>
+<li><strong>What</strong>: scope, task, scenarios, plot(Functionalities&amp;Functioning), full functional final system, horizontal prototype, vertical prototype; defining <strong>Questions</strong>: expectations of specific outcomes, <strong>tasks</strong> the sequence of actions that users are expected to perform to achieve goals, <strong>secnarios</strong> brief stories that provide users with context and goals in using the system</li>
+<li><strong>How</strong>: Approach, metrics; whether the test is <strong>formative</strong> or <strong>summative</strong>; whether the test is for a single design or comparative; <strong>Qualitative data</strong> observations of user actions and behavior, comments, and answer to questions; <strong>Quantitative data</strong>: measurements of user performance, error, and ratings of the design</li>
+<li><strong>Who</strong>: User, subgroups, study team; participants who represent the target user population; <strong>team roles</strong>(Moderator, note-taker, observer, technicain) during usability testing</li>
+</ol>
+</li>
+<li><strong>Measurement</strong>:<ol>
+<li><strong>Performance metrics</strong>: task success(how effectively users are able to complete a given set of tasks), time on task(how much time is required to complete a task), errors(the mistakes made during a task), efficiency(the level of effort required to complete the task), learnbility(how performance changes over time)</li>
+<li><strong>Self-report metrics</strong>: asking participants about their perceptions of and experience with a design solution using a set of questions, participants provide quatitative or qualitative responses. <strong>SUS</strong> ten-item questionnaire that focuses on usability, <strong>USE scale</strong>: includes four sub-scales for usefulness, ease of use, ease of learning, and satisfaction</li>
+<li><strong>Issue-based Metrics</strong>: problems that users encounter in using a system. How identify? user task actions, user behavior. <strong>Severity ratings</strong>: assessments of issues that help design team prioritize design efforts, based on imapct on user experience, predicted frequency of occurrence, impact on the business goals, technical&#x2F;implememtation costs. <strong>Low</strong>, <strong>Medium</strong>, <strong>High</strong></li>
+</ol>
+</li>
+</ol>
+<h3 id="Heuristic-Evaluation"><a href="#Heuristic-Evaluation" class="headerlink" title="Heuristic Evaluation"></a>Heuristic Evaluation</h3><ol>
+<li>(Types) <strong>Expert-review-based methods</strong>: usability inspection, review-based evaluation by experts who follow well-established protocols to inspect the usability of design solutions.</li>
+<li>Method: <strong>heuristic evaluation</strong>, cognitive walkthrough, …</li>
+<li><strong>Heuristic evaluation</strong>: invloves having a small set of avaluators examine the interface and judge its compliance with recognized usability principles.<ol>
+<li><strong>Visibility of system status</strong>: should always keep users informed about what is going on, through appropriate feedback within reasonable time. (email clients making a swoosh sound when sending email)</li>
+<li><strong>Match between system and the real world</strong>: the system should speak users’ language with words, phrases and concepts familiar to the user, rather than system-oriented terms. Following read-world conventions, making information appear in a natural and logical order.(比如 apple 钱包)</li>
+<li><strong>User control and freedom</strong>: a clearly marked “emergency exit” to leave the unwanted state without having go through an extended idalogue. <strong>UNDO</strong> and <strong>REDO</strong></li>
+<li><strong>Consistency and standards</strong>: user should not have to wonder whether different words, situations or actions mean the same thing. (component libraries to achieve consistency within a app)</li>
+<li><strong>Error prevention</strong>: careful design which prevents a problem from occurring in the first palce. Either elimniate error-prone conditons or check fot hem an present user with a confirmation option before they commit to the action. (autocorrect, real-time feedback)</li>
+<li><strong>Recognition rather than recall</strong>: minimize user’s memory load by making objects, actions and options visible. The user should not have to remember information from one part of the dislogue to another. Instructions for use of the system should be visible or easily retrievable whenever appropriate.</li>
+<li><strong>Flexibility and efficiency of use</strong>: allow users to tailer frequenct actions. 快捷键，快捷方式</li>
+<li><strong>Aesthetic and minimalist design</strong>: dialogues should not contain information which is irrelevant or rarely needed. 精简设计</li>
+<li><strong>Help users recognize, diagnose, and recover from errors</strong>: error messages should be expressed in plain laguage, precisely indicate the problem, and constructively suggest a solution. 错误的时候提示改正</li>
+<li><strong>Help and documentation</strong>: provide help and documentation. Such information should be easy to search, focused on the user’s task, list concrete steps to be carried out, and not to be too large.</li>
+</ol>
+</li>
+<li><strong>Process</strong>: 1. identify 3-5 usability experts with domain knowledge, determine the heuristics to use 2. each inspector individually reviews as feature for each heuristic; 3. Inspectors merge and prioritize their findings, brainstorm solutions, report conslusions</li>
+<li><strong>Reporting</strong>: a document that highlights the top three to five usability problems and sugeested solutions. include: 1. prototype screen, page, location of the problem 2. Name of heutistic 3. reason for reporting as negative or positive 4. scope of problem 5. severity of problem 6. Justification of severity rating(0-4) 7. suggestions to fix 8. possible trade-offs</li>
+<li><strong>Prons</strong>: inexpensive and intuitive; can be used frequently and any time during the design process; effective at early stages of design; serves as a training tool for designers</li>
+<li><strong>Cons</strong>: does not capture all aspects of usability; does not provide a comprehensive understanding of the interaction; might discourage user testing; may result in false positive</li>
+<li><strong>Cognitive Walkthrough</strong>: expert review method where a usability specialist assesses the <strong>learnability</strong> and <strong>discoverability</strong> of a design be posing and answering s set of questions.<ol>
+<li>what need?: a prototype, a suer profile, set of tasks, sequences of actions</li>
+<li>Question 1: will the user try and achieve the right outcome? Question 2: Will the user notice that the correct action is available to them? Question 3: Will the user associate the correct action with the outcome they expect to achieve? Question 4: If the correct actuon is performed’ will the user see that progress is being made towards their intended outcome?</li>
+<li><strong>Pros</strong>: powerful for walk-up-and-use interfaces, new concepts&#x2F;forms of interaction, systems designed for various user profiles; can be performed frequently and at any stage of the design process</li>
+<li><strong>Cons</strong>: focuses only on discoverability&#x2F;learnability, best when used with usability testing</li>
 </ol>
 </li>
 </ol>
