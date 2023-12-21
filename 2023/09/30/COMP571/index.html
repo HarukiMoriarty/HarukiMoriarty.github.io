@@ -24,8 +24,8 @@
 <meta property="og:description" content="ProgrammingWeek 1 HTML  hyper-text markup language, defines the structure of the web, make up of a series of “elements” defined by “tags”. Each element can have a unique id attribute, used for CSS and">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/COMP571.JPG">
-<meta property="article:published_time" content="2023-09-30T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-17T21:27:05.452Z">
+<meta property="article:published_time" content="2023-09-30T04:00:00.000Z">
+<meta property="article:modified_time" content="2023-12-18T04:32:00.109Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="course notes">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          52k words
+          54k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          437 mins
+          452 mins
         
       </span>
     
@@ -305,9 +305,9 @@
                 <h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a><strong>Programming</strong></h2><h3 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h3><ol>
 <li><p>HTML</p>
 <ol>
-<li>hyper-text markup language, defines the structure of the web, make up of a series of “elements” defined by “tags”. <strong>Each element can have a unique <code>id</code> attribute</strong>, used for CSS and JS. 比如访问图片，通过 getelementbyid&#x3D;””来访问</li>
+<li>hyper-text markup language, defines the structure of the web, make up of a series of “elements” defined by “tags”. <strong>Each element can have a unique <code>id</code> attribute</strong>, used for CSS and JS. 比如访问图片，通过 getelementbyid&#x3D;””来访问, 唯一<code>getelementbyId</code> 是返回一个值，不是数列 不能用下标访问 CSS 是 style 不是 structual, 比如获取文本框输入 <code>getElementbyId(&quot;...&quot;).value</code></li>
 <li>Document Object Model(DOM), <strong>HTML is a tree</strong>, while each element is a node.</li>
-<li><code>html</code>: encapsulate entire html document, <code>head</code>: include metadata, such as CSS and JS scripts, <code>body</code>: main HTML contentw, <code>h1</code>: headers, <code>p</code>: paragraph text, <code>strong</code>, <code>em</code>: connotation, <code>a</code>: anchor text(links), <code>img</code>: images (with <code>alt</code> attribute), <code>br</code>: linebreak, <code>ul</code>, <code>ol</code>, <code>li</code>: lists, <code>table</code>, <code>threads</code>, <code>tbody</code>, <code>tr</code>, <code>th</code>, <code>td</code>: tables, <code>div</code>: divisions(sections), <code>form</code>: encapsulates many inputs, <code>label</code>: label an input (include <code>for</code> attribute), <code>input</code>: user input, <code>button</code>: buttons</li>
+<li><code>html</code>: encapsulate entire html document, <code>head</code>: include metadata, such as CSS and JS scripts, <code>body</code>: main HTML contentw, <code>h1</code>: headers, <code>p</code>: paragraph text, <code>strong</code>, <code>em</code>: connotation, <code>a</code>: anchor text(links), <code>img</code> <code>&lt;img src=&#39;person.png&#39; /&gt;</code>: images (with <code>alt</code> attribute), <code>br</code>: linebreak, <code>ul</code>, <code>ol</code>, <code>li</code>: lists, <code>table</code>, <code>threads</code>, <code>tbody</code>, <code>tr</code>, <code>th</code>, <code>td</code>: tables, <code>div</code>: divisions(sections), <code>form</code>: encapsulates many inputs, <code>label</code>: label an input (include <code>for</code> attribute), <code>input</code>: user input, <code>button</code>: buttons</li>
 <li><strong>Modern web browers can interpret HTML, CSS, JS. JSX 不能编译解释！</strong></li>
 </ol>
 </li>
@@ -334,7 +334,7 @@ Same as internal but with styling in an external file.</li>
 Weak comparison do not care about type, `"5" == 5` returns `true`</li>
 <li>Objects: unordered collections of data defined using key-value pairs. (attributes&#x2F;properties).<br><code>object.attribute</code> or <code>object[&quot;attribute&quot;]</code></li>
 <li>Arrays: a varaible that contains multiple elements, do not have to be the same type</li>
-<li><strong>console.log cannot monitor users’ usage of our application, only debug</strong></li>
+<li><strong>console.log cannot monitor users’ usage of our application, only debug</strong> 主要是不能监视 user 的使用 <code>console.log(&#39;Next year, Bucky will be $(person.age)&#39;)</code></li>
 </ol>
 </li>
 <li><p>DOM</p>
@@ -359,7 +359,7 @@ Weak comparison do not care about type, `"5" == 5` returns `true`</li>
 </ol>
 </li>
 </ol>
-<p>.then((response) &#x3D;&gt; response.json())<br>.then((data) &#x3D;&gt; {})<br>.catch((error) &#x3D;&gt; console.error(error));<code>      happens async,</code>then<code>and</code>catch&#96; take a <strong>callback</strong> function as an argument. A callback function is passed into another function as an argument, which is then invoked inside the outer function to complete a routine or action.</p>
+<p>.then((response) &#x3D;&gt; response.json())<br>.then((data) &#x3D;&gt; {})<br>.catch((error) &#x3D;&gt; console.error(error));<code>      happens async,</code>then<code>and</code>catch&#96; take a <strong>callback</strong> function as an argument. A callback function is passed into another function as an argument, which is then invoked inside the outer function to complete a routine or action. <strong>passed from a parent to child component can be used to mutate the state of the parent component</strong></p>
 <ol start="2">
 <li><p>Write clean code</p>
 <ol>
@@ -407,7 +407,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Utilities</strong>: not elements themselves, but modify&#x2F;control other elements</li>
 </ol>
 <h3 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a>Week 3</h3><h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ol>
-<li>React: also called ReactJS, a JS library for building user interfaces</li>
+<li>React: also called ReactJS, a JS library for building user interfaces, <strong>can be written without using JSX</strong>, <strong>NOT a framework</strong></li>
 <li>Why use?<br>2.1 <code>innerHTML</code> is bad(XSS injection attack)<br>2.2 efficient DOM updating: no longer access elements via <code>document.</code>, which will friendly in interactive pages<br>2.3 declarative programming: every component is a function</li>
 <li><strong>Component</strong>: every thing is a component, a <strong>function</strong>, inheriting <code>props</code> and maintaining an internal <code>state</code>. Re-render when its <code>props</code> and <code>state</code> changes, or its parent re-renders. The <code>return</code> is what is displayed for a component.<br><strong>The return of a functional component is what component renders.</strong><br><strong>Can be written without using JSX</strong></li>
 </ol>
@@ -428,7 +428,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <p>3.2 <code>key</code>: <strong>speed up rendering</strong>, always use a unique key for the <strong>parent-most</strong> element rendered in a list, needs to be unique among siblings, should usually not be the index of the item</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">hurricanes.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">hurr</span>) =&gt;</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Hurricane</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&#123;hurr.id&#125;</span> &#123;<span class="hljs-attr">...hurr</span>&#125; /&gt;</span></span>);<br></code></pre></td></tr></table></figure>
 </li>
-<li><p>Responsive Design<br>4.1 use <strong>react-bootstrap</strong><br>4.2 use <code>Container</code>, <code>Row</code>, <code>Col</code> components, <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code> are props, <strong>包着 container 和 row, 一共 12，除以长度就是个数</strong></p>
+<li><p>Responsive Design<br>4.1 use <strong>react-bootstrap</strong>, <strong>Not</strong> makeing apps responsive<br>4.2 use <code>Container</code>, <code>Row</code>, <code>Col</code> components, <code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>, <code>xxl</code> are props, <strong>包着 container 和 row, 一共 12，除以长度就是个数</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">&lt;<span class="hljs-title class_">Col</span> xs=&#123;<span class="hljs-number">12</span>&#125; md=&#123;<span class="hljs-number">6</span>&#125; lg=&#123;<span class="hljs-number">3</span>&#125;&gt;&lt;/<span class="hljs-title class_">Col</span>&gt;<br></code></pre></td></tr></table></figure></li>
 <li><p><strong>Pagination</strong>: also available in <code>react-bootstrap</code>, handling large sums of data, use a state variable to track which page is active, use with <code>slice</code> to only show the item on the current page.</p>
 </li>
@@ -445,8 +445,8 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 2.2 <strong>Provide the context with some value</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">ParentComponent</span>(<span class="hljs-params"></span>) &#123;<br>   <span class="hljs-keyword">const</span> [data, setData] = <span class="hljs-title function_">useState</span>([<span class="hljs-string">&quot;...&quot;</span>, ...]);<br>   <span class="hljs-keyword">return</span> (<br>      <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">MyDataContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&#123;data&#125;</span>&gt;</span></span><br><span class="language-xml">         <span class="hljs-tag">&lt;<span class="hljs-name">SomeChildComponent</span> /&gt;</span></span><br><span class="language-xml">         <span class="hljs-tag">&lt;<span class="hljs-name">SomeOtherChildComponent</span> /&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">MyDataContext.Provider</span>&gt;</span></span><br>   )<br>&#125;<br></code></pre></td></tr></table></figure>
 2.3 <strong>Use the context in a child component</strong><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">SomeChildComponent</span>(<span class="hljs-params"></span>) &#123;<br>   <span class="hljs-keyword">const</span> data = <span class="hljs-title function_">useContext</span>(<span class="hljs-title class_">MyDataContext</span>);<br>   <span class="hljs-keyword">return</span> (...);<br>&#125;<br></code></pre></td></tr></table></figure></li>
 <li>Cookies, Session, Local: these exist in browser, persist even after a page refesh   <img src="../img/COMP571/cookies 1.png" srcset="/img/loading.gif" lazyload width="500" height="200">
-1. **cookies**: can be set programmatically, but typically set by through a `Set-Cookie` header. `document.cookie='lang-en'`
-2. **Session**: set programmatically via `sessionStorage`, typically used with form data. `sessionStorage.setIrem('name', 'cole')`
+1. **cookies**: can be set programmatically, but typically set by through a `Set-Cookie` header. `document.cookie='lang-en'`. JS access non-HTTP-only cookies, use `document.cookie`
+2. **Session**: set programmatically via `sessionStorage`, typically used with form data. `sessionStorage.setIrem('name', 'cole')`, not-sensitive, keep until close browser window
 3. **Local**: set programmatically via localStorage, typucally used with long-lasting data. `localStorage.getItem('lastLogin')`</li>
 <li><code>sessionStorage</code> &amp; <code>localStorage</code>:<br>4.1 <strong>only store strings</strong>, Use <code>JSON.parse</code> and <code>JSON.stringify</code><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&quot;nums&quot;</span>, <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>([<span class="hljs-number">2</span>, <span class="hljs-number">6</span>, <span class="hljs-number">19</span>]));<br><span class="hljs-keyword">const</span> storedNums = <span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">parse</span>(<span class="hljs-variable language_">sessionStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&quot;nums&quot;</span>));<br></code></pre></td></tr></table></figure></li>
 <li>Third Party Libraries: Redux, Recoil, MobX, XState</li>
@@ -460,7 +460,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li><p><strong>Browser <code>outlet</code></strong>: shows the component returned by the child route</p>
 </li>
-<li><p><code>useNavigate</code>: useful for programmatic navigation</p>
+<li><p><code>useNavigate</code>: useful for programmatic navigation <strong>not default React library</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">OtherInfo</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> navigate = <span class="hljs-title function_">useNavigate</span>();<br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleclick</span> = (<span class="hljs-params"></span>) =&gt; &#123;<br>    <span class="hljs-title function_">navigate</span>(<span class="hljs-string">&quot; / home &quot;</span>);<br>  &#125;;<br>  <span class="hljs-keyword">return</span> (<br>    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>0ther Info!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span><br><span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;handleclick&#125;</span>&gt;</span>Back to Home<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>  );<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>navigation for a <code>BrowserRouter</code> is done via URLs</p>
@@ -469,20 +469,20 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <h3 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a>Week 6</h3><ol>
 <li><p>CRUD operations:Create-&gt;POST, Read-&gt;GET, Update-&gt;PUT, Delete-&gt;DELETE</p>
 </li>
-<li><p>HTTP request:<strong>从上到下, [request Line(http&#x2F;1.1), request headers]&lt;-request message header, a blank line seperate header and body, request message body</strong></p>
+<li><p>HTTP request:<strong>从上到下, [request Line(http&#x2F;1.1), request headers]&lt;-request message header, a blank line seperate header and body, request message body</strong>, <code>X-CS571-ID</code>写在 request header 里面</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs URL">https://www.example.com/packers/AaronRodgers/stats?all=true&amp;since=2010<br></code></pre></td></tr></table></figure>
-<p><code>AaronRodgers</code> is a path parameter, <code>all</code>, <code>since</code> are query parameters<br>for JSON body, need an additional HTTP header, <strong><code>Content-Type: application/json</code>切记！</strong><br>100s: Informational, 200s: Successful, 300s: Redirection, 400s: Client Error, 500s: Server Error<br>200: OK, 304: Not Modified, 400: Bad Request, 401: Unauthorized, 404: Not Found, 409: Conflict, 413: Request Entity Too Large, 500: Internal Server Error</p>
+<p><code>AaronRodgers</code> is a path parameter, <code>all</code>, <code>since</code> are query parameters<br>for JSON body, need an additional HTTP header, <strong><code>Content-Type: application/json</code>切记！</strong> 不是必须的，但是 Body 是 json 时必须确定<br>100s: Informational, 200s: Successful, 300s: Redirection, 400s: Client Error, 500s: Server Error<br>200: OK, 304: Not Modified, 400: Bad Request, 401: Unauthorized(blamed to requestor), 404: Not Found, 409: Conflict, 413: Request Entity Too Large, 500: Internal Server Error</p>
 </li>
 <li><p><code>fetch</code>: POST, PUT, DELETE</p>
 </li>
-<li><p><strong>Handling Text Input</strong>: using HTML <code>input</code> tag or the React-Bootstrap <code>Form.Control</code> component.<br>4.1 in a controlled way using its <code>value</code> and tracking <code>onChange</code> events.<br>4.2 in an <strong>uncontrolled</strong> manner using <code>useRef</code></p>
+<li><p><strong>Handling Text Input</strong>: using HTML <code>input</code> tag or the React-Bootstrap <code>Form.Control</code> component.<br>4.1 in a controlled way using its <code>value</code> and tracking <code>onChange</code> events.<br>4.2 in an <strong>uncontrolled</strong> manner using <code>useRef</code>, will not re-render each time a character is typed by the user</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> inputVal = <span class="hljs-title function_">useRef</span>();<br><span class="hljs-keyword">return</span> (<br>  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">htmlFor</span>=<span class="hljs-string">&quot;myInput&quot;</span>&gt;</span>Type something here!<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span></span><br><span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;myInput&quot;</span> <span class="hljs-attr">ref</span>=<span class="hljs-string">&#123;inputVal&#125;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">input</span>&gt;</span></span><br><span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br>);<br></code></pre></td></tr></table></figure>
 
 <p>The value of a ref can be retrieved via its <code>current</code> property, <code>inputVal,current.value</code>.<br>React generally recommends controlled components. Controlled components can cause many re-renders, however uncontrolled components give you no control over the <code>onChange</code> property.<br>4.3 Best practise: if using react-bootstrap components, <strong>be sure each <code>Form.Control</code> has an <code>id</code> associated with the <code>htmlFor</code> of a <code>Form.label</code></strong>.</p>
 </li>
 <li><p><strong>Credentialed Requests</strong>: for requests for logging in, must include credentials. Return a session for the user, is typically stored in an http-only cookie, not accessible by JavaScript. Must explictly include credentials to every endpoint affecting authorization.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-title function_">fetch</span>(<span class="hljs-string">&quot;https://example.com/api/submit&quot;</span>, &#123;<br>  <span class="hljs-attr">method</span>: <span class="hljs-string">&quot;POST&quot;</span>,<br>  <span class="hljs-attr">credentials</span>: <span class="hljs-string">&quot;include&quot;</span>,<br>&#125;);<br></code></pre></td></tr></table></figure></li>
-<li><p>Memoization: Storing the result so you can use it next time instead of calculating the same thing again and again<br>6.1 <code>useCallback</code>: to <strong>memoize functions</strong></p>
+<li><p>Memoization: Storing the result so you can use it next time instead of calculating the same thing again and again <strong>Not for parent child communication</strong><br>6.1 <code>useCallback</code>: to <strong>memoize functions</strong></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">MyApp</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">const</span> <span class="hljs-title function_">myComplicatedFunction</span> = (<span class="hljs-params"></span>) =&gt; &#123;...&#125;;<br>  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;<span class="hljs-name">buttom</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">&#123;myComplicatedFunction&#125;</span>&gt;</span>Click Me<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span><br><span class="language-xml">   <span class="hljs-tag">&lt;/&gt;</span></span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>We create the function <code>myComplicatedFunction</code> on every render! (Like, if parent render, the children has to render too)</p>
@@ -508,7 +508,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><ol>
 <li>True Native: building specifically for the divice (Android or iOS). <strong>Pros</strong>: organic user experience, optimized apps, fine-grained control. <strong>Cons</strong>: expensive, little code reuse, less sense of abstraction.</li>
 <li>We want to cross-platform so we use react native. is a framework that includes everthing need to build mobile applications, supports iOS and Android.</li>
-<li>No browser&#x2F;DOM, No CSS, no Bootstrap, no Storage<img src="../img/COMP571/React Native 1.png" srcset="/img/loading.gif" lazyload width="500" height="180"></li>
+<li><strong>No browser&#x2F;DOM(not web view)</strong>, No CSS, no Bootstrap, <strong>no Storage</strong><img src="../img/COMP571/React Native 1.png" srcset="/img/loading.gif" lazyload width="500" height="180"></li>
 <li><strong>Hermes</strong> is used to translate JS components to iOS&#x2F;Android components.</li>
 <li>Can declaratively program, can use JSX, can use React hooks, can do styling. Maybe truly cross-platform</li>
 <li>Styling: cannot use CSS styles, but create JavaScript stylesheets(can be also inline).</li>
@@ -531,8 +531,8 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </ol>
 </li>
 <li>Navigation: RN is a framework but still lacks support, <code>React Navigation</code><ol>
-<li>Tab navigation: <code>@react-navigation/bottom-tabs</code>, Drawer Navigation: <code>@react-navigation/drawer</code>, Stack Navigation: <code>@react-navigation/native-stack</code></li>
-<li>must be nested inside of a <code>NavigationContainer</code>, create navigators via a function <code>createNAVIGATOR()</code>, consist of a navigator(can be styled, nested) and a set of screens. <code>useNavigation</code> is a custom React hook that can be used to help us navigate. Infomation can be passed from screen to screen via route params.<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">NavigationContainer</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">SomeNav.Navigator</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">SomeNav.Screen</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Bookstore&quot;</span> <span class="hljs-attr">component</span>=<span class="hljs-string">&#123;BookstoreScreen&#125;/</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SomeNav.Navigator</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">NavigationContainer</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
+<li>Tab navigation: <code>@react-navigation/bottom-tabs</code>(在屏幕底部，类似于 home, back), Drawer Navigation: <code>@react-navigation/drawer</code>, Stack Navigation: <code>@react-navigation/native-stack</code></li>
+<li>must be nested inside of a <code>NavigationContainer</code>, create navigators via a function <code>createNAVIGATOR()</code>, consist of a navigator(can be styled, nested) and a set of screens. <code>useNavigation</code> is a custom React hook that can be used to help us navigate. Infomation can be passed from screen to screen via route params. navigator can be nested<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">NavigationContainer</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">SomeNav.Navigator</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">SomeNav.Screen</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Bookstore&quot;</span> <span class="hljs-attr">component</span>=<span class="hljs-string">&#123;BookstoreScreen&#125;/</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">SomeNav.Navigator</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">NavigationContainer</span>&gt;</span><br></code></pre></td></tr></table></figure></li>
 <li>Stack Navigation: push a screen onto the history stack via <code>navigation.push(screenName, params)</code>, <code>screenName</code> is the screen navigate to, <code>params</code> is optional, is recived as <code>props.route.params</code></li>
 </ol>
 </li>
@@ -544,22 +544,22 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 
 <ol start="2">
 <li>Switch Navigation: perform a conditional render, if the user is signed in, show them their needs.</li>
-<li><code>Modal</code>: a secondary window, using a state variable to control modal is open or closed, need to style it. <code>animationType</code>: <code>slide</code>, <code>fade</code>, <code>none</code>; <code>onShow</code>,<code>onRequestClose</code>: callback func; <code>transparent</code>: T&#x2F;F;<code>visible</code>: T&#x2F;F handled by state bariable</li>
-<li>Accessibility: whether a component is an accessibility element, if so, groups its children in a single selectable element. <code>accessibilityLabel</code> attribute defines the screen reader description of the component whereas the <code>accecssibilityHint</code> attribute helps the user understand what will happen.</li>
+<li><code>Modal</code>: a secondary window, using a state variable to control modal is open or closed, need to style it. <code>animationType</code>: <code>slide</code>, <code>fade</code>, <code>none</code>; <code>onShow</code>,<code>onRequestClose</code>: callback func; <code>transparent</code>: T&#x2F;F;<code>visible</code>: T&#x2F;F handled by state bariable <strong>dialogue box</strong>对话框</li>
+<li><strong>Accessibility</strong>: whether a component is an accessibility element, if so, groups its children in a single selectable element. <code>accessibilityLabel</code> attribute defines the screen reader description of the component whereas the <code>accecssibilityHint</code> attribute helps <strong>the user understand what will happen</strong>.</li>
 <li>Secure Storage:<ol>
 <li>JSON Web Token(stateless authentication): a signed access token for a period of time, base64 encoded(not encryption), “header”, “claims”, “signature”(using <code>alg</code>)</li>
 <li>Session UUIDs: stateful, a database maps this UUID to the corresponding claims</li>
-<li>Authentication: Web development: Interface with the user’s browser, prefer <code>HTTP-Only</code> cookies, <code>include； &#39;credentials&#39;</code>; Mobile development: interface with the user’s operating system, prefer OS-level secure encrypted storage, header <code>Authorization</code>, value <code>Bear &lt;JWT&gt;</code></li>
-<li><code>expo-secure-store</code> works on Android and iOS, stores JWT to persistent storage, up to 2KB</li>
+<li>Authentication: <strong>Web development</strong>: Interface with the user’s browser, prefer <code>HTTP-Only</code> cookies, <code>include； &#39;credentials&#39;</code>; Mobile development: interface with the user’s operating system, prefer OS-level secure encrypted storage, header <code>Authorization</code>, value <code>Bear &lt;JWT&gt;</code></li>
+<li><code>expo-secure-store</code> works on Android and iOS, stores JWT to persistent storage, up to 2KB, <strong>persistent device storage</strong></li>
 <li>Asynchronous in nature, <code>getItemAsync(key)</code>, <code>setItemAsync(key, val)</code>, <code>deleteItemAsync(key)</code>, key refers to a storage key not an encryption key</li>
 </ol>
 </li>
 <li>Advanced Gesture: RN provides methods to detect when and where, <code>react-native</code>‘s Button <code>onPress</code>, <code>react-native-paper</code> Card <code>onPress</code> and <code>onLongPress</code>, <code>react-native-elements</code> Slider <code>onSliding</code>, <code>react-native-maps</code> Marker <code>onDrag</code>, <code>react-navigation</code> Drawer gesture.</li>
 <li>Sensors: use <code>expo-sensors</code> instead of <code>react-native-sensors</code></li>
-<li>Deployment: use expo application services, <code>eas build -p android/ios</code>, <code>.apk</code> deployed to Google Play Store, <code>.ipa</code> deplyed to iOS app store. <strong>No web server for deployment</strong></li>
+<li>Deployment: use expo application services, <code>eas build -p android/ios</code>, <code>.apk</code> deployed to Google Play Store, <code>.ipa</code> deplyed to iOS app store. <strong>No web server for deployment</strong>, <strong>Light</strong>, <strong>Movement</strong>, <strong>Air pressure</strong>, NOT <strong>Humidity</strong></li>
 </ol>
 <h3 id="DialogFlow"><a href="#DialogFlow" class="headerlink" title="DialogFlow"></a>DialogFlow</h3><ol>
-<li>Voice User Interfaces: a common form of agent-based design as opposed to direct manipulation. speech recognition, spoken language understanding, dialog management, response generation, text-to-speech synthesis</li>
+<li><strong>McTears Voice User Interfaces</strong>: a common form of agent-based design as opposed to direct manipulation. speech recognition, spoken language understanding, dialog management, response generation, text-to-speech synthesis 没有<strong>user identification</strong></li>
 <li>Agents: high level containers for blocks (agent settings, intents, entities, integrations, fulfillments)</li>
 <li>Intents: <strong>training phrases</strong>: things the user may say to express an intent <strong>parameters</strong> things that may vary in an expression ()time, quantity, location <strong>Responses</strong> How the system responds to the expression</li>
 <li>Fallback Intent: special type, dictates how the agent responds if an expression connot match an intent</li>
@@ -570,13 +570,17 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><code>ngrok</code> to reverse-proxy, using Intent Mapping<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">const</span> <span class="hljs-variable">intentMap</span> <span class="hljs-operator">=</span> &#123;<span class="hljs-string">&quot;GetNumUsers&quot;</span>: getNumberUsers&#125;<br>app.post(<span class="hljs-string">&#x27;/&#x27;</span>, (req, res)=&gt; &#123;<br>   <span class="hljs-keyword">if</span> (intent in intentMap) &#123;<br>   intentMap[intent](req,res)&#125;&#125;)<br>function <span class="hljs-title function_">getNumUsers</span><span class="hljs-params">(req,res)</span> &#123; res.status(<span class="hljs-number">200</span>).send(&#123;fulfillmentText: <span class="hljs-string">&quot;...&quot;</span>&#125;)&#125;<br></code></pre></td></tr></table></figure></li>
 </ol>
 </li>
-<li><code>async/await</code>: handle asynchronous behavior, <code>await</code> must be inside of an <code>async</code>, <code>await</code> waits for right-hand-side to complete, every <code>async</code> function returns a <code>Promise</code>, a async function may spawn <code>async</code> behavior, an <code>async</code> function always happens asynchronously. equal with <code>.then</code> <code>.catch</code></li>
+<li><code>async/await</code>: handle asynchronous behavior, <code>await</code> must be inside of an <code>async</code>, <code>await</code> waits for right-hand-side to complete, <strong>every <code>async</code> function returns a <code>Promise</code></strong>, a async function may spawn <code>async</code> behavior, an <code>async</code> function always happens asynchronously. equal with <code>.then</code> <code>.catch</code>, <code>console.log(async func)</code> 依然是 promise object, 但是在实际输出的时候，如果合适依然会输出正确的 output</li>
 <li>Context: control the order of intent matching and define different behaviors for intents with the same training phase. intents have input and output contexts, a context has lifespan, time&#x2F;turns, can be added or removed by an intent.</li>
 <li>Events: are triggered by actions users take on platforms that dialogflow interacts with.</li>
 <li>Integrations: can be integrated with other platforms, can also be embedded as an <code>iframe</code>, or <code>smalltalk</code></li>
+<li>如果 enable <code>auto-expasion</code> 同类型的词汇会自动增加，比如我说了 green, 那么之后说 red 也会自动认出 <code>fuzzy-matching</code> 会模糊搜索，写错了也能找到</li>
+<li>**two or more intents can have the same training phrases, provided that they are triggered in different contexts.</li>
 </ol>
 <h3 id="Fullstack-Development"><a href="#Fullstack-Development" class="headerlink" title="Fullstack Development"></a>Fullstack Development</h3><ol>
 <li>Software stack: javascript and react for frontend development, js &amp; express for backend development.</li>
+<li>popular web frontend library: Angular, React, Vue</li>
+<li>Backend: PHP</li>
 <li>Persist data by building a backend, using SQLite, creates a <code>.db</code> file</li>
 </ol>
 <h3 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h3><ol>
@@ -590,11 +594,11 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <h2 id="Design-Thinking"><a href="#Design-Thinking" class="headerlink" title="Design Thinking"></a>Design Thinking</h2><h3 id="Week-1-DT"><a href="#Week-1-DT" class="headerlink" title="Week 1 DT"></a>Week 1 DT</h3><h4 id="six-phases-DT"><a href="#six-phases-DT" class="headerlink" title="six phases DT"></a>six phases DT</h4><ol>
 <li>An <strong>approach</strong>: a hands-on, suer-centric approach to inovative problem solving<br>A <strong>process</strong>: six phases. Emphathiz, define, ideate, prototype, test, implement</li>
 <li><strong>Emphathize</strong>: conduct research to develop an understanding of your users.<br>method: <strong>Think-Aloud</strong><br>1.1 <strong>Identify</strong> representative users. 1.2 Ask users to <strong>perform representative tasks</strong>. 1.3 <strong>Observe and record</strong> what they say and do, noting obstacles, pain points, and failures<br><strong>performing a contextual inqury with a representative user</strong><br>Write down notes to board? <strong>Adobe XD</strong></li>
-<li><strong>Define</strong>: Combine all your data and derive where your users’ problems exist.<br>gather, analyze, recommend<br>method: <strong>affinity diagramming</strong>, organizing data into clusters based on “affinity”<br>2.1 Start with an initial set of categories 2.2 Sort notes into these categories 2.3 Add subcategories&#x2F;consolidate as needed 2.4 Present each category 2.5 Rank categories in severity, combining importance, prevalence, frequency</li>
+<li><strong>Define</strong>: Combine all your data and derive where your users’ problems exist. combing your research and observations to discover where user’s problem exist<br>gather, analyze, recommend<br>method: <strong>affinity diagramming</strong>, organizing data into clusters based on “affinity”<br>2.1 Start with an initial set of categories 2.2 Sort notes into these categories 2.3 Add subcategories&#x2F;consolidate as needed 2.4 Present each category 2.5 Rank categories in severity, combining importance, prevalence, frequency</li>
 <li><strong>Ideate</strong>: Generate a range of crazy, creative ideas. Both indicidually or collaboratively, focus on <strong>creative</strong>, <strong>fast-moving</strong>, <strong>collaboration</strong><br>indea creation -&gt; critiquing<ol>
 <li>defer judgement, encourage wild ideas, build on the ideas of others, stay focused on the topic, one conversation at a time, be visual, go for quantity</li>
 <li><strong>Conceptual design</strong>, an abstract characterization of the context, use, or experience with an envisioned design solution that highlights the main premise of the solution</li>
-<li><strong>Sketching ideas</strong>: a sketach is a quick and rough drawing that gives a general outline of an idea. 画草图 low-fidelity, aided by annotations 质量不优先<br><strong>more effective than words, quick and inexpensice, disposable, can be plentiful</strong></li>
+<li><strong>Sketching ideas</strong>: a sketach is a quick and rough drawing that gives a general outline of an idea. 画草图 low-fidelity, aided by annotations 质量不优先 not priority quality over quantity<br><strong>more effective than words, quick and inexpensice, disposable, can be plentiful</strong></li>
 <li><strong>Storyboarding ideas</strong>: <strong>a sequence of visual frames</strong> that illustrate user interaction with the envisioned system, capturing social, environmental, and technical factors that shape user experience.</li>
 </ol>
 </li>
@@ -616,7 +620,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li><p><strong>Texture</strong>: Tactile and visual quality of a shape make up of different colors, materials, and different structures.</p>
 </li>
-<li><p><strong>Value</strong>: The intensity in which a design element is expressed.<br>Visual Hierarchy: a visual design principle which designers use to show the importance of each page contents by manipulating these characters.</p>
+<li><p><strong>Value</strong>: The intensity in which a design element is expressed.<br>Visual Hierarchy: a visual design principle which designers use to show the importance of each page contents by manipulating these characters. (字体大小的对比)</p>
 </li>
 </ol>
 </li>
@@ -624,7 +628,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <ol>
 <li><strong>Focal Point</strong>: is where the design directs the attention of the viewer first.</li>
 <li><strong>Contract</strong>: is the juxtaposition of design elements that strikingly differ from each other to guide user attention and action.</li>
-<li><strong>Balance</strong>: the organization of design elements on a canvas to provide a sense of visual balance or imbalance. Can be achieved through <strong>symmetry</strong> or <strong>asymmetry</strong>.</li>
+<li><strong>Balance</strong>: the organization of design elements on a canvas to provide a sense of visual balance or imbalance. Can be achieved through <strong>symmetry</strong> or <strong>asymmetry</strong>(比如黄金比例).</li>
 <li><strong>Movement</strong>: the organization of design elements in a way that suggests a particular flow on the canvas to direct the user’s attention.</li>
 <li><strong>Rhythm</strong>: patterned use of design elements in a way that <strong>communicates movement or order</strong>.</li>
 <li><strong>Perspective</strong>: creating a sense of horizon and movement along the <strong>depth</strong> axis of canvas.</li>
@@ -640,7 +644,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>glypy</strong>: a particular character<br>Type alone can be used to achieve design priciples, such as hierachy and movement.<br>For good typography, become familiar with leading, traching, kerning, widows, orphans, rags, rivers.</li>
 </ol>
 </li>
-<li><p>color: human visual perception of light reflecting from an object<br>creates emphasis-&gt;organizes content-&gt;evokes emotion<br>primary: G B Y, secondary(pruple, green, orange), tertiary</p>
+<li><p>color: human visual perception of light reflecting from an object<br>creates emphasis-&gt;organizes content-&gt;evokes emotion<br><strong>primary: G B Y, secondary color(pruple, green, orange)</strong>, tertiary</p>
 </li>
 <li><p>images: photographs, illustrations, 3D art… that convey rich information or context</p>
 </li>
@@ -662,7 +666,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Primary Navigation aids</strong>页眉: take the form of menus&#x2F;menubars and reflect the major areas or sections of a website<br><strong>Secondary navigation</strong>页脚 aids provide comprehensice links to specific content on the site as fat navigation, left-hand navigation, footer navigation.</li>
 <li><strong>Get home</strong>: breadcrumbs and hierarchical lists can get back to previous pages ot other pages.</li>
 <li><strong>Orgamizing page content</strong>:<br>5.1 <strong>The fold</strong>: dividing line between the area that is visible when a page first loads and the remainder of the page.<br>5.2 <strong>fitting it all in</strong>: large volumes of content is either broken into discrete pages through pagination or incrementally loaded through infinite scroll.</li>
-<li><strong>Search</strong>: an alternative to page navigation, provides users with listings of content based on a search query.<br><strong>Faceted search</strong> helps users narrow down a search once results are returned based on a simple query by providing functions to sort and filter the results.(过滤筛选结果)</li>
+<li><strong>Search</strong>: an alternative to page navigation, provides users with listings of content based on a search query.<br><strong>Faceted search</strong> helps users narrow down a search once results are returned based on a simple query by providing functions to sort and filter the results.(过滤筛选结果) type of <strong>secondary navigational</strong></li>
 </ol>
 </li>
 <li><p><strong>Layout</strong>, arrangement of visual elements on a canvas</p>
@@ -693,7 +697,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Idiomatic</strong>: building dedicated highly expressive interaction capabilities that users must learn<br>Develop Idioms: 1. Primitives: atomic action(point, click) 2. Compounds: complex actions(double-click) 3. Idioms: high level elements(deleting test)</li>
 </ol>
 </li>
-<li><strong>Affordances</strong> 亲和力: The perceived properties of a design elelment that give clues about how to interact with it. Enable users to intuively recognize actions that are possible with interface elements. Can be hidden and false.<br><strong>False affordances</strong>: an action that is perceived by the user but in face does not work as expected. 比如一个按钮啥也不干<br><strong>Hidden affordances</strong>: is not too obvious(下拉界面)<br><strong>perceptible affordances</strong>: an object’s characteristics imply an action,最容易感知又最符合逻辑的</li>
+<li><strong>Affordances</strong> 亲和力: The perceived properties of a design elelment that give clues about how to interact with it. Enable users to intuively recognize actions that are possible with interface elements. Can be hidden and false.<br><strong>False affordances</strong>: an action that is perceived by the user but in face does not work as expected. 比如一个按钮啥也不干<br><strong>Hidden affordances</strong>: is not too obvious(下拉界面) 或者摇晃手机<br><strong>perceptible affordances</strong>: an object’s characteristics imply an action,最容易感知又最符合逻辑的</li>
 <li><strong>Principles of Navigation</strong>:<ol>
 <li><strong>Wayfinding</strong>: user behavior where navigation across components follows a particular workflow or supports user goals. 比如箭头 <strong>1. signage, 2. Environmental clues 3. Maps(site maps)</strong></li>
 <li><strong>Cost</strong>: the time and effort required by users to navigate between components. <strong>1. Minimize factors that increase cost of navigation: context switch, errors, delays 2. Minimize travel time by minimizing number of steps and context switches</strong></li>
@@ -702,7 +706,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li><strong>Navigation models</strong>: commonly used patterns of navigation through interactive applications<ol>
 <li><strong>Hub &amp; spoke</strong>: involves a central hub, a home screen, that provides transitions to and from serveral specialized components. (一个主屏幕，访问其他)</li>
-<li><strong>fully connected</strong>: a central component&#x2F;page is connected all other components that are also linked to each other. 两个屏幕的时候开销最小</li>
+<li><strong>fully connected</strong>: a central component&#x2F;page is connected all other components that are also linked to each other. 两个屏幕的时候开销最小 lowest cost</li>
 <li><strong>Multi-level</strong>: involves main components that are fully connected with each other and sub-components that are only connected among themselves. (子图)</li>
 <li><strong>stepwise</strong>: follows a sequential or branching navigation that represents step-by&#x3D;step process, e.g. checking out on an e-commerce site.</li>
 <li><strong>Pyramid</strong>: similar to the stepwise, but at each step, the user can navigate to the hub and back</li>
@@ -711,7 +715,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Modal panel</strong>: follows the flat navigation model except for modal dialogs that are temporarily overlaid on the cancas to help the user perform specific functions.</li>
 <li><strong>Clear entry points</strong>: complex applications invlove navigational models with clear entry points that guide the user to frequently used or temporary functions without having to go through the hierarchical structure or a step-by-step process.</li>
 <li><strong>Bookmarks</strong>: allow users to conveniently navigate to a point of his choice, anytime he wants, even if its deep inside a navigational structure. These give people a way to avoid traversing many links to get ot a desired page or state.</li>
-<li><strong>Escape hatch</strong>: provides users with the ability to go back to the main component&#x2F;page in a complex structure without having to trace steps back.(可以方便返回主页)</li>
+<li><strong>Escape hatch</strong>: provides users with the ability to go back to the main component&#x2F;page in a complex structure without having to trace steps back.(可以方便返回主页) <strong>can sometimes be represented by a company logo</strong></li>
 </ol>
 </li>
 </ol>
@@ -736,7 +740,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Accessibility</strong>: The usability of a product, service, environment, or facility by people with the widest range of capabilities.</li>
 <li>Two way to address accessibility: accessible design, assistive tech.</li>
 <li><strong>Accessible Design</strong>:<ol>
-<li><strong>Medical Model</strong>: personal attribute, any restriction or loakc of ability to perform an acticity</li>
+<li><strong>Medical Model</strong>: personal attribute, any restriction or loakc of ability to perform an acticity 医学上的 生理上的</li>
 <li><strong>Social Model</strong>: context dependent, people are disabled by barriers in society, not by their impairment or difference, <strong>context dependent</strong>.<br><strong>Ability + Context</strong> &#x3D; <strong>disability</strong></li>
 </ol>
 </li>
@@ -779,12 +783,12 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li><strong>Prototyping Strategies</strong>:<ol>
 <li><strong>Throwaway prototyping</strong>: rapid prototyping to explore design ideas, demonastrate feasibility, communicate with stakeholders, test the ideas with users, eventually discarding. (most lo-fi and paper prototypes) ususally combined with sketching.</li>
-<li><strong>Evolutionary prototyping</strong>: (breadboard prototyping) the design team incrementally builds prototypes of a design idea, tests the idea with users, and refines the prototype until it reaches the desired level of maturity. (tec, most pruducts with alpha, beta…)</li>
+<li><strong>Evolutionary prototyping</strong>: (breadboard prototyping) the design team incrementally builds prototypes of a design idea, tests the idea with users, and refines the prototype until it reaches the desired level of maturity. (tec, most pruducts with alpha, beta…) 不断测试 不断迭代</li>
 <li><strong>Incremental prototyping</strong>: dividing system functionality into slices(vertical prototypes) based on design specifications and incrementally building each slice that is then integrated into the overall system. (large and complex project)</li>
 <li><strong>Extreme prototyping</strong>: breaking down the development into three phases, 1-building a static prototype, 2-fully functional(interactive components that will simulate services), 3-finally implementing the services. rapid, perallel, resting, different component.</li>
 </ol>
 </li>
-<li>Fidelity: level of detail in which a design is represented in the prototype. <strong>Low-fidelity</strong> prototyping&#x2F; <strong>High-fidelity</strong> prototyping.<ol>
+<li>Fidelity: level of detail in which a design is represented in the prototype. <strong>Low-fidelity</strong> prototyping(ideation phase, many ideas)&#x2F; <strong>High-fidelity</strong> prototyping.<ol>
 <li>why? the more done the prototype, the narrower the feedback. as a principle, use no higher resolution than is necessary</li>
 <li>lower development cost, prevents designers from prematurely wedding to specific design ideas, enables exploring communicating and testing, helps designers indentify structural navigation and organizational issues.</li>
 <li>Limitation of Lo-fi: requires a facilitaor to drive prototype, offers limited ability to identify breakdowns in design, lacks sufficiently low-level specifications for development, provides limited sence of feasibility</li>
@@ -839,9 +843,10 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li>Design principles for conversational interfaces:<ol>
 <li><strong>Gricean maxims</strong>: maxim of quality(truthful and accurate), maxim of quantity(just the right amount), maxim of relevance(appropriate and relevant information), maxim of manner(clear, cooperative communication)</li>
 <li><strong>Multimodality</strong>: utilize multiple modalities, including visual inforamtion, speech, touch, and so on, in user experiences they afford. (most CI are this). take advantage of other modalities, a.g. visual information, vibrations.</li>
-<li>Interaction Paradigm: CI can follow different paradigms depending on the context of use the design of the application<ol>
+<li>Interaction <strong>Paradigm</strong>: CI can follow different paradigms depending on the context of use the design of the application<ol>
 <li><strong>Command-and-control interfaces</strong>(always-on voice assistants): speech input is mapped to specific system functions called immediately</li>
-<li><strong>Conversational interfaces</strong>(chatbots, task assistant, social robots): interaction with the system has the characteristics of human conversations, including <strong>turn taking</strong>, <strong>theoretically infinite depth</strong>, <strong>conversational markers</strong>.</li>
+<li><strong>Conversational interfaces</strong>(chatbots, task assistant, social robots): interaction with the system has the characteristics of human conversations, including <strong>turn taking</strong>, <strong>theoretically infinite depth</strong>, <strong>conversational markers</strong> <strong>SmallTalk</strong>.</li>
+<li>idiomatic design: double clicking to open a file</li>
 </ol>
 </li>
 <li>turn-taking: speaking turns are the core, cooperative structure of conversations that involves one speaker at a time and an explicit exchange of tokens<ol>
@@ -851,7 +856,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </ol>
 </li>
 <li>Conversational Markers: speech cues that indicate the state or the direction of the conversation. Timelines, Acknowledgements, Positive feedback</li>
-<li>Confirmations: CIs are designed with explicit forms of confirmation to improve system usability and transparency. explicit v.s. implicit speech-based v.s. non-speech based</li>
+<li>Confirmations: CIs are designed with explicit forms of confirmation to improve system usability and transparency. <strong>explicit</strong>(requireing the user to confirm) v.s. <strong>implicit</strong>(letting user know what was understood, “Ok, setting…) speech-based v.s. non-speech based</li>
 <li>Error handling: deviations from expected converstional flow due to technical mistakes, unexpected user behavior, environmental influences. Errors: no speech detected; speech detected, but nothing recognized; sth correctly, but system wrong; sth recognized incorrectly</li>
 </ol>
 </li>
@@ -888,8 +893,8 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </li>
 <li>Designing Usability Test (key demensions)<ol>
 <li><strong>why</strong>: goals, specify desired outcomes capture how the design is expected to achieve; basis for comparison specifies whether the outcome is with respect to a baseline</li>
-<li><strong>What</strong>: scope, task, scenarios, plot(Functionalities&amp;Functioning), full functional final system, horizontal prototype, vertical prototype; defining <strong>Questions</strong>: expectations of specific outcomes, <strong>tasks</strong> the sequence of actions that users are expected to perform to achieve goals, <strong>secnarios</strong> brief stories that provide users with context and goals in using the system</li>
-<li><strong>How</strong>: Approach, metrics; whether the test is <strong>formative</strong> or <strong>summative</strong>; whether the test is for a single design or comparative; <strong>Qualitative data</strong> observations of user actions and behavior, comments, and answer to questions; <strong>Quantitative data</strong>: measurements of user performance, error, and ratings of the design</li>
+<li><strong>What</strong>: scope, task, scenarios, plot(Functionalities&amp;Functioning), full functional final system, <strong>horizontal prototype(breadth of features)</strong>, <strong>vertical prototype(depth of features)</strong>; defining <strong>Questions</strong>: expectations of specific outcomes, <strong>tasks</strong> the sequence of actions that users are expected to perform to achieve goals, <strong>secnarios</strong> brief stories that provide users with context and goals in using the system</li>
+<li><strong>How</strong>: Approach, metrics; whether the test is <strong>formative</strong> or <strong>summative</strong>; whether the test is for a single design or comparative; <strong>Qualitative data</strong> observations of user actions and behavior, comments, and answer to questions, <strong>an interview</strong>; <strong>Quantitative data</strong>: measurements of user performance, error, and ratings of the design, <strong>stopwatch timing data, USE questionnaire, number of clicks per task</strong></li>
 <li><strong>Who</strong>: User, subgroups, study team; participants who represent the target user population; <strong>team roles</strong>(Moderator, note-taker, observer, technicain) during usability testing</li>
 </ol>
 </li>
@@ -906,14 +911,14 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 <li><strong>Heuristic evaluation</strong>: invloves having a small set of avaluators examine the interface and judge its compliance with recognized usability principles.<ol>
 <li><strong>Visibility of system status</strong>: should always keep users informed about what is going on, through appropriate feedback within reasonable time. (email clients making a swoosh sound when sending email)</li>
 <li><strong>Match between system and the real world</strong>: the system should speak users’ language with words, phrases and concepts familiar to the user, rather than system-oriented terms. Following read-world conventions, making information appear in a natural and logical order.(比如 apple 钱包)</li>
-<li><strong>User control and freedom</strong>: a clearly marked “emergency exit” to leave the unwanted state without having go through an extended idalogue. <strong>UNDO</strong> and <strong>REDO</strong></li>
+<li><strong>User control and freedom</strong>: a clearly marked “emergency exit” to leave the unwanted state without having go through an extended idalogue. <strong>UNDO</strong> and <strong>REDO</strong>,比如说不能在错误发生的时候只提供一个选项</li>
 <li><strong>Consistency and standards</strong>: user should not have to wonder whether different words, situations or actions mean the same thing. (component libraries to achieve consistency within a app)</li>
 <li><strong>Error prevention</strong>: careful design which prevents a problem from occurring in the first palce. Either elimniate error-prone conditons or check fot hem an present user with a confirmation option before they commit to the action. (autocorrect, real-time feedback)</li>
 <li><strong>Recognition rather than recall</strong>: minimize user’s memory load by making objects, actions and options visible. The user should not have to remember information from one part of the dislogue to another. Instructions for use of the system should be visible or easily retrievable whenever appropriate.</li>
 <li><strong>Flexibility and efficiency of use</strong>: allow users to tailer frequenct actions. 快捷键，快捷方式</li>
 <li><strong>Aesthetic and minimalist design</strong>: dialogues should not contain information which is irrelevant or rarely needed. 精简设计</li>
 <li><strong>Help users recognize, diagnose, and recover from errors</strong>: error messages should be expressed in plain laguage, precisely indicate the problem, and constructively suggest a solution. 错误的时候提示改正</li>
-<li><strong>Help and documentation</strong>: provide help and documentation. Such information should be easy to search, focused on the user’s task, list concrete steps to be carried out, and not to be too large.</li>
+<li><strong>Help and documentation</strong>: provide help and documentation. Such information should be easy to search, focused on the user’s task, list concrete steps to be carried out, and not to be too large.<br><strong>Ctrl+z 跨平台使用</strong> 包括 3， 4， 7</li>
 </ol>
 </li>
 <li><strong>Process</strong>: 1. identify 3-5 usability experts with domain knowledge, determine the heuristics to use 2. each inspector individually reviews as feature for each heuristic; 3. Inspectors merge and prioritize their findings, brainstorm solutions, report conslusions</li>
@@ -928,6 +933,7 @@ containers will contain rows and columns to form a grid<figure class="highlight 
 </ol>
 </li>
 </ol>
+<p>think-aloud protocol–User-based testing<br>sibling-to-sibling component communication can <strong>not</strong> be achieved by directly passing props.<br>a parent can have zero-to-many child components.<br><code>package.json</code>需要加入 git, must committed to version control</p>
 
                 
               </div>
