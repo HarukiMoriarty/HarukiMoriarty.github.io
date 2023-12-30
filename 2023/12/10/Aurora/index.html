@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/Aurora/Aurora.png">
 <meta property="article:published_time" content="2023-12-10T06:00:00.000Z">
-<meta property="article:modified_time" content="2023-12-30T03:41:40.577Z">
+<meta property="article:modified_time" content="2023-12-30T03:43:51.022Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Cloud-Native Database">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.1k words
+          4.2k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          35 mins
+          36 mins
         
       </span>
     
@@ -337,6 +337,7 @@
 <li>For <strong>Aurora</strong>, the dirty evicted page just through away. It make sure: a page in the buffer cache must always be of the latest version.<br><img src="/../img/Aurora/Aurora%206.png" srcset="/img/loading.gif" lazyload alt="Eviction"></li>
 </ol>
 <p>The DB server knows which node contains the latest value, result a single read from the update-to-date node.</p>
+<p><strong>Replication</strong><br>If page is in replica’s local buffer, update the page, otherwise, discard the log record.<br><img src="/../img/Aurora/Aurora%207.png" srcset="/img/loading.gif" lazyload alt="Replication"></p>
 
                 
               </div>
