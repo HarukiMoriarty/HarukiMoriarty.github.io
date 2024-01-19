@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-19T05:44:58.700Z">
+<meta property="article:modified_time" content="2024-01-19T05:46:02.126Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k words
+          1.9k words
         
       </span>
     
@@ -307,7 +307,7 @@
 <h2 id="How-to-make-a-smart-contract-safe"><a href="#How-to-make-a-smart-contract-safe" class="headerlink" title="How to make a smart contract safe?"></a>How to make a smart contract safe?</h2><p>For now, the method is reimplemented the contract behavior in SMT equations, then used the Z3 theorem prover certain facts about the symbolized contract. Using Bounded-Model-Checking (BMC), we find a path that can lead the initial state to an incorrect state (like allowing transfer while claiming a refund). It makes me feel like a big state machine, and what we do is graph searching.</p>
 <h2 id="Invariant-1-internal-accounting-correctness"><a href="#Invariant-1-internal-accounting-correctness" class="headerlink" title="Invariant 1: internal accounting correctness"></a>Invariant 1: internal accounting correctness</h2><h3 id="variables"><a href="#variables" class="headerlink" title="variables:"></a>variables:</h3><p><code>balanceOf</code>: $weth_balance$, a mapping from <code>adress</code> to <code>uint256</code>, tokens give a specific address<br><code>totalSupply</code>: $weth_balance$, <code>uint256</code>, total token stored in the contract<br><code>ethSupply</code>: $eth_siply$, <code>uint256</code>, the total supply of tokens outside of our contract</p>
 <h3 id="state-tuple"><a href="#state-tuple" class="headerlink" title="state tuple:"></a>state tuple:</h3><p>$(balanceOf, weth_balace, eth_supply)$</p>
-<h3 id="functions"><a href="#functions" class="headerlink" title="functions:"></a>functions:</h3><p>Following</p>
+<h3 id="functions"><a href="#functions" class="headerlink" title="functions:"></a>functions:</h3><p>Following $(state,parameters)|condition\rightarrow new_state$</p>
 
                 
               </div>
