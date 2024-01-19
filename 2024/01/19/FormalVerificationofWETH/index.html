@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-19T05:01:18.647Z">
+<meta property="article:modified_time" content="2024-01-19T05:10:19.743Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k words
+          1.5k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          9 mins
+          13 mins
         
       </span>
     
@@ -303,8 +303,9 @@
               <div class="markdown-body">
                 
                 <p>I traveled back to China a couple of weeks ago. It is a beautiful time after the application period, and it is nice to return to my homeland after one year at Wisconsin-Madison; it is worth a blog to talk about recent days, but… you know, sleep first.</p>
-<h2 id="What-is-a-smart-Contract"><a href="#What-is-a-smart-Contract" class="headerlink" title="What is a smart Contract"></a>What is a smart Contract</h2><p>I hate to copy formal explanations from some books or Chatgpt; it is misleading and filled with new concepts that I fall into infinite DFS. I talked in my own words and made it as correct as possible. (TODO: what are blockchains?) Usually, I will treat a smart contract as a bank; it is introduced by some organizations, and people can deposit, withdraw, sell, buy, and do similar things, like holding a bank account in real life. An abstract contract offers functions and maintains key variables; imagine a bank offering services and keeping money safe and easy. For example, suppose a user wants to deposit $k$ tokens. In that case, he will create a new contract instance, which imports the abstract contract; to deposit, he should use some other things to send $k$ tokens to his address. He submits the contract (assigned with an address) to blockchain nodes(EVM); after several hours, the contract is admitted by most nodes and thus succeeds.</p>
-
+<h2 id="What-is-a-smart-contract"><a href="#What-is-a-smart-contract" class="headerlink" title="What is a smart contract?"></a>What is a smart contract?</h2><p>I hate to copy formal explanations from some books or Chatgpt; it is misleading and filled with new concepts that I fall into infinite DFS. I talked in my own words and made it as correct as possible. (TODO: what are blockchains?) Usually, I will treat a smart contract as a bank; it is introduced by some organizations, and people can deposit, withdraw, sell, buy, and do similar things, like holding a bank account in real life. An abstract contract offers functions and maintains key variables; imagine a bank offering services and keeping money safe and easy. For example, suppose a user wants to deposit $k$ tokens. In that case, he will create a new contract instance, which imports the abstract contract; to deposit, he should use some other things to send $k$ tokens to his address. He submits the contract (assigned with an address) to blockchain nodes(EVM); after several hours, the contract is admitted by most nodes and thus succeeds. A noticeable thing is that the smart contract can not be modified once uploaded and public to the blockchain, so keeping the contract safe and sound is essential.</p>
+<h2 id="How-to-make-a-smart-contract-safe"><a href="#How-to-make-a-smart-contract-safe" class="headerlink" title="How to make a smart contract safe?"></a>How to make a smart contract safe?</h2><p>For now, the method is reimplemented the contract behavior in SMT equations, then used the Z3 theorem prover certain facts about the symbolized contract. Using Bounded-Model-Checking (BMC), we find a path that can lead the initial state to an incorrect state (like allowing transfer while claiming a refund). It makes me feel like a big state machine, and what we do is graph searching.</p>
+<h2 id="Invariant-1-internal-accounting-correctness"><a href="#Invariant-1-internal-accounting-correctness" class="headerlink" title="Invariant 1: internal accounting correctness"></a>Invariant 1: internal accounting correctness</h2>
                 
               </div>
             
