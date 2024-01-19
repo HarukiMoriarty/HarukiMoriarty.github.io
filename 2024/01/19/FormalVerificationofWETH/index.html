@@ -16,26 +16,24 @@
   <meta name="author" content="Zhenghong Yu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Week 1Universal Compute Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ECE 252">
-<meta property="og:url" content="https://harukimoriarty.github.io/2023/09/19/EE252/index.html">
+    <meta property="og:type" content="article">
+<meta property="og:title" content="Formal Verification of WETH">
+<meta property="og:url" content="https://harukimoriarty.github.io/2024/01/19/FormalVerificationofWETH/index.html">
 <meta property="og:site_name" content="Zhenghong Yu">
-<meta property="og:description" content="Week 1Universal Compute Turing Machine: any computable computation can be implemented by some machine Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://harukimoriarty.github.io/img/IMG_1104.JPG">
-<meta property="article:published_time" content="2023-09-19T05:00:00.000Z">
-<meta property="article:modified_time" content="2023-10-29T00:47:49.542Z">
+<meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
+<meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-01-19T04:38:07.853Z">
 <meta property="article:author" content="Zhenghong Yu">
-<meta property="article:tag" content="course notes">
+<meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://harukimoriarty.github.io/img/IMG_1104.JPG">
+<meta name="twitter:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>ECE 252 - Zhenghong Yu</title>
+  <title>Formal Verification of WETH - Zhenghong Yu</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -218,7 +216,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">ECE 252</span>
+            <span id="subtitle">Formal Verification of WETH</span>
           
         </div>
 
@@ -229,8 +227,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-09-19 13:00" pubdate>
-          September 19, 2023 pm
+        <time datetime="2024-01-19 00:00" pubdate>
+          January 19, 2024 am
         </time>
       </span>
     
@@ -241,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.9k words
+          0 words
         
       </span>
     
@@ -252,7 +250,7 @@
         
         
         
-          58 mins
+          1 mins
         
       </span>
     
@@ -297,157 +295,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">ECE 252</h1>
+            <h1 id="seo-header">Formal Verification of WETH</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a><strong><em><em>Week 1</em></em></strong></h2><h3 id="Universal-Compute"><a href="#Universal-Compute" class="headerlink" title="Universal Compute"></a><strong>Universal Compute</strong></h3><ol>
-<li>Turing Machine: any computable computation can be implemented by some machine</li>
-<li>Universal Turing Machine: A programmable computer is effectively a Universal Turing Machine (minus infinite memory).</li>
-<li>A computer can compute anything that’s possible to compute given enough memory and time.</li>
-<li>Design trade-off: Time, Cost, Power&#x2F;Energy.</li>
-</ol>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a><strong>Complexity</strong></h3><ol>
-<li>1st transistor -&gt; Bell Labs, 1st IC -&gt; Jack Kilby(MSEE’50), 1st microprocessor -&gt; Intel</li>
-<li>Moore’s Law: number of transistors on a microchip doubles approximately every two years(24 month). -&gt; Cost halves every two years.</li>
-</ol>
-<h3 id="Abstraction"><a href="#Abstraction" class="headerlink" title="Abstraction"></a><strong>Abstraction</strong></h3><ol>
-<li>Use abstraction to manage complexity.</li>
-<li>The ISA lies at the software&#x2F;hardware boundary.</li>
-<li>Problem Statement –Software Design–&gt; Algorithm –Programming–&gt; Program –Compilation–&gt; ISA –Processor Design–&gt; Microarchitecture –Logic&#x2F;Circuit Design–&gt; Logic Circuits –Implement&amp;Fabricate–&gt; Devices</li>
-</ol>
-<h3 id="Electral-Infomation"><a href="#Electral-Infomation" class="headerlink" title="Electral Infomation"></a><strong>Electral Infomation</strong></h3><ol>
-<li>Analog: continuous range of values</li>
-<li>Digital: discrete set of values (almost all eletronic device)</li>
-<li>In reality, the voltage levels are actually ranges of voltages.</li>
-<li>Voltage &#x3D; Current * Resistance</li>
-<li>Any data processed by a digital computer is represented by sequences of 1s and 0s</li>
-</ol>
-<h2 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a><strong><em>Week 2</em></strong></h2><h3 id="Number-representation"><a href="#Number-representation" class="headerlink" title="Number representation"></a><strong>Number representation</strong></h3><ol>
-<li>demical-10, Binary-2, Octal-8, Hexademical-16</li>
-<li>least-significant, right most; most-significant, left-most</li>
-<li>$D_{N-1}\cdots D_{1}D_{0}&#x3D;D_{N-1}*r^{N-1} + \cdots + D_{1}<em>r^1 + D_0</em>r^0$</li>
-<li>Each position represents a power of base; Digital value says how many of that power of base.</li>
-<li>A value is a particular quantity, a number is a way to represent a value. Same “number”, different value.</li>
-</ol>
-<h3 id="Base-conversion"><a href="#Base-conversion" class="headerlink" title="Base conversion"></a><strong>Base conversion</strong></h3><ol>
-<li>Binary &lt;-&gt; Hex: directly substitute a hex digit for a 4-bit binary number.</li>
-<li>Binary &lt;-&gt; Octal: directly substitute a octual digit for a 3-bit binary number.</li>
-<li>Octal &lt;-&gt; Hex: use binary as an intermediate form.</li>
-</ol>
-<h3 id="Arithmetic"><a href="#Arithmetic" class="headerlink" title="Arithmetic"></a><strong>Arithmetic</strong></h3><ol>
-<li>Substraction using borrowing: If necessary, bowrrow the base’s value from one position higher</li>
-<li>Multiple by power of base, shifts number to the left. Divide by power of base, shifts numbers to the right.</li>
-</ol>
-<h3 id="Signed-Numbers"><a href="#Signed-Numbers" class="headerlink" title="Signed Numbers"></a><strong>Signed Numbers</strong></h3><ol>
-<li>Signed-Magnitude: The most significant bit is the sign, the remaining bits are the numbers magnitude.</li>
-<li>2’s Complement representation: positive numbers start with 0, negative numbers start with 1 ($-2^N$).</li>
-<li>Fast Negation: complement each bit and the add 1.</li>
-<li>Addition: works the way it does for unsigned binary number except the carry-out is not meaningful.</li>
-<li>Substraction: add the negation of the value we wish to subtract</li>
-<li>Operand&#x2F;Result bitwidths match: operands and results must have the same number of bits for the math to work correctly.</li>
-</ol>
-<h3 id="Sign-Extention"><a href="#Sign-Extention" class="headerlink" title="Sign Extention"></a><strong>Sign Extention</strong></h3><ol>
-<li>Extend 2’s complement number: for positive: zero-extension; for negative: one-extension</li>
-<li>Negative 1 in 2’s complement: $-1\cdots1$</li>
-<li>Unsigned number: $[0, 2^n -1]$, signed number: $[-(2^{n-1}-1), 2^{n-1}-1]$, 2’s-complement number: $[-2^{n-1}, 2^{n-1}-1]$</li>
-<li>Overflow: The result cannot be correctly represented in the required number of bits.</li>
-<li>lf adding two negative 2’s-complement numbers overflows, the sign of the result will appear to be non-negative.</li>
-<li>lf the result of adding two positive 2’s-complement numbers appears to be positive, then the operation did not overflow.</li>
-<li>lf adding two unsigned numbers overflows , the result will appear to be<br>smaller than it should be.</li>
-</ol>
-<h2 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a><strong><em>Week 3</em></strong></h2><h3 id="Fixed-Float"><a href="#Fixed-Float" class="headerlink" title="Fixed Float"></a><strong>Fixed Float</strong></h3><ol>
-<li>Radix point: separates the integer portion from the fractional portion of the numebr</li>
-<li>when the format defines a “fixed” position for the radix point within the number’s digits</li>
-<li><img src="/../img/EE252/EE252%201.jpg" srcset="/img/loading.gif" lazyload></li>
-<li>Shifting right by $N$ bits is equivalent to dividing by $2^N$</li>
-<li>location of radix is not visible, not encoded in the number, must told. We never know the meaning of a binary number just by looking at it.</li>
-</ol>
-<h3 id="Floating-Float"><a href="#Floating-Float" class="headerlink" title="Floating Float"></a><strong>Floating Float</strong></h3><ol>
-<li><img src="/../img/EE252/EE252%202.jpg" srcset="/img/loading.gif" lazyload alt="IEEE 32-bit"></li>
-<li><img src="/../img/EE252/EE252%203.jpg" srcset="/img/loading.gif" lazyload alt="Comparison"></li>
-<li>Precision: number of significant digits. No need to transform 10.</li>
-</ol>
-<h3 id="ASCII"><a href="#ASCII" class="headerlink" title="ASCII"></a><strong>ASCII</strong></h3><ol>
-<li>7 bits to represent 128 different characters.</li>
-<li>UTF-8, 16, 32</li>
-</ol>
-<h2 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a><strong><em>Week 4</em></strong></h2><h3 id="Logic-Functions"><a href="#Logic-Functions" class="headerlink" title="Logic Functions"></a><strong>Logic Functions</strong></h3><ol>
-<li>AND: result is true if all operands are true</li>
-<li>OR: result is true if any operand is true</li>
-<li>NOT: result is the opposite of the operand value</li>
-<li><img src="/../img/EE252/EE252%204.png" srcset="/img/loading.gif" lazyload alt="Symbols"></li>
-<li>XOR: the result of a two-operand OR is true if both operands are true, the odd function</li>
-<li>A bitwise operation computes each bit of an N-bit result based on the value in the correponding position of the N-bit operands.</li>
-</ol>
-<h3 id="Combiational-Logical"><a href="#Combiational-Logical" class="headerlink" title="Combiational Logical"></a><strong>Combiational Logical</strong></h3><ol>
-<li><img src="/../img/EE252/EE252%205.png" srcset="/img/loading.gif" lazyload alt="Transistors"></li>
-<li><img src="/../img/EE252/EE252%206.png" srcset="/img/loading.gif" lazyload alt="Logic Gates"></li>
-<li>Waveforms: a waveform is a visual way to represent signal values over time.</li>
-<li>Logic circuits are at a higher level of abstraction. Each transistor acts like a switch.</li>
-<li>NOT gate use 2 transisters.</li>
-</ol>
-<h3 id="Combinational-Blocks"><a href="#Combinational-Blocks" class="headerlink" title="Combinational Blocks"></a><strong>Combinational Blocks</strong></h3><ol>
-<li>Decoder: converts an n-bit input code word into a unique m-bit ouput value, where $m&#x3D;2^n$.</li>
-<li>Exactly one output can be true at any given time.</li>
-<li><img src="/../img/EE252/EE252%207.png" srcset="/img/loading.gif" lazyload alt="Decoder"></li>
-<li>Multiplexers: based on the select input, choose one of the data inputs to drive the output</li>
-<li><img src="/../img/EE252/EE252%208.png" srcset="/img/loading.gif" lazyload alt="Muxes"></li>
-<li>Full adder: at every position, determine 2-bit sum of adding each addend’s bit in that position plus a carry-in. A full adder performs addition for single bit position.</li>
-<li><img src="/../img/EE252/EE252%209.png" srcset="/img/loading.gif" lazyload alt="Full Adder"></li>
-<li>Ripple Carry Adder: serires of full adders, where each full adder performs the addition for a single bit position.</li>
-</ol>
-<h2 id="Week-5"><a href="#Week-5" class="headerlink" title="Week 5"></a><strong><em>Week 5</em></strong></h2><h3 id="Sequence-Logic"><a href="#Sequence-Logic" class="headerlink" title="Sequence Logic"></a><strong>Sequence Logic</strong></h3><ol>
-<li>Before, are all combinational logic. Circuit outputs only depend on current input values.</li>
-<li>A circuit’s current state is the binary number that is currently stored in the circuit’s flip-flops.</li>
-<li>Sequence logic: circuit outputs depend on both current input values and past stored values.</li>
-<li>D flip-flop: output is always equal to the value it is storing<br><img src="/../img/EE252/Week5%201.png" srcset="/img/loading.gif" lazyload alt="Full Adder"></li>
-<li>D flip-flop updates when the clock transitions from 0 to 1 (rising edge)</li>
-<li>FSM (finite state machine): any circuit built from flip-flops is FSM</li>
-<li>State Diagram:<ol>
-<li>state is represented by a circle, the circle also indicate the output in that state.</li>
-<li>state transitions represented by an arrow from one state to another. Labeled with the input condition.</li>
-</ol>
-</li>
-</ol>
-<h3 id="FSM"><a href="#FSM" class="headerlink" title="FSM"></a><strong>FSM</strong></h3><ol>
-<li>sequential circuits.</li>
-<li>track of which state it is currently in</li>
-<li>The FSM contains one flip-flop per bit of state</li>
-<li>depends both upon the current state and the inputs, the next state is a function of the current state and current input values.</li>
-<li>Start state &lt;-&gt; reset state</li>
-<li>Some state machines do not have an input, or the input does not affect a particular state transition, this type of transition is an unconditional transition.</li>
-<li>“X” means shorthand for “any value of”</li>
-<li>The output will be the current state output.</li>
-</ol>
-<h3 id="Registers-Memory"><a href="#Registers-Memory" class="headerlink" title="Registers Memory"></a><strong>Registers Memory</strong></h3><ol>
-<li>A register is a group of flip-flops used to stire multi-bit binary values.</li>
-<li>Write-Enable: whether take the input to store</li>
-<li>Address: M bits, $2^M$ locations to access.</li>
-<li>Each location stores a single N-bit word: data size, # bits per location</li>
-<li>Capacity &#x3D; (# locations) * (data size)</li>
-<li>Address selects which register supplies data out using Mut.</li>
-<li>Address selects which register may be written to using decoder. Selected register will only be written if WE&#x3D;1</li>
-</ol>
-<h2 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a><strong><em>Week 6</em></strong></h2><ol>
-<li>ALU(arithmetic logic unit), a set of logic structures that perform a set of different possible computations on the inputs.</li>
-<li>A set of multiplexers that choose which result to send to the ALU output.</li>
-<li>The register file: a small memory located near the ALU<br>write port: used to write operation’s result to register file: DR(DA), DD(DD), write<br>read port: used to get operands from register file: SR(SA), SD, BMUX, output</li>
-<li>Conceptual Compute Model: Memory, Control Unit, Processing Unit</li>
-<li>Control Unit: fetches instructions one by one from memory, two special unit PC(program counter), IR(instruction register). Memory read using address in PC, put the returned value into IR, then increment the PC.</li>
-<li>von Neumann Compute Model, holds both the program and any data needed by the program(memory)</li>
-<li>Instruction: small step of a program is encoded into a binary word called an instruction. (ISA)</li>
-<li>FETCH: Read an instruction from mem, put into IR and increase PC<br>-&gt; DECODE: determine what the instruction meaning (opcode, field)<br>-&gt; EVALUATE ADDRESS<br>-&gt; FECTCH OPERANDS: get the operands<br>-&gt; EXECUTE: ALU<br>-&gt; STORE RESULT: write back to register<br>repeat forever, not all phases are required for all instruction(后四个)</li>
-<li>Some processors group different stage together</li>
-</ol>
-<h2 id="Week-7"><a href="#Week-7" class="headerlink" title="Week 7"></a><strong><em>Week 7</em></strong></h2><ol>
-<li>LC-3: 8 general-purpose registers, 16 bit</li>
-<li>N, Z, P: three branch bit reg</li>
-<li>address calculation method depends on the memory addressing mode.</li>
-<li>Mem both holds ins and data</li>
-</ol>
-
+                
                 
               </div>
             
@@ -465,7 +318,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Courses/" class="category-chain-item">Courses</a>
+  <a href="/categories/project/" class="category-chain-item">project</a>
   
   
 
@@ -480,7 +333,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/course-notes/" class="print-no-link">#course notes</a>
+        <a href="/tags/Verification/" class="print-no-link">#Verification</a>
       
     </div>
   
@@ -492,8 +345,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>ECE 252</div>
-      <div>https://harukimoriarty.github.io/2023/09/19/EE252/</div>
+      <div>Formal Verification of WETH</div>
+      <div>https://harukimoriarty.github.io/2024/01/19/FormalVerificationofWETH/</div>
     </div>
     <div class="license-meta">
       
@@ -505,7 +358,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>September 19, 2023</div>
+          <div>January 19, 2024</div>
         </div>
       
       
@@ -537,18 +390,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/28/COMP320/" title="COMP 320">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">COMP 320</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/01/life_experience_2/" title="美东游记-波士顿">
-                        <span class="hidden-mobile">美东游记-波士顿</span>
+                      <a href="/2023/12/10/Aurora/" title="Amazon Aurora">
+                        <span class="hidden-mobile">Amazon Aurora</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
