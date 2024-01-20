@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-20T07:56:46.335Z">
+<meta property="article:modified_time" content="2024-01-20T08:15:20.818Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k words
+          3.3k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          24 mins
+          28 mins
         
       </span>
     
@@ -309,6 +309,10 @@
 <h3 id="state-tuple"><a href="#state-tuple" class="headerlink" title="state tuple:"></a>state tuple:</h3><p>$(BalanceOf, WethSupply, EthSupply)$</p>
 <h3 id="functions"><a href="#functions" class="headerlink" title="functions:"></a>functions:</h3><p>Following $(state,parameters)|condition\rightarrow new-state$<br><code>deposit</code>: $$((BalanceOf,WethBalance,EthSupply),(msg-sender, msg-value))|msg-value\leq EthSupply \rightarrow (Store(BalanceOf, src, BalanceOf[src]+msg-value), WethBalance+msg-value, EthSupply-msg-value)$$<br><code>withdraw</code>: $$((BalanceOf,WethBalance,EthSupply),(msg-sender, wad))|wad\leq BalanceOf[msg-sender] \rightarrow (Store(BalanceOf, msg-sender, BalanceOf[msg-sender]), WethBalance-wad, EthSupply+wad)$$<br><code>transferFrom</code>: $$((BalanceOf,WethBalance,EthSupply),(src,dst,wad))|wad\leq BalanceOf[src] \rightarrow (Store(x,dst,x[dst]+wad),WethBalance,EthSupply), where\ x&#x3D;Store(BalanceOf,src,BalanceOf[src]-wad)$$<br><code>selfdestruct</code>: $$((BalanceOf,WethBalance,EthSupply),(value))|value \leq eth_supply \rightarrow (BalanceOf,weth_balance+value,eth_supply-value)$$<br><code>fallback</code>: same as <code>deposit</code><br><code>coinbase</code>: essentially same as <code>fallback</code> (overapproximation)<br>where $Store(M,K,V)$ donates a mapping identical to $M$ but with $M[A]$ set to $V$</p>
 <h3 id="initial-state"><a href="#initial-state" class="headerlink" title="initial state:"></a>initial state:</h3><p>$(K(0),0,120000000e18)$, where $K(0)$ denotes the mapping with all entries initialized to 0</p>
+<h3 id="Constrained-Horn-Clauses"><a href="#Constrained-Horn-Clauses" class="headerlink" title="Constrained Horn Clauses"></a>Constrained Horn Clauses</h3><ol>
+<li>$State(K(0),0,0)$ should be <code>False</code>, it is impossible for all of the outstanging ETH supply to disappear. More formally, we can say that given some $s&#x3D;(BalanceOf,WethBalance,EthSupply)$, then $State(BalanceOf,WethBalance,EthSupply)$ necessarily implies that $WethSupply+EthSupply$ is always equal to some constant.</li>
+<li>We need the read total supply equals to computed total supply. We could formulate this invariant as: $\forall s&#x3D;(BalanceOf,WethBalance,EthSupply):State(BalanceOf,WethBalance,EthSupply)\rightarrow\sum_{a}BalanceOf[a]&#x3D;WethSupply$</li>
+</ol>
 
                 
               </div>
