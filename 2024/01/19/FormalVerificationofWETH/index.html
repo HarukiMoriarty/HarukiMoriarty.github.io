@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-20T13:50:45.856Z">
+<meta property="article:modified_time" content="2024-01-20T14:37:27.871Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4k words
+          5k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          34 mins
+          42 mins
         
       </span>
     
@@ -318,6 +318,15 @@
 <li>For more concrete, we have $\forall(s,p):(State(s)\wedge Pre(p))\rightarrow State(Post(s,p))$, where $s$ is a state tuple, $p$ is a parameters tuple. $Pre(p)$ is a boolean function that represents the preconditions that the parameters $p$ are checked against, $Post(s,p)$ represents the updated state after the transition.</li>
 <li>example for <code>withdraw</code>, $$\forall(BalanceOf,WethBalance,MsgSener,wad): (State(BalanceOf,WethBalance,EthSupply \wedge (wad\leq BalanceOf[MsgSender]) \wedge (WethBalance\leq wad)) \rightarrow State(Store(BalanceOf,MsgSender,BalanceOf[MsgSender]-wad), WethBalance-wad, EthSupply+wad))$$</li>
 </ol>
+<h3 id="encoding-sums-over-arrays"><a href="#encoding-sums-over-arrays" class="headerlink" title="encoding sums over arrays"></a>encoding sums over arrays</h3><p>We want to encoding $\sum BalanceOf&#x3D;WethBalance$, we introduce an additional “synthetic” variable first, $SumBalanceOf$ tracks the value of this sum. We also introduce several tips to Z3</p>
+<p>$$\forall (BalanceOf,WethBalance,MsgSender,wad,SumBalanceOf,address):(State(BalanceOf,WethBalance,EthSupply,SumBalanceOf) \wedge (BalanceOf[address] \leq SumBalanceOf)) \rightarrow (SumBalanceOf\leq 120000000e18) \wedge (BalanceOf[address]\leq 120000000e18)$$</p>
+<h3 id="analysis"><a href="#analysis" class="headerlink" title="analysis"></a>analysis</h3><p>Using Z3py, we consider following,</p>
+<ol>
+<li>The starting state $(K((BitVec(160), 0), 0, 120000000e18,0))$ is assumed to be reachable, so therefore, it is reachable.</li>
+<li>Asserted that if a state is reachable, we can also do a <code>SELFDESTRUCT</code> to the WETH contract to reach a new state. Therefore, the state $(K(0), 12884901888,119999999e18,0)$ is reachable.</li>
+<li>We asserted that if a state is reachable, $WethBalance$ must equal to $SumBalanceOf$, but for now, this is not statisfiable.</li>
+</ol>
+<p>It is a bug, <strong>albeit minor</strong>. To overcome it, we can assume that the total number of WETH tokens is always <em>less than or equal</em> to the native ETH balance of WETH.</p>
 
                 
               </div>
