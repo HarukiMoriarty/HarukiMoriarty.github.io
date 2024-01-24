@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-21T09:12:38.800Z">
+<meta property="article:modified_time" content="2024-01-24T16:17:33.693Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.6k words
+          6.3k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          47 mins
+          53 mins
         
       </span>
     
@@ -333,6 +333,12 @@
 
 <p>We translate this function to a Z3py function</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">approve</span>(<span class="hljs-params">s, state, msg_sender, guy, wad</span>):<br>    eth_balances, balanceOf, allowance = state<br><br>    <span class="hljs-comment"># allowance[msg.sender][guy] = wad; (1)</span><br>    allowance = Store(allowance, msg_sender, Store(allowance[msg_sender], guy, wad))<br><br>    <span class="hljs-comment"># Approval(msg.sender, guy, wad);   (2)</span><br>    <span class="hljs-comment"># return true;                      (3)</span><br>    <span class="hljs-keyword">return</span> (eth_balances, balanceOf, allowance)<br></code></pre></td></tr></table></figure>
+
+<p>Example 2: WETH function <code>deposit</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function deposit() public payable &#123;<br>    balanceOf[msg.sender] += msg.value<br>    Deposit(msg.sender, msg.value);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Corresponding symbolic implementation</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">deposit</span>(<span class="hljs-params">s, state, msg_sender, msg_value</span>):<br>    eth_balance, balanceOf, allowance = state<br><br>    <span class="hljs-comment"># transfer of native eth, as per msg_value</span><br>    s.add(UGE(eth_balance[msg_sender], msg_value)) <span class="hljs-comment"># UGE: unsigned greater than</span><br>    eth_balances = Store(eth_balances, msg_sender, eth_balances[msg_sender] - msg_value)<br>    eth_balances = Store(eth_balances, WETH_Address, eth_balances[WETH_Address] + msg_value)<br><br>    <span class="hljs-comment"># balanceOf[msg_sender] += msg.value; (1)</span><br>    balanceOf = Store(balanceOf, msg_sender, balanceOf[msg_sender] + msg_value)<br><br>    <span class="hljs-comment"># Deposit(msg.sender, msg_value); (2)</span><br><br>    <span class="hljs-keyword">return</span> (eth_valanes, balanceOf, allowance)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
