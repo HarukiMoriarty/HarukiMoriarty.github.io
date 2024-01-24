@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://harukimoriarty.github.io/img/WETHverification.png">
 <meta property="article:published_time" content="2024-01-18T16:00:00.000Z">
-<meta property="article:modified_time" content="2024-01-24T16:17:33.693Z">
+<meta property="article:modified_time" content="2024-01-24T16:25:58.301Z">
 <meta property="article:author" content="Zhenghong Yu">
 <meta property="article:tag" content="Verification">
 <meta name="twitter:card" content="summary_large_image">
@@ -241,7 +241,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.3k words
+          7.4k words
         
       </span>
     
@@ -252,7 +252,7 @@
         
         
         
-          53 mins
+          62 mins
         
       </span>
     
@@ -339,6 +339,12 @@
 
 <p>Corresponding symbolic implementation</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">deposit</span>(<span class="hljs-params">s, state, msg_sender, msg_value</span>):<br>    eth_balance, balanceOf, allowance = state<br><br>    <span class="hljs-comment"># transfer of native eth, as per msg_value</span><br>    s.add(UGE(eth_balance[msg_sender], msg_value)) <span class="hljs-comment"># UGE: unsigned greater than</span><br>    eth_balances = Store(eth_balances, msg_sender, eth_balances[msg_sender] - msg_value)<br>    eth_balances = Store(eth_balances, WETH_Address, eth_balances[WETH_Address] + msg_value)<br><br>    <span class="hljs-comment"># balanceOf[msg_sender] += msg.value; (1)</span><br>    balanceOf = Store(balanceOf, msg_sender, balanceOf[msg_sender] + msg_value)<br><br>    <span class="hljs-comment"># Deposit(msg.sender, msg_value); (2)</span><br><br>    <span class="hljs-keyword">return</span> (eth_valanes, balanceOf, allowance)<br></code></pre></td></tr></table></figure>
+
+<p>Example 3: WETH function <code>transferFrom</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs solidity">function transferFrom(address src, address dst, uint wad) public returns (bool)<br>&#123;<br>    require(balanceOf[src] &gt;= wad);                   // (1)<br><br>    if (src != msg.sender &amp;&amp; allowance[src][msg.sender] != uint(-1)) &#123; // (2)<br>        require(allowance[src][msg.sender] &gt;= wad);   // (3)<br>        allowance[src][msg.sender] -= wad;            // (4)<br>    &#125;<br><br>    balanceOf[src] -= wad;                            // (5)<br>    balanceOf[dst] += wad;                            // (6)<br><br>    Transfer(src, dst, wad);<br><br>    return true;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Tranfer to</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">transferFrom</span>(<span class="hljs-params">s, state, msg_sender, src, dst, wad</span>):<br>    eth_balances, balanceOf, allowance = state<br><br>    <span class="hljs-comment"># (1)</span><br>    s.add(UGE(balanceOf[src], wad))<br><br>    <span class="hljs-comment"># (2)</span><br>    p = And(src != msg_sender, allowance[src][msg_sender] != Uint<br>    (<span class="hljs-number">0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</span>))<br><br>    <span class="hljs-comment"># (3)</span><br>    s.add(Implies(p, UGE(allowance[src][msg_sender], wad)))<br><br>    <span class="hljs-comment"># (4)</span><br>    allowance = If(p,<br>        Store(allowance, src, Store(allowance[src], msg_sender, allowance[src][msg_sender] - wad)),<br>        allowance)<br><br>    <span class="hljs-comment"># (5)</span><br>    balanceOf = Store(balanceOf, src, balanceOf[src]-wad)<br><br>    <span class="hljs-comment"># (6)</span><br>    balanceOf = Store(balanceOf, dst, balanceOf[dst]+wad)<br><br>    <span class="hljs-keyword">return</span> (eth_balances, balanceOf, allowance)<br></code></pre></td></tr></table></figure>
 
                 
               </div>
