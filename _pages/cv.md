@@ -1,13 +1,11 @@
 ---
 layout: archive
-title: "CV"
+title: ""
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
 ---
-
-{% include base_path %}
 
 Education
 ======
@@ -16,29 +14,22 @@ Education
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* May 2023 - May 2024: Research Assistant
+  * University of Wisconsin-Madison
+  * Developed a scalable distributed transaction processing protocol for deterministic databases, combining interactive transaction capabilities with a novel wound-wait mechanism to enhance latency and throughput under high workloads compared to protocols like Calvin.
+  * Supervisor: Xiangyao Yu
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Sep. 2021 - Jan. 2023: Embeded/Computer Vision Developer
+  * ShanghaiTech University
+  * Led the Computer Vision group to win the RoboMaster University Championship in 2021 and 2022 by developing an advanced robotics vision system for terrain mapping and object identification, including engineering an auto-aim system on NvidiaNX, optimizing the Picodet algorithm, and implementing a multi-threaded data processing framework for efficient real-time performance.
+  * Team: Magician of RoboMaster Competition
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming
+  * C/C++/CudaC++, Rust, Python, Java, SQL, Shell, MATLAB, Letax
+* Frameworks
+  * Tokio, PyTorch, Tensorflow, Flask, MySQL, Git, OpenCV, OpenMV
 
 Publications
 ======
